@@ -1,0 +1,17 @@
+{
+	"name": "knock-at-the-gates",
+	"description": "a series of interactive graphs exploring the death penalty in the united states",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+    "csv": "0.3.x",
+    "ejs": "1.0.x",
+		"express": "3.4.x",
+    "underscore": "1.4.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.x",
+    "grunt-contrib-compass": "^0.7.x",
+    "grunt-contrib-watch": "0.5.3"
+  }
+}
