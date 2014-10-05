@@ -19,13 +19,13 @@ DAB.App = function () {
         .attr("stdDeviation", 10);
       $('svg').attr('filter', 'url(#blur-' + i + ')');
     });
-    $('#stream').addClass('blur');
+    $('#main-content').addClass('blur');
   };
 
   var overlayXClickHandler = function (e) {
     $('.overlay').removeClass('active');
     $('#overlay').removeClass('active');
-    $('#stream').removeClass('blur');
+    $('#main-content').removeClass('blur');
     $('svg').each(function (i) {
       $('svg').attr('filter', '');
     });
@@ -40,4 +40,10 @@ DAB.App = function () {
 
 $(document).ready(function () {
   DAB.app = new DAB.App();
+  DAB.app.on();
+
+  // TODO: make this happen on inview
+  _.each(DAB.interludes, function (interlude) {
+    interlude.on();
+  });
 });

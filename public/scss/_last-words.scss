@@ -1,0 +1,73 @@
+.words-overlay {
+  background-color: rgba(255,255,255,.55);
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: $headerheight;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 44px);
+  z-index: 3;
+  .x {
+    top: 44px;
+  }
+  .words {
+    margin-top: $headerheight;
+    margin-left: $headerheight;
+    padding-right: $headerheight / 2;
+    padding-bottom: $headerheight / 2;
+    overflow-y: scroll;
+    width: 600px;
+    height: 100%;
+    h1 {
+      font-size: $headerheight;
+      margin-bottom: $headerheight;
+      text-transform: uppercase;
+    }
+    br {
+      height: 33px;
+    }
+    p {
+      color: $color1;
+      margin-bottom: 0;
+      padding-bottom: 88px;
+      width: 100%;
+    }
+  }
+}
+svg {
+  g.bubble-wrapper {
+    cursor: pointer;
+    circle {
+      fill: $color2;
+      transition: all 500ms;
+    }
+    &.active,
+    &:hover {
+      circle {
+        fill: $color6;
+      }
+      &.parent {
+        circle {
+          fill: none;
+        }
+      }
+    }
+    text {
+      fill: $color7;
+      font-family: "Source Sans Pro Extra Light";
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+    &.parent {
+      circle {
+        fill: none;
+      }
+      circle:hover {
+        fill: none;
+      }
+    }
+  }
+}
