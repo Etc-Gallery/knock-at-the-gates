@@ -17,6 +17,10 @@
   &.active-interlude {
     background-color: $color1;
   }
+  &.blur {
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
+  }
 }
 
 .interlude {

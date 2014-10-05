@@ -47,6 +47,7 @@ svg g.bubble-wrapper.parent circle:hover { fill: none; }
 
 #main-content { background-color: #231f20; overflow-y: scroll; position: absolute; top: 44px; left: 0; width: 100%; height: calc(100% - 44px); -webkit-transition: background-color 1s; transition: background-color 1s; }
 #main-content.active-interlude { background-color: #231f20; }
+#main-content.blur { -webkit-filter: blur(15px); filter: blur(15px); }
 
 .interlude { clear: both; padding-bottom: 200px; opacity: 1; -webkit-transition: opacity 500ms; transition: opacity 500ms; }
 .interlude.out { opacity: 0; }
