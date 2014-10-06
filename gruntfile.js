@@ -1,5 +1,12 @@
 module.exports = function(grunt) {
 
+  var jsDependencies = [
+    'public/js/vendor/*.js',
+    'public/js/app.js',
+    'public/js/lib/*.js',
+    'public/js/interludes/*.js'
+  ];
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     compass: {
@@ -16,15 +23,23 @@ module.exports = function(grunt) {
     uglify: {
       dev: {
         files: {
-          'public/main.min.js' : [
-            'public/js/vendor/*.js',
-            'public/js/app.js',
-            'public/js/lib/*.js',
-            'public/js/interludes/*.js'
-          ],
+          'public/main.min.js': jsDependencies
         },
         options: {
-          sourceMap: true
+          sourceMap: true,
+          compress: false,
+        }
+      },
+      prod: {
+        files: {
+          'public/main.min.js': jsDependencies
+        },
+        options: {
+          sourceMap: false,
+          compress: true,
+          mangle: true,
+          'screw-ie8': true,
+          lint: true
         }
       }
     },
@@ -35,7 +50,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['public/js/**/*.js'],
-        tasks: ['uglify']
+        tasks: ['uglify:dev']
       }
     }
   });
