@@ -10,13 +10,22 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     compass: {
-      build: {
+      dev: {
         options: {
           sassDir: 'public/scss',
           cssDir: 'public/css',
           outputStyle: 'compact',
           force: true,
           noLineComments: true
+        }
+      },
+      prod: {
+        options: {
+          sassDir: 'public/scss',
+          cssDir: 'public/css',
+          outputStyle: 'compressed',
+          environment: 'production',
+          force: true
         }
       }
     },
@@ -28,6 +37,7 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true,
           compress: false,
+          mangle: false
         }
       },
       prod: {
@@ -46,7 +56,7 @@ module.exports = function(grunt) {
     watch: {
       scss: {
         files: 'public/scss/**/*.scss',
-        tasks: ['compass:build'],
+        tasks: ['compass:dev'],
       },
       js: {
         files: ['public/js/**/*.js'],
@@ -58,5 +68,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.registerTask('default', ['compass:build', 'watch']);
+  grunt.registerTask('default', ['compass:dev', 'watch']);
+  grunt.registerTask('productionize', ['uglify:prod', 'compass:prod']);
 };
