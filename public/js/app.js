@@ -7,18 +7,23 @@ DAB.App = function () {
     $('.pane').height($(window).height() - 44);
   };
 
+  var navButtonClickHandler = function (e) {
+    $(this).toggleClass('active');
+    $('ul.' + $(this).data('persist-dropdown')).toggleClass('active');
+  }
+
   var overlayButtonClickHandler = function (e) {
     $('#' + $(this).data('overlay')).addClass('active');
     $('#overlay').addClass('active');
-    $('svg').each(function (i) {
-      var defs = $(this).append("defs");
-      var filter = defs.append("filter")
-        .attr("id", "blur-" + i);
-      filter.append("feGaussianBlur")
-        .attr("in", "SourceGraphic")
-        .attr("stdDeviation", 10);
-      $('svg').attr('filter', 'url(#blur-' + i + ')');
-    });
+    //$('svg').each(function (i) {
+    //  var defs = $(this).append("defs");
+    //  var filter = defs.append("filter")
+    //    .attr("id", "blur-" + i);
+    //  filter.append("feGaussianBlur")
+    //    .attr("in", "SourceGraphic")
+    //    .attr("stdDeviation", 10);
+    //  $('svg').attr('filter', 'url(#blur-' + i + ')');
+    //});
     $('#main-content').addClass('blur');
   };
 
@@ -33,8 +38,9 @@ DAB.App = function () {
 
   this.on = function () {
     $('.pane').height($(window).height() - 44);
-    $('header#primary-header button').on('click', overlayButtonClickHandler);
+    //$('header#primary-header button').on('click', overlayButtonClickHandler);
     $('#overlay .x').on('click', overlayXClickHandler);
+    $('header#primary-header button').on('click', navButtonClickHandler);
   };
 };
 

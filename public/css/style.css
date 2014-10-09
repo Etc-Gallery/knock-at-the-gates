@@ -11,11 +11,31 @@ p, ul li { color: #d2bbc0; font-family: "PT Serif"; font-size: 15px; line-height
 
 html, body { background-color: #231f20; overflow: hidden; width: 100%; height: 100%; }
 
-header#primary-header { background-color: black; position: absolute; top: 0; left: 0; width: 100%; height: 44px; z-index: 3; }
-header#primary-header h1 { color: #8c7c80; font-size: 22px; line-height: 44px; padding-left: 44px; text-transform: uppercase; }
-header#primary-header nav { position: absolute; top: 0; right: 44px; width: 200px; }
-header#primary-header nav button { color: #8c7c80; float: right; font-size: 18px; font-weight: 400; line-height: 22px; margin-left: 22px; margin-top: 11px; text-transform: uppercase; height: 22px; -webkit-transition: opacity 0.5s; transition: opacity 0.5s; }
+header#primary-header { background-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 44px; z-index: 3; }
+header#primary-header ul.persist-dropdown { overflow: hidden; position: absolute; top: 44px; width: 320px; height: 0; z-index: 3; transition: all 200ms; }
+header#primary-header ul.persist-dropdown.gear-persist-dropdown { left: auto; right: 0; }
+header#primary-header ul.persist-dropdown.gear-persist-dropdown.active { height: 181px; }
+header#primary-header ul.persist-dropdown.hamburger-persist-dropdown { left: 0; right: auto; }
+header#primary-header ul.persist-dropdown.hamburger-persist-dropdown.active { height: 46px; }
+header#primary-header ul.persist-dropdown li { background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px dotted white; color: #231f20; font-family: "Source Sans Pro Extra Light"; font-size: 11px; letter-spacing: 2px; line-height: 44px; list-style: none; margin-bottom: 0; padding: 0 22px; text-transform: uppercase; width: 276px; height: 44px; }
+header#primary-header ul.persist-dropdown li:first-child { border-top: 1px dotted white; }
+header#primary-header h1 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 44px; text-align: center; text-transform: uppercase; }
+header#primary-header nav { position: absolute; top: 0; }
+header#primary-header nav.primary-header-left-nav { left: 11px; }
+header#primary-header nav.primary-header-right-nav { right: 11px; }
+header#primary-header nav button { background: transparent; float: left; outline: none; position: relative; width: 44px; height: 44px; }
 header#primary-header nav button.discourage { opacity: .5; }
+header#primary-header nav button:hover .dropdown-marker { border-bottom: 1px solid white; border-left: 1px solid white; }
+header#primary-header nav button:hover svg path { fill: white; }
+header#primary-header nav button.active .dropdown-marker { transform: rotate(135deg); }
+header#primary-header nav button .dropdown-marker { border-bottom: 1px solid #8c7c80; border-left: 1px solid #8c7c80; position: absolute; bottom: 14.5px; transform: rotate(-45deg); width: 5.5px; height: 5.5px; transition: transform 200ms; }
+header#primary-header nav button svg { position: absolute; width: 22px; height: 22px; }
+header#primary-header nav button svg path { fill: #8c7c80; }
+header#primary-header nav button.gear svg { top: 11px; right: auto; }
+header#primary-header nav button.gear .dropdown-marker { left: 12px; right: auto; }
+header#primary-header nav button.hamburger svg { top: 11px; left: 0; }
+header#primary-header nav button.hamburger .dropdown-marker { right: 12px; left: auto; }
+header#primary-header nav button.facebook svg { top: 11px; left: 0; }
 
 #overlay { background-color: rgba(255, 255, 255, 0.55); display: none; position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 44px); z-index: 10; }
 #overlay.active { display: block; top: 44px; }
@@ -45,7 +65,7 @@ svg g.bubble-wrapper text { fill: white; font-family: "Source Sans Pro Extra Lig
 svg g.bubble-wrapper.parent circle { fill: none; }
 svg g.bubble-wrapper.parent circle:hover { fill: none; }
 
-#main-content { background-color: #231f20; overflow-y: scroll; position: absolute; top: 44px; left: 0; width: 100%; height: calc(100% - 44px); -webkit-transition: background-color 1s; transition: background-color 1s; }
+#main-content { background-color: #231f20; overflow-y: scroll; position: absolute; left: 0; width: 100%; height: 100%; -webkit-transition: background-color 1s; transition: background-color 1s; }
 #main-content.active-interlude { background-color: #231f20; }
 #main-content.blur { -webkit-filter: blur(15px); filter: blur(15px); }
 

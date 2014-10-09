@@ -8,10 +8,9 @@
   background-color: $color1;
   overflow-y: scroll;
   position: absolute;
-  top: $headerheight;
   left: 0;
   width: 100%;
-  height: calc(100% - 44px);
+  height: 100%;
   -webkit-transition: background-color 1s;
   transition: background-color 1s;
   &.active-interlude {

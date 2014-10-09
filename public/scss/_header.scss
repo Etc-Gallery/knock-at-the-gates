@@ -1,37 +1,138 @@
 header#primary-header {
-  background-color: $color5;
+  background-color: transparent;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: $headerheight;
   z-index: 3;
+  ul.persist-dropdown {
+    overflow: hidden;
+    position: absolute;
+    top: 44px;
+    width: 320px;
+    height: 0;
+    z-index: 3;
+    transition: all 200ms;
+    &.gear-persist-dropdown {
+      left: auto;
+      right: 0;
+      &.active {
+        height: #{(45 * 4) + 1}px;
+      }
+    }
+    &.hamburger-persist-dropdown {
+      left: 0;
+      right: auto;
+      &.active {
+        height: #{(45 * 1) + 1}px;
+      }
+    }
+    li {
+      background-color: rgba(255,255,255,.85);
+      border-bottom: 1px dotted rgb(255,255,255);
+      color: $color1;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: 11px;
+      letter-spacing: 2px;
+      line-height: 44px;
+      list-style: none;
+      margin-bottom: 0;
+      padding: 0 22px;
+      text-transform: uppercase;
+      width: #{320 - 44}px;
+      height: 44px;
+      &:first-child {
+        border-top: 1px dotted rgb(255,255,255);
+      }
+    }
+  }
   h1 {
     color: $color3;
+    font-family: "Source Sans Pro Extra Light";
     font-size: $headerheight / 2;
     line-height: $headerheight;
-    padding-left: $headerheight;
+    text-align: center;
     text-transform: uppercase;
   }
   nav {
     position: absolute;
     top: 0;
-    right: $headerheight;
-    width: 200px;
+    &.primary-header-left-nav {
+      left: 11px;
+    }
+    &.primary-header-right-nav {
+      right: 11px;
+    }
     button {
-      color: $color3;
-      float: right;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: $headerheight / 2;
-      margin-left: $headerheight / 2;
-      margin-top: $headerheight / 4;
-      text-transform: uppercase;
-      height: $headerheight / 2;
-      -webkit-transition: opacity 0.5s;
-      transition: opacity 0.5s;
+      background: transparent;
+      float: left;
+      outline: none;
+      position: relative;
+      width: $headerheight;
+      height: $headerheight;
       &.discourage {
         opacity: .5;
+      }
+      &:hover {
+        .dropdown-marker {
+          border-bottom: 1px solid rgb(255,255,255);
+          border-left: 1px solid rgb(255,255,255);
+        }
+        svg {
+          path {
+            fill: rgb(255,255,255);
+          }
+        }
+      }
+      &.active {
+        .dropdown-marker {
+          transform: rotate(135deg);
+        }
+      }
+      .dropdown-marker {
+        border-bottom: 1px solid $color3;
+        border-left: 1px solid $color3;
+        position: absolute;
+        bottom: 14.5px;
+        transform: rotate(-45deg);
+        width: 5.5px;
+        height: 5.5px;
+        transition: transform 200ms;
+      }
+      svg {
+        position: absolute;
+        width: $headerheight / 2;
+        height: $headerheight / 2;
+        path {
+          fill: $color3;
+        }
+      }
+      &.gear {
+        svg {
+          top: $headerheight / 4;
+          right: auto;        
+        }
+        .dropdown-marker {
+          left: 12px;
+          right: auto;
+        }
+      }
+      &.hamburger {
+        svg {
+          top: $headerheight / 4;
+          left: 0;
+        }
+        .dropdown-marker {
+          right: 12px;
+          left: auto;
+        }
+      }
+      &.facebook {
+        svg {
+          top: $headerheight / 4;
+          left: 0;
+        }
       }
     }
   }
