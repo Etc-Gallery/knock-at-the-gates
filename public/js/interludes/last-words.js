@@ -1,14 +1,14 @@
 DAB.interludes.push(new DAB.Interlude({
 
   el: $('#last-words-interlude'),
-  
+
 
   url: 'last-words.json',
 
 
   title: 'Last Words',
   subtitle: 'Final Statements of the Condemned in Texas',
-  
+
 
   build: function (data) {
     var that = this;
@@ -63,7 +63,7 @@ DAB.interludes.push(new DAB.Interlude({
 
     that.svg.selectAll('g.bubble-wrapper').on('click', function (d) {
       var d3el = d3.select(this);
-      
+
       // add blurs
       var defs = that.svg.append("defs");
       var filter = defs.append("filter")
