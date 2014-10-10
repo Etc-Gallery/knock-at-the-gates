@@ -31,8 +31,7 @@ DAB.App = function () {
   // NB: Scroll events are a jQuery-free zone!
   // Scales for the opening animation.
   var gateLetterScale   = d3.scale.linear().domain([0, $mainTitle.height()]).range([0, 100])
-  ,   opacityScale      = d3.scale.linear().domain([0, sizes.height * 2]).range([1, 0])
-  ,   namesOpacityScale = d3.scale.linear().domain([0, sizes.height]).range([1, 0]);
+  ,   opacityScale      = d3.scale.linear().domain([0, sizes.height * 2]).range([1, 0]);
   // Since the opening animation is a jQuery-free zone...
   var main = $main[0]
   ,   title = $mainTitle[0]
@@ -44,9 +43,9 @@ DAB.App = function () {
     if (st < sizes.height * 2) {
       amount = gateLetterScale(st);
       opacity = opacityScale(st);
-      nameOpacity = namesOpacityScale(st);
+      nameOpacity = Math.max(0, Math.min(2 * opacity, 1));
       names.style.opacity = nameOpacity;
-    
+
       title.style.letterSpacing = amount + 'px';
       title.style.textShadow = '0px 0px ' + amount + 'px #8c7c80';
       title.style.lineHeight = (100 + amount) + '%';
@@ -112,7 +111,7 @@ DAB.App = function () {
     // Position everything.
     $window.trigger('resize');
 
-    
+
   };
 };
 
