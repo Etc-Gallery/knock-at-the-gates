@@ -11,7 +11,8 @@ p, ul li { color: #d2bbc0; font-family: "PT Serif"; font-size: 15px; line-height
 
 html, body { background-color: #231f20; overflow: hidden; width: 100%; height: 100%; }
 
-header#primary-header { background-color: black; position: absolute; top: 0; left: 0; width: 100%; height: 44px; z-index: 3; }
+header#primary-header { background-color: black; position: absolute; top: 0; left: 0; -webkit-transition: all 200ms; transition: all 200ms; width: 100%; height: 44px; z-index: 3; }
+header#primary-header.blur { -webkit-backface-visibility: hidden; -webkit-perspective: 1000; -webkit-transform: translate3d(0, 0, 0); -webkit-filter: blur(15px); -moz-filter: blur(15px); -ms-filter: blur(15px); -o-filter: blur(15px); filter: blur(15px); }
 header#primary-header h1 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 44px; margin-left: 44px; text-align: left; text-transform: uppercase; }
 header#primary-header h1 a { color: inherit; text-decoration: none; }
 header#primary-header nav { position: absolute; top: 0; right: 0; }
@@ -44,10 +45,10 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 #overlays .overlay section h3 { color: #8c7c80; font-size: 22px; margin-top: 44px; max-width: 600px; width: 90%; }
 #overlays .overlay section h4 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; text-transform: uppercase; max-width: 600px; width: 90%; }
 
-.words-overlay { background-color: rgba(255, 255, 255, 0.55); cursor: pointer; overflow: hidden; position: fixed; top: 44px; left: 0; width: 100%; height: calc(100% - 44px); z-index: 3; }
-.words-overlay .x { top: 44px; }
+.words-overlay { background-color: rgba(255, 255, 255, 0.55); cursor: pointer; overflow: hidden; position: fixed; top: -100%; left: 0; width: 100%; height: 100%; z-index: 3; -webkit-transition: all 200ms; transition: all 200ms; }
+.words-overlay.active { top: 0; }
 .words-overlay .words { margin-top: 44px; margin-left: 44px; padding-right: 22px; padding-bottom: 22px; overflow-y: scroll; width: 600px; height: 100%; }
-.words-overlay .words h1 { font-size: 44px; margin-bottom: 44px; text-transform: uppercase; }
+.words-overlay .words h1 { color: #00b3ff; font-size: 44px; margin-bottom: 44px; text-transform: uppercase; }
 .words-overlay .words br { height: 33px; }
 .words-overlay .words p { color: #231f20; margin-bottom: 0; padding-bottom: 88px; width: 100%; }
 
@@ -60,23 +61,31 @@ svg g.bubble-wrapper.parent circle { fill: none; }
 svg g.bubble-wrapper.parent circle:hover { fill: none; }
 
 #main-content { background-color: #231f20; overflow-y: scroll; overflow-x: hidden; position: absolute; left: 0; width: 100%; height: 100%; -webkit-transition: background-color 1s; transition: background-color 1s; }
-#main-content.active-interlude { background-color: #231f20; }
-#main-content.blur { -webkit-filter: blur(15px); filter: blur(15px); }
+#main-content.blur { -webkit-backface-visibility: hidden; -webkit-perspective: 1000; -webkit-transform: translate3d(0, 0, 0); -webkit-filter: blur(15px); -moz-filter: blur(15px); -ms-filter: blur(15px); -o-filter: blur(15px); filter: blur(15px); }
 
 ul#names-wrapper { position: absolute; top: 44px; left: -10%; width: 120%; height: auto; }
 ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 22px; margin-top: 0; margin-bottom: 0; margin-right: 22px; opacity: 0.5; position: relative; text-transform: uppercase; width: auto; height: 22px; }
 
-.interlude { clear: both; padding-bottom: 200px; opacity: 1; -webkit-transition: opacity 500ms; transition: opacity 500ms; }
-.interlude.out { opacity: 0; }
+.interlude { clear: both; position: relative; opacity: 1; -webkit-transition: opacity 500ms; transition: opacity 500ms; }
+.interlude .x { display: none; top: 44px; right: 44px; z-index: 2; }
+.interlude .pane { z-index: 1; }
+.interlude .interactive { -webkit-filter: blur(5px); -moz-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px); opacity: 0.25; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.interlude.active .x { display: block; }
+.interlude.active .interactive { -webkit-filter: none; -moz-filter: none; -ms-filter: none; filter: none; opacity: 1; }
+.interlude.active .pane { opacity: 0; z-index: 0; }
+
+#welcome-panes { overflow: hidden; width: 100%; }
 
 .pane { clear: both; display: block; position: relative; width: 100%; }
-.pane.interactive h1.interactive-title { color: #00b3ff; position: absolute; top: 0; left: 44px; }
-.pane.interactive h2.interactive-subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; left: 44px; top: 44px; }
+.pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }
+.pane.narration .cta { border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; position: absolute; bottom: 88px; left: 44px; text-transform: uppercase; width: 132px; height: 44px; }
 .pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
 .pane.narration h2.byline { color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 22px; top: auto; bottom: 44px; }
-.pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 200px; margin-left: 44px; width: 800px; }
-.pane.narration h1.title { font-size: 88px; margin-top: -44px; top: 50%; }
+.pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
+.pane.narration h1.title { font-size: 88px; top: 88px; }
 .pane.narration h1.title.project-title { color: transparent; font-size: 88px; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
-.pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: calc(50% + 44px); }
+.pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: 44px; }
 .pane.narration h2.subtitle.project-subtitle { color: #00b3ff; margin-top: 88px; top: 50%; }
-.pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: calc(50% - 88px); }
+.pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: 44px; }
+.pane.narration header { padding-top: 88px; position: relative; }
+.pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker { position: static; }

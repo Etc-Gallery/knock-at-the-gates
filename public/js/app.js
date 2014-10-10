@@ -7,7 +7,11 @@ DAB.App = function () {
 
   // Only look through the DOM once.
   var $window = $(window)
+  ,   $body = $('body')
+  ,   $welcome = $('#welcome-panes')
   ,   $panes = $('.pane')
+  ,   $interludes = $('.interlude')
+  ,   $interactives = $('.interactive')
   ,   $overlaysWrapper = $('#overlays')
   ,   $overlays = $('.overlay')
   ,   $overlayOpeners = $('.overlay-opener')
@@ -15,7 +19,8 @@ DAB.App = function () {
   ,   $main = $('#main-content')
   ,   $gear = $('.gear')
   ,   $dropdown = $('.persist-dropdown')
-  ,   $mainTitle = $('#main-content h1.project-title');
+  ,   $mainTitle = $('#main-content h1.project-title')
+  ,   $header = $('#primary-header');
 
 
 
@@ -57,14 +62,27 @@ DAB.App = function () {
   var sizeAndPositionElements = function (e) {
     sizes.height = $(window).height();
     $panes.height(sizes.height);
+    $interludes.height(sizes.height);
+    $interactives.height(sizes.height);
+    $welcome.height($welcome.find('.pane').length * sizes.height);
   };
 
 
 
-  var toggleGearMenu = function (e) {
-    $gear.toggleClass('active');
-    $dropdown.toggleClass('active');
+  var activateGearMenu = function (e) {
+    $gear.addClass('active');
+    $dropdown.addClass('active');
+    e.stopPropagation();
+    $body.on('click', deactivateGearMenu);
   };
+
+  var deactivateGearMenu = function (e) {
+    $gear.removeClass('active');
+    $dropdown.removeClass('active');
+    $body.off('click', deactivateGearMenu);
+  }
+
+
 
 
 
@@ -72,6 +90,7 @@ DAB.App = function () {
     $('#' + $(this).data('overlay')).addClass('active');
     $overlaysWrapper.addClass('active');
     $main.addClass('blur');
+    $header.addClass('blur');
   };
 
 
@@ -80,22 +99,35 @@ DAB.App = function () {
     $overlaysWrapper.removeClass('active');
     $overlays.removeClass('active');
     $main.removeClass('blur');
+    $header.removeClass('blur');
   };
 
 
 
+  var activateInterlude = function (e) {
+    $(this).toggleClass('active');
+    $(this).off('click', activateInterlude);
+  };
 
+
+
+  var deactivateInterlude = function (e) {
+    e.stopPropagation(); 
+    $(this).parent().toggleClass('active');
+    $(this).parent().on('click', activateInterlude);
+  };
 
 
 
   this.on = function () {
     // Bind events.
-    $gear.on('click', toggleGearMenu);
-    $dropdown.on('click', toggleGearMenu);
+    $gear.on('click', activateGearMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
     $main.on('scroll', _.throttle(animateOpeningWords, 30));
     $window.on('resize', sizeAndPositionElements);
+    $interludes.on('click', activateInterlude);
+    $interludes.children('.x').on('click', deactivateInterlude);
 
     d3.json('/names.json', function (names) {
       var ul = d3.select('#names-wrapper')
