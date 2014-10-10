@@ -11,7 +11,7 @@ p, ul li { color: #d2bbc0; font-family: "PT Serif"; font-size: 15px; line-height
 
 html, body { background-color: #231f20; overflow: hidden; width: 100%; height: 100%; }
 
-header#primary-header { background-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 44px; z-index: 3; }
+header#primary-header { background-color: black; position: absolute; top: 0; left: 0; width: 100%; height: 44px; z-index: 3; }
 header#primary-header h1 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 44px; margin-left: 44px; text-align: left; text-transform: uppercase; }
 header#primary-header h1 a { color: inherit; text-decoration: none; }
 header#primary-header nav { position: absolute; top: 0; right: 0; }
