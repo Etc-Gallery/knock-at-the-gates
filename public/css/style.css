@@ -63,6 +63,9 @@ svg g.bubble-wrapper.parent circle:hover { fill: none; }
 #main-content.active-interlude { background-color: #231f20; }
 #main-content.blur { -webkit-filter: blur(15px); filter: blur(15px); }
 
+ul#names-wrapper { position: absolute; top: 44px; left: -10%; width: 120%; height: auto; }
+ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 22px; margin-top: 0; margin-bottom: 0; margin-right: 22px; opacity: 0.5; position: relative; text-transform: uppercase; width: auto; height: 22px; }
+
 .interlude { clear: both; padding-bottom: 200px; opacity: 1; -webkit-transition: opacity 500ms; transition: opacity 500ms; }
 .interlude.out { opacity: 0; }
 
@@ -70,7 +73,7 @@ svg g.bubble-wrapper.parent circle:hover { fill: none; }
 .pane.interactive h1.interactive-title { color: #00b3ff; position: absolute; top: 0; left: 44px; }
 .pane.interactive h2.interactive-subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; left: 44px; top: 44px; }
 .pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
-.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
+.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; top: auto; bottom: 44px; }
 .pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 200px; margin-left: 44px; width: 800px; }
 .pane.narration h1.title { font-size: 88px; margin-top: -44px; top: 50%; }
 .pane.narration h1.title.project-title { color: transparent; font-size: 88px; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
