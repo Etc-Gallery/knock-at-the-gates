@@ -33,7 +33,7 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 
 #overlays { background-color: rgba(255, 255, 255, 0.55); position: absolute; top: -100%; left: 0; -webkit-transition: all 200ms; transition: all 200ms; width: 100%; height: 100%; z-index: 10; }
 #overlays.active { top: 0; }
-#overlays .x { position: absolute; top: 44px; right: 44px; z-index: 2; }
+#overlays .x { position: absolute; top: 88px; right: 44px; z-index: 2; }
 #overlays .overlay { display: none; position: absolute; overflow: scroll; top: 0; left: 0; width: 100%; height: 100%; }
 #overlays .overlay.active { display: block; }
 #overlays .overlay header.overlay-header { margin-left: 44px; }
@@ -73,7 +73,7 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 .pane.interactive h1.interactive-title { color: #00b3ff; position: absolute; top: 0; left: 44px; }
 .pane.interactive h2.interactive-subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; left: 44px; top: 44px; }
 .pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
-.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; top: auto; bottom: 44px; }
+.pane.narration h2.byline { color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 22px; top: auto; bottom: 44px; }
 .pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 200px; margin-left: 44px; width: 800px; }
 .pane.narration h1.title { font-size: 88px; margin-top: -44px; top: 50%; }
 .pane.narration h1.title.project-title { color: transparent; font-size: 88px; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }

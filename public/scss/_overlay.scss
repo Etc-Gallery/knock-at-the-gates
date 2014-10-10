@@ -13,7 +13,7 @@
   }
   .x {
     position: absolute;
-    top: $headerheight;
+    top: $headerheight * 2;
     right: $headerheight;
     z-index: 2;
   }

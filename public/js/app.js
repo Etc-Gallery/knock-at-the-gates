@@ -41,15 +41,17 @@ DAB.App = function () {
   var st, amount, opacity;
   var animateOpeningWords = function (e) {
     st = main.scrollTop;
-    amount = gateLetterScale(st);
-    opacity = opacityScale(st);
-    nameOpacity = namesOpacityScale(st);
-    names.style.opacity = nameOpacity;
-  
-    title.style.letterSpacing = amount + 'px';
-    title.style.textShadow = '0px 0px ' + amount + 'px #8c7c80';
-    title.style.lineHeight = (100 + amount) + '%';
-    title.style.opacity = opacity;
+    if (st < sizes.height * 2) {
+      amount = gateLetterScale(st);
+      opacity = opacityScale(st);
+      nameOpacity = namesOpacityScale(st);
+      names.style.opacity = nameOpacity;
+    
+      title.style.letterSpacing = amount + 'px';
+      title.style.textShadow = '0px 0px ' + amount + 'px #8c7c80';
+      title.style.lineHeight = (100 + amount) + '%';
+      title.style.opacity = opacity;
+    }
   };
 
 
