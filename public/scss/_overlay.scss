@@ -1,19 +1,19 @@
-#overlay {
+#overlays {
   background-color: rgba(255,255,255,.55);
-  display: none;
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
   width: 100%;
-  height: calc(100% - 44px);
+  height: 100%;
   z-index: 10;
   &.active {
-    display: block;
-    top: 44px;
+    top: 0;
   }
   .x {
     position: absolute;
-    top: $headerheight;
+    top: $headerheight * 2;
     right: $headerheight;
     z-index: 2;
   }

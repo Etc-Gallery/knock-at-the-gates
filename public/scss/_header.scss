@@ -1,38 +1,135 @@
 header#primary-header {
-  background-color: $color5;
+  background-color: rgb(0,0,0);
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
   width: 100%;
   height: $headerheight;
   z-index: 3;
+  &.blur {
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -ms-filter: blur(15px);
+    -o-filter: blur(15px);
+    filter: blur(15px);
+  }
   h1 {
+    a  {
+      color: inherit;
+      text-decoration: none;
+    }
     color: $color3;
+    font-family: "Source Sans Pro Extra Light";
     font-size: $headerheight / 2;
     line-height: $headerheight;
-    padding-left: $headerheight;
+    margin-left: $headerheight;
+    text-align: left;
     text-transform: uppercase;
   }
   nav {
     position: absolute;
     top: 0;
-    right: $headerheight;
-    width: 200px;
+    right: 0;
     button {
-      color: $color3;
-      float: right;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: $headerheight / 2;
-      margin-left: $headerheight / 2;
-      margin-top: $headerheight / 4;
-      text-transform: uppercase;
-      height: $headerheight / 2;
-      -webkit-transition: opacity 0.5s;
-      transition: opacity 0.5s;
-      &.discourage {
-        opacity: .5;
+      background: transparent;
+      border-radius: 0;
+      border-left: 1px dotted $color2;
+      float: left;
+      outline: none;
+      position: relative;
+      width: $headerheight;
+      height: $headerheight;
+      &:first-child {
+        border-left: 0;
+      }
+      &:hover {
+        .dropdown-marker {
+          border-bottom: 1px solid rgb(255,255,255);
+          border-left: 1px solid rgb(255,255,255);
+        }
+        svg {
+          path {
+            fill: rgb(255,255,255);
+          }
+        }
+      }
+      &.active {
+        .dropdown-marker {
+          transform: rotate(135deg);
+        }
+      }
+      .dropdown-marker {
+        border-bottom: 1px solid $color3;
+        border-left: 1px solid $color3;
+        margin-left: -3px;
+        position: absolute;
+        left: 50%;
+        bottom: 6.5px;
+        transform: rotate(-45deg);
+        width: 4px;
+        height: 4px;
+        transition: transform 200ms;
+      }
+      svg {
+        position: absolute;
+        top: ($headerheight / 4) + 3;
+        left: ($headerheight / 4) + 3;
+        width: ($headerheight / 2) - 6;
+        height: ($headerheight / 2) - 6;
+        path {
+          fill: $color3;
+        }
       }
     }
+  }
+  ul.persist-dropdown {
+    overflow: hidden;
+    position: absolute;
+    top: 44px;
+    width: 320px;
+    height: 0;
+    z-index: 3;
+    transition: all 200ms;
+    &.gear-persist-dropdown {
+      left: auto;
+      right: 0;
+      &.active {
+        height: #{(45 * 4) + 1}px;
+      }
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:last-child {
+        li { 
+          border-bottom: none;
+        }
+      }
+    }
+    li {
+      background-color: rgba(255,255,255,.85);
+      border-bottom: 1px dotted rgb(0,0,0);
+      color: $color1;
+      cursor: pointer;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: 11px;
+      letter-spacing: 2px;
+      line-height: 44px;
+      list-style: none;
+      margin-bottom: 0;
+      padding: 0 22px;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: #{320 - 44}px;
+      height: 44px;
+      &:hover {
+        background-color: rgba(255,255,255,.95);
+      }
+    }      
   }
 }

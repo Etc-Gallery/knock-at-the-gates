@@ -13,7 +13,7 @@ DAB.Interlude = function (options) {
   }
   else {
     this.wrapper = options.el;
-    this.wrapper.append('<div class="pane interactive"></div>');
+    this.wrapper.append('<div class="interactive"></div>');
     this.el = this.wrapper.find('.interactive');
   }
 
@@ -47,8 +47,6 @@ DAB.Interlude = function (options) {
     that.svg = d3.select(that.el[0]).append('svg')
       .attr('width', that.el.width())
       .attr('height', that.el.height());
-    that.el.append('<h1 class="interactive-title">' + that.title + '</h1>');
-    that.el.append('<h2 class="interactive-subtitle">' + that.subtitle + '</h2>');
   };
 
   this.requestData = function () {

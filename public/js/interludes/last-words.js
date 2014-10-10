@@ -13,6 +13,14 @@ DAB.interludes.push(new DAB.Interlude({
   build: function (data) {
     var that = this;
 
+    $('body').append(
+      '<div class="words-overlay">' +
+        '<div class="words">' +
+          '<h1></h1>' +
+        '</div>' +
+      '</div>'
+    );
+
     that.createSharedElements();
 
     var paragraphize = function (input) {
@@ -66,36 +74,17 @@ DAB.interludes.push(new DAB.Interlude({
       var openTime = Date.now();
 
       var d3el = d3.select(this);
-
-      // add blurs
-      var defs = that.svg.append("defs");
-      var filter = defs.append("filter")
-        .attr("id", "bubble-blur");
-      filter.append("feGaussianBlur")
-        .attr("in", "SourceGraphic")
-        .attr("stdDeviation", 10);
-      that.svg.selectAll('g.bubble-wrapper').attr('filter', 'url(#bubble-blur)');
-      that.el.find('h1').addClass('blur');
-      that.el.find('h2').addClass('blur');
-
+      $('#main-content, #primary-header').addClass('blur');
       d3el.classed('active', true);
-      that.el.append(
-        '<div class="words-overlay">' +
-          '<div class="words">' +
-            '<button class="x"></button>' +
-            '<h1>' + d.name + '</h1>' +
-            paragraphize(d.statement) +
-          '</div>' +
-        '</div>'
-      );
-      that.el.find('.words-overlay').on('click', function (e) {
+      $('.words-overlay').find('h1').text(d.name);
+      $('.words-overlay').find('.words').append(paragraphize(d.statement));
+      $('.words-overlay').addClass('active');
+      $('.words-overlay').on('click', function (e) {
+        $(this).removeClass('active');
         var elapsed = Date.now() - openTime;
         ga('send', 'event', 'word bubble', 'closed', d.word, elapsed);
-
-        that.svg.selectAll('g.bubble-wrapper').attr('filter', '');
-        $(this).remove();
         d3el.classed('active', false);
-        that.el.find('h1, h2').removeClass('blur');
+        $('#main-content, #primary-header').removeClass('blur');
       });
     });
 

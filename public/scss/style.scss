@@ -7,102 +7,183 @@
 #main-content {
   background-color: $color1;
   overflow-y: scroll;
+  overflow-x: hidden;
   position: absolute;
-  top: $headerheight;
   left: 0;
   width: 100%;
-  height: calc(100% - 44px);
+  height: 100%;
   -webkit-transition: background-color 1s;
   transition: background-color 1s;
-  &.active-interlude {
-    background-color: $color1;
-  }
   &.blur {
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
     -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -ms-filter: blur(15px);
+    -o-filter: blur(15px);
     filter: blur(15px);
   }
 }
 
+ul#names-wrapper {
+  position: absolute;
+  top: 44px;
+  left: -10%;
+  width: 120%;
+  height: auto;
+  li.name {
+    color: $color2;
+    display: block;
+    float: left;
+    font-family: "Source Sans Pro Extra Light";
+    font-size: $headerheight / 2;
+    line-height: $headerheight / 2;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: $headerheight / 2;
+    opacity: 0.5;
+    position: relative;
+    text-transform: uppercase;
+    width: auto;
+    height: $headerheight / 2;
+  }
+}
+
+
 .interlude {
   clear: both;
-  padding-bottom: 200px;
+  position: relative;
   opacity: 1;
   -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
-  &.out {
-    opacity: 0;
+  .x {
+    display: none;
+    top: $headerheight;
+    right: $headerheight;
+    z-index: 2;
+  }
+  .pane {
+    z-index: 1;
+  }
+  .interactive {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    opacity: 0.25;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  &.active {
+    .x {
+      display: block;
+    }
+    .interactive {
+       -webkit-filter: none;
+      -moz-filter: none;
+      -ms-filter: none;
+      filter: none;
+      opacity: 1;     
+    }
+    .pane {
+      opacity: 0;
+      z-index: 0;
+    }
   }
 }
+
+#welcome-panes {
+  overflow: hidden;
+  width: 100%;
+}
+
 .pane {
   clear: both;
   display: block;
   position: relative;
   width: 100%;
-  // height: calc(100% - 44px);
-  &.interactive {
-    h1.interactive-title {
-      color: $color6;
-      position: absolute;
-      top: 0;
-      left: $headerheight;
-      &.blur {
-        -webkit-filter: blur(15px);
-        filter: blur(15px);
-      }
-    }
-    h2.interactive-subtitle {
-      color: $color2;
-      font-family: "Source Sans Pro Extra Light";
-      font-size: $headerheight / 2;
-      position: absolute;
-      left: $headerheight;
-      top: $headerheight;
-      &.blur {
-        -webkit-filter: blur(15px);
-        filter: blur(15px);
-      }
-    }
-  }
   &.narration {
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
+    z-index: 1;
+    .cta {
+      border: 1px solid $color6;
+      color: $color6;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: 11px;
+      position: absolute;
+      bottom: 88px;
+      left: 44px;
+      text-transform: uppercase;
+      width: 132px;
+      height: 44px;
+    }
     h1, h2, h3 {
       margin-left: $headerheight;
       position: absolute;
     }
-    h1.project-title {
-      font-size: $headerheight * 2;
-      top: calc(50% - 176px);
-    }
     h2.byline {
-      color: $color2;
-      font-size: $headerheight / 2;
-      top: calc(50% + 88px);
+      color: $color6;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: $headerheight * (1/2);
+      top: auto;
+      bottom: $headerheight;
     }
     p {
       color: $color3;
       font-family: "Source Sans Pro Black";
       font-size: $headerheight * (3/4);
       line-height: $headerheight;
-      margin-top: 200px;
+      margin-top: 100px;
       margin-left: $headerheight;
       width: 800px;
     }
     h1.title {
       font-size: $headerheight * 2;
-      position: absolute;
-      top: calc(50% - 44px);
+      top: $headerheight * 2;
+      &.project-title {
+        color: transparent;
+        font-size: $headerheight * 2;
+        line-height: 100%;
+        letter-spacing: 0;
+        margin-top: -(($headerheight * 2) + ($headerheight / 2));
+        top: 50%;
+        text-align: left;
+        text-shadow: 0px 0px 0px $color3;
+        width: 100%;
+      }
     }
     h2.subtitle {
       color: $color2;
       font-family: "Source Sans Pro Extra Light";
       font-size: $headerheight / 2;
       position: absolute;
-      top: calc(50% + 44px);
+      top: $headerheight;
+      &.project-subtitle {
+        color: $color6;
+        margin-top: $headerheight * 2;
+        top: 50%;
+      }
     }
     h3.kicker {
       color: $color6;
       font-size: $headerheight * (1/3);
       position: absolute;
-      top: calc(50% - 88px);
+      top: $headerheight;
+    }
+    header {
+      padding-top: $headerheight * 2;
+      position: relative;
+      h1.title,
+      h2.subtitle,
+      h3.kicker {
+        position: static;
+      }
     }
   }
 }
