@@ -25,6 +25,9 @@ app.get( '/', function (req, res) {
 app.get('/last-words.json', function (req, res) {
   res.send(require('./data/interludes/last-words/last-words.json'));
 });
+app.get('/names.json', function (req, res) {
+  res.send(require('./data/index/dpic-full.json'));
+})
 
 // Start yer engines.
 app.listen(app.get('port'), function () {
