@@ -12,39 +12,37 @@ p, ul li { color: #d2bbc0; font-family: "PT Serif"; font-size: 15px; line-height
 html, body { background-color: #231f20; overflow: hidden; width: 100%; height: 100%; }
 
 header#primary-header { background-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 44px; z-index: 3; }
-header#primary-header ul.persist-dropdown { overflow: hidden; position: absolute; top: 44px; width: 320px; height: 0; z-index: 3; transition: all 200ms; }
-header#primary-header ul.persist-dropdown.gear-persist-dropdown { left: auto; right: 0; }
-header#primary-header ul.persist-dropdown.gear-persist-dropdown.active { height: 181px; }
-header#primary-header ul.persist-dropdown a:last-child li { border-bottom: none; }
-header#primary-header ul.persist-dropdown a li { background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px dotted black; color: #231f20; font-family: "Source Sans Pro Extra Light"; font-size: 11px; letter-spacing: 2px; line-height: 44px; list-style: none; margin-bottom: 0; padding: 0 22px; text-transform: uppercase; width: 276px; height: 44px; }
-header#primary-header h1 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 44px; text-align: center; text-transform: uppercase; }
-header#primary-header nav { position: absolute; top: 0; }
-header#primary-header nav.primary-header-left-nav { left: 11px; }
-header#primary-header nav.primary-header-right-nav { right: 11px; }
-header#primary-header nav button { background: transparent; float: left; outline: none; position: relative; width: 44px; height: 44px; }
-header#primary-header nav button.discourage { opacity: .5; }
+header#primary-header h1 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 44px; margin-left: 44px; text-align: left; text-transform: uppercase; }
+header#primary-header h1 a { color: inherit; text-decoration: none; }
+header#primary-header nav { position: absolute; top: 0; right: 0; }
+header#primary-header nav button { background: transparent; border-radius: 0; border-left: 1px dotted #463e40; float: left; outline: none; position: relative; width: 44px; height: 44px; }
+header#primary-header nav button:first-child { border-left: 0; }
 header#primary-header nav button:hover .dropdown-marker { border-bottom: 1px solid white; border-left: 1px solid white; }
 header#primary-header nav button:hover svg path { fill: white; }
 header#primary-header nav button.active .dropdown-marker { transform: rotate(135deg); }
-header#primary-header nav button .dropdown-marker { border-bottom: 1px solid #8c7c80; border-left: 1px solid #8c7c80; position: absolute; bottom: 15.5px; transform: rotate(-45deg); width: 4px; height: 4px; transition: transform 200ms; }
-header#primary-header nav button svg { position: absolute; top: 14px; width: 16px; height: 16px; }
+header#primary-header nav button .dropdown-marker { border-bottom: 1px solid #8c7c80; border-left: 1px solid #8c7c80; margin-left: -3px; position: absolute; left: 50%; bottom: 6.5px; transform: rotate(-45deg); width: 4px; height: 4px; transition: transform 200ms; }
+header#primary-header nav button svg { position: absolute; top: 14px; left: 14px; width: 16px; height: 16px; }
 header#primary-header nav button svg path { fill: #8c7c80; }
-header#primary-header nav button.gear svg { right: auto; }
-header#primary-header nav button.gear .dropdown-marker { left: 14px; right: auto; }
-header#primary-header nav button.facebook svg { left: 0; }
+header#primary-header ul.persist-dropdown { overflow: hidden; position: absolute; top: 44px; width: 320px; height: 0; z-index: 3; transition: all 200ms; }
+header#primary-header ul.persist-dropdown.gear-persist-dropdown { left: auto; right: 0; }
+header#primary-header ul.persist-dropdown.gear-persist-dropdown.active { height: 181px; }
+header#primary-header ul.persist-dropdown a { color: inherit; text-decoration: none; }
+header#primary-header ul.persist-dropdown a:last-child li { border-bottom: none; }
+header#primary-header ul.persist-dropdown a li { background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px dotted black; color: #231f20; font-family: "Source Sans Pro Extra Light"; font-size: 11px; letter-spacing: 2px; line-height: 44px; list-style: none; margin-bottom: 0; padding: 0 22px; text-decoration: none; text-transform: uppercase; width: 276px; height: 44px; }
+header#primary-header ul.persist-dropdown a li:hover { background-color: rgba(255, 255, 255, 0.95); }
 
-#overlay { background-color: rgba(255, 255, 255, 0.55); display: none; position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 44px); z-index: 10; }
-#overlay.active { display: block; top: 44px; }
-#overlay .x { position: absolute; top: 44px; right: 44px; z-index: 2; }
-#overlay .overlay { display: none; position: absolute; overflow: scroll; top: 0; left: 0; width: 100%; height: 100%; }
-#overlay .overlay.active { display: block; }
-#overlay .overlay header.overlay-header { margin-left: 44px; }
-#overlay .overlay header.overlay-header h1 { color: #00b3ff; font-size: 88px; padding-top: 88px; }
-#overlay .overlay section { margin-top: 88px; margin-left: 44px; }
-#overlay .overlay section h2 { color: #463e40; margin-bottom: 44px; }
-#overlay .overlay section p { color: black; max-width: 600px; width: 90%; }
-#overlay .overlay section h3 { color: #8c7c80; font-size: 22px; margin-top: 44px; max-width: 600px; width: 90%; }
-#overlay .overlay section h4 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; text-transform: uppercase; max-width: 600px; width: 90%; }
+#overlays { background-color: rgba(255, 255, 255, 0.55); display: none; position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 44px); z-index: 10; }
+#overlays.active { display: block; top: 44px; }
+#overlays .x { position: absolute; top: 44px; right: 44px; z-index: 2; }
+#overlays .overlay { display: none; position: absolute; overflow: scroll; top: 0; left: 0; width: 100%; height: 100%; }
+#overlays .overlay.active { display: block; }
+#overlays .overlay header.overlay-header { margin-left: 44px; }
+#overlays .overlay header.overlay-header h1 { color: #00b3ff; font-size: 88px; padding-top: 88px; }
+#overlays .overlay section { margin-top: 88px; margin-left: 44px; }
+#overlays .overlay section h2 { color: #463e40; margin-bottom: 44px; }
+#overlays .overlay section p { color: black; max-width: 600px; width: 90%; }
+#overlays .overlay section h3 { color: #8c7c80; font-size: 22px; margin-top: 44px; max-width: 600px; width: 90%; }
+#overlays .overlay section h4 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; text-transform: uppercase; max-width: 600px; width: 90%; }
 
 .words-overlay { background-color: rgba(255, 255, 255, 0.55); cursor: pointer; overflow: hidden; position: fixed; top: 44px; left: 0; width: 100%; height: calc(100% - 44px); z-index: 3; }
 .words-overlay .x { top: 44px; }
@@ -72,7 +70,7 @@ svg g.bubble-wrapper.parent circle:hover { fill: none; }
 .pane.interactive h1.interactive-title { color: #00b3ff; position: absolute; top: 0; left: 44px; }
 .pane.interactive h2.interactive-subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; left: 44px; top: 44px; }
 .pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
-.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; top: auto; bottom: 44px; }
+.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
 .pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 200px; margin-left: 44px; width: 800px; }
 .pane.narration h1.title { font-size: 88px; margin-top: -44px; top: 50%; }
 .pane.narration h1.title.project-title { color: transparent; font-size: 88px; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
