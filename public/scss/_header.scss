@@ -21,30 +21,27 @@ header#primary-header {
         height: #{(45 * 4) + 1}px;
       }
     }
-    &.hamburger-persist-dropdown {
-      left: 0;
-      right: auto;
-      &.active {
-        height: #{(45 * 1) + 1}px;
+    a {
+      &:last-child {
+        li { 
+          border-bottom: none;
+        }
       }
-    }
-    li {
-      background-color: rgba(255,255,255,.85);
-      border-bottom: 1px dotted rgb(255,255,255);
-      color: $color1;
-      font-family: "Source Sans Pro Extra Light";
-      font-size: 11px;
-      letter-spacing: 2px;
-      line-height: 44px;
-      list-style: none;
-      margin-bottom: 0;
-      padding: 0 22px;
-      text-transform: uppercase;
-      width: #{320 - 44}px;
-      height: 44px;
-      &:first-child {
-        border-top: 1px dotted rgb(255,255,255);
-      }
+      li {
+        background-color: rgba(255,255,255,.85);
+        border-bottom: 1px dotted rgb(0,0,0);
+        color: $color1;
+        font-family: "Source Sans Pro Extra Light";
+        font-size: 11px;
+        letter-spacing: 2px;
+        line-height: 44px;
+        list-style: none;
+        margin-bottom: 0;
+        padding: 0 22px;
+        text-transform: uppercase;
+        width: #{320 - 44}px;
+        height: 44px;
+      }      
     }
   }
   h1 {
@@ -94,43 +91,32 @@ header#primary-header {
         border-bottom: 1px solid $color3;
         border-left: 1px solid $color3;
         position: absolute;
-        bottom: 14.5px;
+        bottom: 15.5px;
         transform: rotate(-45deg);
-        width: 5.5px;
-        height: 5.5px;
+        width: 4px;
+        height: 4px;
         transition: transform 200ms;
       }
       svg {
         position: absolute;
-        width: $headerheight / 2;
-        height: $headerheight / 2;
+        top: ($headerheight / 4) + 3;
+        width: ($headerheight / 2) - 6;
+        height: ($headerheight / 2) - 6;
         path {
           fill: $color3;
         }
       }
       &.gear {
         svg {
-          top: $headerheight / 4;
           right: auto;        
         }
         .dropdown-marker {
-          left: 12px;
+          left: 14px;
           right: auto;
-        }
-      }
-      &.hamburger {
-        svg {
-          top: $headerheight / 4;
-          left: 0;
-        }
-        .dropdown-marker {
-          right: 12px;
-          left: auto;
         }
       }
       &.facebook {
         svg {
-          top: $headerheight / 4;
           left: 0;
         }
       }

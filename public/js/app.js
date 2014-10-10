@@ -36,11 +36,27 @@ DAB.App = function () {
     });
   };
 
+  var gateLetterScale = d3.scale.linear().domain([0, $('#main-content h1.project-title').height()]).range([0, 100]);
+  var opacityScale = d3.scale.linear().domain([0, $(window).height() * 2]).range([1, 0]);
+  var mainContent = $('#main-content')[0];
+  var projectTitle = $('#main-content').find('.project-title')[0];
+  var st, amount, width;
+  var makeGate = function () {
+    st = mainContent.scrollTop;
+    amount = gateLetterScale(st);
+    opacity = opacityScale(st);
+    projectTitle.style.letterSpacing = amount + 'px';
+    projectTitle.style.textShadow = '0px 0px ' + amount + 'px #8c7c80';
+    projectTitle.style.lineHeight = (100 + amount) + '%';
+    projectTitle.style.opacity = opacity;
+  };
+
   this.on = function () {
     $('.pane').height($(window).height() - 44);
     //$('header#primary-header button').on('click', overlayButtonClickHandler);
     $('#overlay .x').on('click', overlayXClickHandler);
     $('header#primary-header button').on('click', navButtonClickHandler);
+    $('#main-content').on('scroll', _.throttle(makeGate, 50));
   };
 };
 
