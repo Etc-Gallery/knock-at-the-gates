@@ -1,14 +1,14 @@
 DAB.interludes.push(new DAB.Interlude({
 
   el: $('#last-words-interlude'),
-  
+
 
   url: 'last-words.json',
 
 
   title: 'Last Words',
   subtitle: 'Final Statements of the Condemned in Texas',
-  
+
 
   build: function (data) {
     var that = this;
@@ -70,6 +70,9 @@ DAB.interludes.push(new DAB.Interlude({
       });
 
     that.svg.selectAll('g.bubble-wrapper').on('click', function (d) {
+      ga('send', 'event', 'word bubble', 'click', d.word);
+      var openTime = Date.now();
+
       var d3el = d3.select(this);
       $('#main-content, #primary-header').addClass('blur');
       d3el.classed('active', true);
@@ -78,6 +81,8 @@ DAB.interludes.push(new DAB.Interlude({
       $('.words-overlay').addClass('active');
       $('.words-overlay').on('click', function (e) {
         $(this).removeClass('active');
+        var elapsed = Date.now() - openTime;
+        ga('send', 'event', 'word bubble', 'closed', d.word, elapsed);
         d3el.classed('active', false);
         $('#main-content, #primary-header').removeClass('blur');
       });
