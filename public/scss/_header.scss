@@ -98,25 +98,26 @@ header#primary-header {
           border-bottom: none;
         }
       }
-      li {
-        background-color: rgba(255,255,255,.85);
-        border-bottom: 1px dotted rgb(0,0,0);
-        color: $color1;
-        font-family: "Source Sans Pro Extra Light";
-        font-size: 11px;
-        letter-spacing: 2px;
-        line-height: 44px;
-        list-style: none;
-        margin-bottom: 0;
-        padding: 0 22px;
-        text-decoration: none;
-        text-transform: uppercase;
-        width: #{320 - 44}px;
-        height: 44px;
-        &:hover {
-          background-color: rgba(255,255,255,.95);
-        }
-      }      
     }
+    li {
+      background-color: rgba(255,255,255,.85);
+      border-bottom: 1px dotted rgb(0,0,0);
+      color: $color1;
+      cursor: pointer;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: 11px;
+      letter-spacing: 2px;
+      line-height: 44px;
+      list-style: none;
+      margin-bottom: 0;
+      padding: 0 22px;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: #{320 - 44}px;
+      height: 44px;
+      &:hover {
+        background-color: rgba(255,255,255,.95);
+      }
+    }      
   }
 }

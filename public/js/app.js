@@ -3,60 +3,98 @@ DAB.interludes = [];
 
 
 DAB.App = function () {
-  var windowResizeHandler = function (e) {
-    $('.pane').height($(window).height() - 44);
-  };
 
-  var navButtonClickHandler = function (e) {
-    $(this).toggleClass('active');
-    $('ul.' + $(this).data('persist-dropdown')).toggleClass('active');
+
+  // Only look through the DOM once.
+  var $window = $(window)
+  ,   $panes = $('.pane')
+  ,   $overlaysWrapper = $('#overlays')
+  ,   $overlays = $('.overlay')
+  ,   $overlayOpeners = $('.overlay-opener')
+  ,   $overlayX = $('#overlays .x')
+  ,   $main = $('#main-content')
+  ,   $gear = $('.gear')
+  ,   $dropdown = $('.persist-dropdown')
+  ,   $mainTitle = $('#main-content h1.project-title');
+
+
+
+  // In case we need it.
+  var sizes = {
+    //width: $(window).width(),
+    height: $window.height()
   }
 
-  var overlayButtonClickHandler = function (e) {
-    $('#' + $(this).data('overlay')).addClass('active');
-    $('#overlay').addClass('active');
-    //$('svg').each(function (i) {
-    //  var defs = $(this).append("defs");
-    //  var filter = defs.append("filter")
-    //    .attr("id", "blur-" + i);
-    //  filter.append("feGaussianBlur")
-    //    .attr("in", "SourceGraphic")
-    //    .attr("stdDeviation", 10);
-    //  $('svg').attr('filter', 'url(#blur-' + i + ')');
-    //});
-    $('#main-content').addClass('blur');
-  };
 
-  var overlayXClickHandler = function (e) {
-    $('.overlay').removeClass('active');
-    $('#overlay').removeClass('active');
-    $('#main-content').removeClass('blur');
-    $('svg').each(function (i) {
-      $('svg').attr('filter', '');
-    });
-  };
 
-  var gateLetterScale = d3.scale.linear().domain([0, $('#main-content h1.project-title').height()]).range([0, 100]);
-  var opacityScale = d3.scale.linear().domain([0, $(window).height() * 2]).range([1, 0]);
-  var mainContent = $('#main-content')[0];
-  var projectTitle = $('#main-content').find('.project-title')[0];
-  var st, amount, width;
-  var makeGate = function () {
-    st = mainContent.scrollTop;
+  // The opening animation.
+  // NB: Scroll events are a jQuery-free zone!
+  // Scales for the opening animation.
+  var gateLetterScale = d3.scale.linear().domain([0, $mainTitle.height()]).range([0, 100])
+  ,   opacityScale    = d3.scale.linear().domain([0, sizes.height * 2]).range([1, 0]);
+  // Since the opening animation is a jQuery-free zone...
+  var main = $main[0]
+  ,   title = $mainTitle[0];
+  // Some variables to save.
+  var st, amount, opacity;
+  var animateOpeningWords = function (e) {
+    st = main.scrollTop;
     amount = gateLetterScale(st);
     opacity = opacityScale(st);
-    projectTitle.style.letterSpacing = amount + 'px';
-    projectTitle.style.textShadow = '0px 0px ' + amount + 'px #8c7c80';
-    projectTitle.style.lineHeight = (100 + amount) + '%';
-    projectTitle.style.opacity = opacity;
+    title.style.letterSpacing = amount + 'px';
+    title.style.textShadow = '0px 0px ' + amount + 'px #8c7c80';
+    title.style.lineHeight = (100 + amount) + '%';
+    title.style.opacity = opacity;
   };
 
+
+  var sizeAndPositionElements = function (e) {
+    sizes.height = $(window).height();
+    $panes.height(sizes.height);
+  };
+
+
+
+  var toggleGearMenu = function (e) {
+    $gear.toggleClass('active');
+    $dropdown.toggleClass('active');
+  };
+
+
+
+  var openOverlay = function (e) {
+    $('#' + $(this).data('overlay')).addClass('active');
+    $overlaysWrapper.addClass('active');
+    $main.addClass('blur');
+  };
+
+
+
+  var closeOverlay = function (e) {
+    $overlaysWrapper.removeClass('active');
+    $overlays.removeClass('active');
+    $main.removeClass('blur');
+  };
+
+
+
+
+
+
+
   this.on = function () {
-    $('.pane').height($(window).height() - 44);
-    //$('header#primary-header button').on('click', overlayButtonClickHandler);
-    $('#overlay .x').on('click', overlayXClickHandler);
-    $('header#primary-header button').on('click', navButtonClickHandler);
-    $('#main-content').on('scroll', _.throttle(makeGate, 50));
+    // Bind events.
+    $gear.on('click', toggleGearMenu);
+    $dropdown.on('click', toggleGearMenu);
+    $overlayOpeners.on('click', openOverlay);
+    $overlayX.on('click', closeOverlay);
+    $main.on('scroll', _.throttle(animateOpeningWords, 30));
+    $window.on('resize', sizeAndPositionElements);
+
+    // Position everything.
+    $window.trigger('resize');
+
+    
   };
 };
 

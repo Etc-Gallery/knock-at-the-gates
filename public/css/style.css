@@ -28,11 +28,11 @@ header#primary-header ul.persist-dropdown.gear-persist-dropdown { left: auto; ri
 header#primary-header ul.persist-dropdown.gear-persist-dropdown.active { height: 181px; }
 header#primary-header ul.persist-dropdown a { color: inherit; text-decoration: none; }
 header#primary-header ul.persist-dropdown a:last-child li { border-bottom: none; }
-header#primary-header ul.persist-dropdown a li { background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px dotted black; color: #231f20; font-family: "Source Sans Pro Extra Light"; font-size: 11px; letter-spacing: 2px; line-height: 44px; list-style: none; margin-bottom: 0; padding: 0 22px; text-decoration: none; text-transform: uppercase; width: 276px; height: 44px; }
-header#primary-header ul.persist-dropdown a li:hover { background-color: rgba(255, 255, 255, 0.95); }
+header#primary-header ul.persist-dropdown li { background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px dotted black; color: #231f20; cursor: pointer; font-family: "Source Sans Pro Extra Light"; font-size: 11px; letter-spacing: 2px; line-height: 44px; list-style: none; margin-bottom: 0; padding: 0 22px; text-decoration: none; text-transform: uppercase; width: 276px; height: 44px; }
+header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255, 255, 255, 0.95); }
 
-#overlays { background-color: rgba(255, 255, 255, 0.55); display: none; position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 44px); z-index: 10; }
-#overlays.active { display: block; top: 44px; }
+#overlays { background-color: rgba(255, 255, 255, 0.55); position: absolute; top: -100%; left: 0; -webkit-transition: all 200ms; transition: all 200ms; width: 100%; height: 100%; z-index: 10; }
+#overlays.active { top: 0; }
 #overlays .x { position: absolute; top: 44px; right: 44px; z-index: 2; }
 #overlays .overlay { display: none; position: absolute; overflow: scroll; top: 0; left: 0; width: 100%; height: 100%; }
 #overlays .overlay.active { display: block; }
