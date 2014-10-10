@@ -62,6 +62,9 @@ DAB.interludes.push(new DAB.Interlude({
       });
 
     that.svg.selectAll('g.bubble-wrapper').on('click', function (d) {
+      ga('send', 'event', 'word bubble', 'click', d.word);
+      var openTime = Date.now();
+
       var d3el = d3.select(this);
 
       // add blurs
@@ -86,6 +89,9 @@ DAB.interludes.push(new DAB.Interlude({
         '</div>'
       );
       that.el.find('.words-overlay').on('click', function (e) {
+        var elapsed = Date.now() - openTime;
+        ga('send', 'event', 'word bubble', 'closed', d.word, elapsed);
+
         that.svg.selectAll('g.bubble-wrapper').attr('filter', '');
         $(this).remove();
         d3el.classed('active', false);
