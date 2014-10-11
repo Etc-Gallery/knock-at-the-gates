@@ -36,16 +36,16 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 @media all and (max-width: 640px) { header#primary-header h1 { font-size: 14.66667px; margin-left: 11px; } }
 #overlays { background-color: rgba(255, 255, 255, 0.55); position: absolute; top: -100%; left: 0; -webkit-transition: all 200ms; transition: all 200ms; width: 100%; height: 100%; z-index: 10; }
 #overlays.active { top: 0; }
-#overlays .x { position: absolute; top: 88px; right: 44px; z-index: 2; }
-#overlays .overlay { display: none; position: absolute; overflow: scroll; top: 0; left: 0; width: 100%; height: 100%; }
+#overlays .x { position: absolute; top: 88px; z-index: 2; }
+#overlays .overlay { display: none; position: absolute; overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch; top: 0; left: 0; width: 100%; height: 100%; }
 #overlays .overlay.active { display: block; }
 #overlays .overlay header.overlay-header { margin-left: 44px; }
-#overlays .overlay header.overlay-header h1 { color: #00b3ff; font-size: 88px; padding-top: 88px; }
+#overlays .overlay header.overlay-header h1 { color: #463e40; font-size: 88px; padding-top: 88px; }
 #overlays .overlay section { margin-top: 88px; margin-left: 44px; }
 #overlays .overlay section h2 { color: #463e40; margin-bottom: 44px; }
-#overlays .overlay section p { color: black; max-width: 600px; width: 90%; }
-#overlays .overlay section h3 { color: #8c7c80; font-size: 22px; margin-top: 44px; max-width: 600px; width: 90%; }
-#overlays .overlay section h4 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; text-transform: uppercase; max-width: 600px; width: 90%; }
+#overlays .overlay section p { color: #463e40; max-width: 600px; width: 90%; }
+#overlays .overlay section h3 { color: #00b3ff; font-size: 22px; margin-top: 44px; max-width: 600px; width: 90%; }
+#overlays .overlay section h4 { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; text-transform: uppercase; max-width: 600px; width: 90%; }
 
 @media all and (max-width: 640px) { #overlays .x { top: 11px; right: 11px; }
   #overlays .overlay header.overlay-header { margin-left: 11px; }
