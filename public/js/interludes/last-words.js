@@ -70,10 +70,11 @@ DAB.interludes.push(new DAB.Interlude({
       .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
       .attr('filter', 'url(#last-words-blur)');
 
+    var padding = ($(window).width() > 640 ? 3 : 1);
     that.svg.selectAll('g.bubble-wrapper')
       .append('circle')
       .classed('bubble', true)
-      .attr('r', function (d) { return d.r - 3 }); // hardcoded 3px padding.
+      .attr('r', function (d) { return d.r - padding });
 
     that.svg.selectAll('g.bubble-wrapper')
       .append('text')

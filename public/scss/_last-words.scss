@@ -75,3 +75,16 @@ svg {
     }
   }
 }
+
+@media all and (max-width: 640px) {
+  .words-overlay {
+    .words {
+      margin-left: $headerheight * (1 / 4);
+    }
+  }
+  svg {
+    text {
+      letter-spacing: 0px;
+    }
+  }
+}
