@@ -40,6 +40,14 @@ DAB.Interlude = function (options) {
     this.build = options.build;
   }
 
+  if (_.isUndefined(options.activate) || _.isUndefined(options.deactivate)) {
+    throw new Error('Interludes must be able to be activated and deactivated');
+  }
+  else {
+    this.activate = options.activate;
+    this.deactivate = options.deactivate;
+  }
+
 
 
 
@@ -57,6 +65,6 @@ DAB.Interlude = function (options) {
 
   this.on = function () {
     that.requestData();
-  }
+  };
 
 };

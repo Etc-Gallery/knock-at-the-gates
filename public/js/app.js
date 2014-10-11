@@ -107,6 +107,7 @@ DAB.App = function () {
   var activateInterlude = function (e) {
     $(this).toggleClass('active');
     $(this).off('click', activateInterlude);
+    DAB.interludes[0].activate();
   };
 
 
@@ -115,6 +116,7 @@ DAB.App = function () {
     e.stopPropagation(); 
     $(this).parent().toggleClass('active');
     $(this).parent().on('click', activateInterlude);
+    DAB.interludes[0].deactivate();
   };
 
 
@@ -124,7 +126,7 @@ DAB.App = function () {
     $gear.on('click', activateGearMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
-    $main.on('scroll', _.throttle(animateOpeningWords, 30));
+    $main.on('scroll', _.throttle(animateOpeningWords, 60));
     $window.on('resize', sizeAndPositionElements);
     $interludes.on('click', activateInterlude);
     $interludes.children('.x').on('click', deactivateInterlude);
