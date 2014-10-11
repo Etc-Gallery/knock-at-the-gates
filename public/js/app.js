@@ -73,13 +73,16 @@ DAB.App = function () {
     $gear.addClass('active');
     $dropdown.addClass('active');
     e.stopPropagation();
+    $gear.off('click', activateGearMenu);
     $body.on('click', deactivateGearMenu);
   };
 
   var deactivateGearMenu = function (e) {
     $gear.removeClass('active');
     $dropdown.removeClass('active');
+    e.stopPropagation();
     $body.off('click', deactivateGearMenu);
+    $gear.on('click', activateGearMenu);
   }
 
 
