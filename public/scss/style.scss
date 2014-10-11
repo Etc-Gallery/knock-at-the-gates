@@ -141,7 +141,6 @@ ul#names-wrapper {
       top: $headerheight * 2;
       &.project-title {
         color: transparent;
-        font-size: $headerheight * 2;
         line-height: 100%;
         letter-spacing: 0;
         margin-top: -(($headerheight * 2) + ($headerheight / 2));
@@ -165,7 +164,7 @@ ul#names-wrapper {
     }
     h3.kicker {
       color: $color6;
-      font-size: $headerheight * (1/3);
+      font-size: $headerheight * (1 / 3);
       position: absolute;
       top: $headerheight;
     }
@@ -176,6 +175,57 @@ ul#names-wrapper {
       h2.subtitle,
       h3.kicker {
         position: static;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  .interlude {
+    .x {
+      right: $headerheight / 4;
+    }
+  }
+  ul#names-wrapper {
+    li.name {
+      font-size: $headerheight / 4;
+      line-height: $headerheight / 4;
+      margin-right: $headerheight / 4;
+      height: $headerheight / 4;
+    }
+  }
+  .pane {
+    &.narration {
+      .cta {
+        bottom: $headerheight / 2;
+        left: $headerheight / 4;
+      }
+      h1, h2, h3, p {
+        margin-left: $headerheight / 4;
+      }
+      h1.title {
+        font-size: $headerheight;
+        &.project-title {
+          margin-top: $headerheight;
+          top: $headerheight * 2;
+          width: 100%;
+        }
+      }
+      h2.subtitle {
+        font-size: $headerheight * (1 / 3);
+        &.project-subtitle {
+          top: $headerheight * 4;
+        }
+      }
+      h2.byline {
+        font-size: $headerheight * (1/3);
+      }
+      p {
+        font-size: $headerheight * (1 / 3);
+        line-height: $headerheight * (2 / 3);
+        margin-top: 50px;
+        padding-right: 11px;
+        width: auto;
       }
     }
   }
