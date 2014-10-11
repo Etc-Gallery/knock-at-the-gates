@@ -126,7 +126,7 @@ DAB.App = function () {
     $gear.on('click', activateGearMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
-    $main.on('scroll', _.throttle(animateOpeningWords, 30));
+    $main.on('scroll', _.throttle(animateOpeningWords, 60));
     $window.on('resize', sizeAndPositionElements);
     $interludes.on('click', activateInterlude);
     $interludes.children('.x').on('click', deactivateInterlude);
