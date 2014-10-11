@@ -17,6 +17,7 @@ DAB.interludes.push(new DAB.Interlude({
       '<div class="words-overlay">' +
         '<div class="words">' +
           '<h1></h1>' +
+          '<div class="statement"></div>' +
         '</div>' +
       '</div>'
     );
@@ -77,7 +78,7 @@ DAB.interludes.push(new DAB.Interlude({
       $('#main-content, #primary-header').addClass('blur');
       d3el.classed('active', true);
       $('.words-overlay').find('h1').text(d.name);
-      $('.words-overlay').find('.words').append(paragraphize(d.statement));
+      $('.words-overlay').find('.statement').html(paragraphize(d.statement));
       $('.words-overlay').addClass('active');
       $('.words-overlay').on('click', function (e) {
         $(this).removeClass('active');
