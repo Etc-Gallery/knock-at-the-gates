@@ -83,9 +83,19 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 .pane.narration h2.byline { color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 22px; top: auto; bottom: 44px; }
 .pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
 .pane.narration h1.title { font-size: 88px; top: 88px; }
-.pane.narration h1.title.project-title { color: transparent; font-size: 88px; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
+.pane.narration h1.title.project-title { color: transparent; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
 .pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: 44px; }
 .pane.narration h2.subtitle.project-subtitle { color: #00b3ff; margin-top: 88px; top: 50%; }
 .pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: 44px; }
 .pane.narration header { padding-top: 88px; position: relative; }
 .pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker { position: static; }
+
+@media all and (max-width: 640px) { ul#names-wrapper li.name { font-size: 11px; line-height: 11px; margin-right: 11px; height: 11px; }
+  .pane.narration .cta { bottom: 22px; left: 11px; }
+  .pane.narration h1, .pane.narration h2, .pane.narration h3, .pane.narration p { margin-left: 11px; }
+  .pane.narration h1.title { font-size: 44px; }
+  .pane.narration h1.title.project-title { margin-top: 44px; top: 88px; width: 100%; }
+  .pane.narration h2.subtitle { font-size: 14.66667px; }
+  .pane.narration h2.subtitle.project-subtitle { top: 176px; }
+  .pane.narration h2.byline { font-size: 14.66667px; }
+  .pane.narration p { font-size: 14.66667px; line-height: 29.33333px; margin-top: 50px; padding-right: 11px; width: auto; } }
