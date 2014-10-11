@@ -66,3 +66,25 @@
     }
   }
 }
+
+@media all and (max-width: 640px) {
+  #overlays {
+    .x {
+      top: $headerheight / 4;
+      right: $headerheight / 4;
+    }
+    .overlay {
+      header.overlay-header {
+        margin-left: $headerheight / 4;
+        h1 {
+          font-size: $headerheight;
+          padding-top: $headerheight;
+        }
+      }
+      section {
+        margin-top: $headerheight;
+        margin-left: $headerheight / 4;
+      }
+    }
+  }
+}
