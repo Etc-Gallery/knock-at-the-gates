@@ -96,7 +96,8 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 .pane.narration header { padding-top: 88px; position: relative; }
 .pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker { position: static; }
 
-@media all and (max-width: 640px) { ul#names-wrapper li.name { font-size: 11px; line-height: 11px; margin-right: 11px; height: 11px; }
+@media all and (max-width: 640px) { .interlude .x { right: 11px; }
+  ul#names-wrapper li.name { font-size: 11px; line-height: 11px; margin-right: 11px; height: 11px; }
   .pane.narration .cta { bottom: 22px; left: 11px; }
   .pane.narration h1, .pane.narration h2, .pane.narration h3, .pane.narration p { margin-left: 11px; }
   .pane.narration h1.title { font-size: 44px; }

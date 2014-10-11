@@ -181,6 +181,11 @@ ul#names-wrapper {
 }
 
 @media all and (max-width: 640px) {
+  .interlude {
+    .x {
+      right: $headerheight / 4;
+    }
+  }
   ul#names-wrapper {
     li.name {
       font-size: $headerheight / 4;
