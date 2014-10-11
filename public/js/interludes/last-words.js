@@ -50,12 +50,13 @@ DAB.interludes.push(new DAB.Interlude({
 
     var nodes = pack.nodes(data);
 
+    fontScaleRangeArray = ($(window).width() > 640 ? [8,60] : [6,20]);
     var fontScale = d3.scale.linear()
       .domain([
         d3.min(nodes[0].children, function (d) { return d.r; }),
         d3.max(nodes[0].children, function (d) { return d.r; })
       ])
-      .range([8,60]); // hardcoded for reasons passing understanding.
+      .range(fontScaleRangeArray);
 
     var defs = that.svg.append('defs');
     var filter = defs.append('filter').attr('id', 'last-words-blur');
