@@ -107,6 +107,7 @@ DAB.App = function () {
   var activateInterlude = function (e) {
     $(this).toggleClass('active');
     $(this).off('click', activateInterlude);
+    DAB.interludes[0].activate();
   };
 
 
@@ -115,6 +116,7 @@ DAB.App = function () {
     e.stopPropagation(); 
     $(this).parent().toggleClass('active');
     $(this).parent().on('click', activateInterlude);
+    DAB.interludes[0].deactivate();
   };
 
 

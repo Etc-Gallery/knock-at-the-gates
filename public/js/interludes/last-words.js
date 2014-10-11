@@ -10,6 +10,14 @@ DAB.interludes.push(new DAB.Interlude({
   subtitle: 'Final Statements of the Condemned in Texas',
 
 
+  activate: function () {
+    d3.selectAll('g.bubble-wrapper').attr('filter', '');
+  },
+
+  deactivate: function () {
+    d3.selectAll('g.bubble-wrapper').attr('filter', 'url(#last-words-blur)');
+  },
+
   build: function (data) {
     var that = this;
 
@@ -49,12 +57,17 @@ DAB.interludes.push(new DAB.Interlude({
       ])
       .range([8,60]); // hardcoded for reasons passing understanding.
 
+    var defs = that.svg.append('defs');
+    var filter = defs.append('filter').attr('id', 'last-words-blur');
+    filter.append('feGaussianBlur').attr('in', 'SourceGraphic').attr('stdDeviation', 10);
+
     that.svg.selectAll('g.bubble-wrapper')
       .data(nodes)
       .enter()
       .append('g').attr('class', 'bubble-wrapper')
       .classed('parent', function (d) { return d.children ? true : false })
-      .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' });
+      .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
+      .attr('filter', 'url(#last-words-blur)');
 
     that.svg.selectAll('g.bubble-wrapper')
       .append('circle')
