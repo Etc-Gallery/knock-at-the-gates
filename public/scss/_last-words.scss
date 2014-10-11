@@ -19,7 +19,8 @@
     padding-right: $headerheight / 2;
     padding-bottom: $headerheight / 2;
     overflow-y: scroll;
-    width: 600px;
+    max-width: 600px;
+    width: 90%;
     height: 100%;
     h1 {
       color: $color6;
