@@ -169,6 +169,9 @@ DAB.App = function () {
 
     // Position everything.
     $window.trigger('resize');
+    if (window.location.pathname.indexOf('/last-words') > -1) {
+      $('#names-wrapper').css('opacity', 0);
+    }
 
 
   };
