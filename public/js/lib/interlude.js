@@ -31,6 +31,11 @@ DAB.Interlude = function (options) {
     this.title = options.title;
   }
 
+  this.path = options.path;
+  if (_.isUndefined(this.path)) {
+    throw new Error('Interludes need paths.');
+  }
+
   this.subtitle = _.isUndefined(options.subtitle) ? "" : options.subtitle;
 
   if (_.isUndefined(options.build) || typeof options.build !== 'function') {
