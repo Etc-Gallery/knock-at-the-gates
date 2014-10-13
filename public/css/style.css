@@ -46,6 +46,8 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 #overlays .overlay section p { color: #463e40; max-width: 600px; width: 90%; }
 #overlays .overlay section h3 { color: #00b3ff; font-size: 22px; margin-top: 44px; max-width: 600px; width: 90%; }
 #overlays .overlay section h4 { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 14.66667px; text-transform: uppercase; max-width: 600px; width: 90%; }
+#overlays .overlay section blockquote { margin-bottom: 22px; max-width: 600px; width: 90%; }
+#overlays .overlay section blockquote p { font-family: "Source Sans Pro Extra Light"; margin-top: 0; margin-bottom: 0; }
 
 @media all and (max-width: 640px) { #overlays .x { top: 11px; right: 11px; }
   #overlays .overlay header.overlay-header { margin-left: 11px; }

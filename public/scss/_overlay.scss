@@ -64,6 +64,16 @@
         max-width: 600px;
         width: 90%;
       }
+      blockquote {
+        margin-bottom: $headerheight / 2;
+        max-width: 600px;
+        width: 90%;
+        p {
+          font-family: "Source Sans Pro Extra Light";
+          margin-top: 0;
+          margin-bottom: 0;        
+        }
+      }
     }
   }
 }
