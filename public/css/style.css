@@ -17,14 +17,14 @@ header#primary-header.blur { -webkit-backface-visibility: hidden; -webkit-perspe
 header#primary-header h1 { color: #8c7c80; font-family: "Source Sans Pro Extra Light"; font-size: 22px; line-height: 44px; margin-left: 44px; text-align: left; text-transform: uppercase; }
 header#primary-header h1 a { color: inherit; text-decoration: none; }
 header#primary-header nav { position: absolute; top: 0; right: 0; }
-header#primary-header nav button { background: transparent; border-radius: 0; border-left: 1px dotted #463e40; float: left; outline: none; position: relative; width: 44px; height: 44px; }
-header#primary-header nav button:first-child { border-left: 0; }
-header#primary-header nav button:hover .dropdown-marker { border-bottom: 1px solid white; border-left: 1px solid white; }
-header#primary-header nav button:hover svg path { fill: white; }
-header#primary-header nav button.active .dropdown-marker { transform: rotate(135deg); }
-header#primary-header nav button .dropdown-marker { border-bottom: 1px solid #8c7c80; border-left: 1px solid #8c7c80; margin-left: -3px; position: absolute; left: 50%; bottom: 6.5px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); width: 4px; height: 4px; transition: transform 200ms; }
-header#primary-header nav button svg { position: absolute; top: 14px; left: 14px; width: 16px; height: 16px; }
-header#primary-header nav button svg path { fill: #8c7c80; }
+header#primary-header nav button, header#primary-header nav .button { background: transparent; border-radius: 0; border-left: 1px dotted #463e40; float: left; outline: none; position: relative; width: 44px; height: 44px; }
+header#primary-header nav button:first-child, header#primary-header nav .button:first-child { border-left: 0; }
+header#primary-header nav button:hover .dropdown-marker, header#primary-header nav .button:hover .dropdown-marker { border-bottom: 1px solid white; border-left: 1px solid white; }
+header#primary-header nav button:hover svg path, header#primary-header nav .button:hover svg path { fill: white; }
+header#primary-header nav button.active .dropdown-marker, header#primary-header nav .button.active .dropdown-marker { transform: rotate(135deg); }
+header#primary-header nav button .dropdown-marker, header#primary-header nav .button .dropdown-marker { border-bottom: 1px solid #8c7c80; border-left: 1px solid #8c7c80; margin-left: -3px; position: absolute; left: 50%; bottom: 6.5px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); width: 4px; height: 4px; transition: transform 200ms; }
+header#primary-header nav button svg, header#primary-header nav .button svg { position: absolute; top: 14px; left: 14px; width: 16px; height: 16px; }
+header#primary-header nav button svg path, header#primary-header nav .button svg path { fill: #8c7c80; }
 header#primary-header ul.persist-dropdown { overflow: hidden; position: absolute; top: 44px; width: 320px; height: 0; z-index: 3; transition: all 200ms; }
 header#primary-header ul.persist-dropdown.gear-persist-dropdown { left: auto; right: 0; }
 header#primary-header ul.persist-dropdown.gear-persist-dropdown.active { height: 181px; }

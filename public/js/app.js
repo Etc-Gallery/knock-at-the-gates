@@ -20,7 +20,8 @@ DAB.App = function () {
   ,   $gear = $('.gear')
   ,   $dropdown = $('.persist-dropdown')
   ,   $mainTitle = $('#main-content h1.project-title')
-  ,   $header = $('#primary-header');
+  ,   $header = $('#primary-header')
+  ,   $fbButton = $('.facebook');
 
 
 
@@ -116,10 +117,21 @@ DAB.App = function () {
 
 
   var deactivateInterlude = function (e) {
-    e.stopPropagation(); 
+    e.stopPropagation();
     $(this).parent().toggleClass('active');
     $(this).parent().on('click', activateInterlude);
     DAB.interludes[0].deactivate();
+  };
+
+
+
+  var openShareDialog = function (e) {
+    FB.ui({
+      method: 'share',
+      href: 'http://knock-at-the-gates.herokuapp.com',
+    }, function(response){
+      // Maybe add some success/thank you?
+    });
   };
 
 
@@ -133,6 +145,7 @@ DAB.App = function () {
     $window.on('resize', sizeAndPositionElements);
     $interludes.on('click', activateInterlude);
     $interludes.children('.x').on('click', deactivateInterlude);
+    $fbButton.on('click', openShareDialog)
 
     d3.json('/names.json', function (names) {
       var ul = d3.select('#names-wrapper')
