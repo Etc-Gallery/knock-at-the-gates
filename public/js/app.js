@@ -131,7 +131,7 @@ DAB.App = function () {
   var openShareDialog = function (e) {
     FB.ui({
       method: 'share',
-      href: 'http://knock-at-the-gates.herokuapp.com',
+      href: window.location.href,
     }, function(response){
       // Maybe add some success/thank you?
     });
