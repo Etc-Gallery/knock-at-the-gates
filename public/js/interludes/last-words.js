@@ -5,6 +5,7 @@ DAB.interludes.push(new DAB.Interlude({
 
   url: 'last-words.json',
 
+  path: '/last-words',
 
   title: 'Last Words',
   subtitle: 'Final Statements of the Condemned in Texas',

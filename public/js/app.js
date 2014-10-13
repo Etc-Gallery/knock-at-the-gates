@@ -109,9 +109,11 @@ DAB.App = function () {
 
 
   var activateInterlude = function (e) {
+    var interlude = DAB.interludes[0];
     $(this).toggleClass('active');
     $(this).off('click', activateInterlude);
-    DAB.interludes[0].activate();
+    interlude.activate();
+    navigate(interlude.path, interlude.title);
   };
 
 
@@ -121,6 +123,7 @@ DAB.App = function () {
     $(this).parent().toggleClass('active');
     $(this).parent().on('click', activateInterlude);
     DAB.interludes[0].deactivate();
+    navigate('/', 'Knock at the Gates');
   };
 
 
@@ -132,6 +135,12 @@ DAB.App = function () {
     }, function(response){
       // Maybe add some success/thank you?
     });
+  };
+
+
+
+  var navigate = function (path, title) {
+    window.history.pushState({}, title, path);
   };
 
 
@@ -173,4 +182,15 @@ $(document).ready(function () {
   _.each(DAB.interludes, function (interlude) {
     interlude.on();
   });
+
+  // Scroll to whatever interlude was requested.
+  if (window.location.pathname != "/") {
+    var interlude = _.findWhere(DAB.interludes, {
+      path: window.location.pathname
+    });
+
+    if (interlude) {
+      $('#main-content').scrollTop(interlude.el.offset().top);
+    }
+  }
 });
