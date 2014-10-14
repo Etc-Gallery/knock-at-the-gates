@@ -184,6 +184,17 @@ ul#names-wrapper {
   }
 }
 
+@media all and (max-width: 900px) {
+  .pane {
+    &.narration {
+       p  {
+        max-width: 800px;
+        width: 90%;
+      } 
+    }
+  }
+}
+
 @media all and (max-width: 640px) {
   .interlude {
     .x {
