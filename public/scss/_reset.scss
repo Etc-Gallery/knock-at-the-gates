@@ -48,6 +48,13 @@ body {
   height: 100%;
 }
 
+#dab {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 @media all and (max-width: 640px) {
   .x {
     background-size: 100% 100%;
