@@ -27,8 +27,8 @@ DAB.App = function () {
 
   // In case we need it.
   var sizes = {
-    //width: $(window).width(),
-    height: $window.height()
+    height: $window.height(),
+    width: $window.width()
   }
 
 
@@ -62,10 +62,16 @@ DAB.App = function () {
 
   var sizeAndPositionElements = function (e) {
     sizes.height = $(window).height();
+    sizes.width = $(window).width();
     $panes.height(sizes.height);
     $interludes.height(sizes.height);
     $interactives.height(sizes.height);
     $welcome.height($welcome.find('.pane').length * sizes.height);
+    if (sizes.width > 640) {
+      $main.off('scroll').on('scroll', _.throttle(animateOpeningWords, 60));
+    } else {
+      $('#names-wrapper').css('opacity', 0);
+    }
   };
 
 
@@ -84,7 +90,7 @@ DAB.App = function () {
     e.stopPropagation();
     $body.off('click', deactivateGearMenu);
     $gear.on('click', activateGearMenu);
-  }
+  };
 
 
 
@@ -150,7 +156,6 @@ DAB.App = function () {
     $gear.on('click', activateGearMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
-    $main.on('scroll', _.throttle(animateOpeningWords, 60));
     $window.on('resize', sizeAndPositionElements);
     $interludes.on('click', activateInterlude);
     $interludes.children('.x').on('click', deactivateInterlude);
