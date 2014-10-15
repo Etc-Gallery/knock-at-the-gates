@@ -1,5 +1,5 @@
 .words-overlay {
-  background-color: rgba(255,255,255,.55);
+  background-color: rgba(255,255,255,.75);
   cursor: pointer;
   overflow: hidden;
   position: fixed;
@@ -14,18 +14,26 @@
     top: 0;
   }
   .words {
-    margin-top: $headerheight;
-    margin-left: $headerheight;
-    padding-right: $headerheight / 2;
-    padding-bottom: $headerheight / 2;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
     overflow-y: scroll;
-    max-width: 600px;
-    width: 90%;
+    overflow-x: hidden;
+    padding-left: 44px;
+    width: 100%;
     height: 100%;
+    .statement {
+      padding-top: 44px;
+      max-width: 600px;
+      width: 90%;
+    }
     h1 {
       color: $color6;
       font-size: $headerheight;
       margin-bottom: $headerheight;
+      padding-top: 44px;
       text-transform: uppercase;
     }
     br {

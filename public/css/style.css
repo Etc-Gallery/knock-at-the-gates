@@ -36,7 +36,7 @@ header#primary-header ul.persist-dropdown li { background-color: rgba(255, 255, 
 header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255, 255, 255, 0.95); }
 
 @media all and (max-width: 640px) { header#primary-header h1 { font-size: 14.66667px; margin-left: 11px; } }
-#overlays { background-color: rgba(255, 255, 255, 0.55); position: absolute; top: -100%; left: 0; -webkit-transition: all 200ms; transition: all 200ms; width: 100%; height: 100%; z-index: 10; }
+#overlays { background-color: rgba(255, 255, 255, 0.75); position: absolute; top: -100%; left: 0; -webkit-transition: all 200ms; transition: all 200ms; width: 100%; height: 100%; z-index: 10; }
 #overlays.active { top: 0; }
 #overlays .x { position: absolute; top: 88px; z-index: 2; }
 #overlays .overlay { display: none; position: absolute; overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch; top: 0; left: 0; width: 100%; height: 100%; }
@@ -55,10 +55,11 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
   #overlays .overlay header.overlay-header { margin-left: 11px; }
   #overlays .overlay header.overlay-header h1 { font-size: 44px; padding-top: 44px; }
   #overlays .overlay section { margin-top: 44px; margin-left: 11px; } }
-.words-overlay { background-color: rgba(255, 255, 255, 0.55); cursor: pointer; overflow: hidden; position: fixed; top: -100%; left: 0; width: 100%; height: 100%; z-index: 3; -webkit-transition: all 200ms; transition: all 200ms; }
+.words-overlay { background-color: rgba(255, 255, 255, 0.75); cursor: pointer; overflow: hidden; position: fixed; top: -100%; left: 0; width: 100%; height: 100%; z-index: 3; -webkit-transition: all 200ms; transition: all 200ms; }
 .words-overlay.active { top: 0; }
-.words-overlay .words { margin-top: 44px; margin-left: 44px; padding-right: 22px; padding-bottom: 22px; overflow-y: scroll; max-width: 600px; width: 90%; height: 100%; }
-.words-overlay .words h1 { color: #00b3ff; font-size: 44px; margin-bottom: 44px; text-transform: uppercase; }
+.words-overlay .words { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; overflow-y: scroll; overflow-x: hidden; padding-left: 44px; width: 100%; height: 100%; }
+.words-overlay .words .statement { padding-top: 44px; max-width: 600px; width: 90%; }
+.words-overlay .words h1 { color: #00b3ff; font-size: 44px; margin-bottom: 44px; padding-top: 44px; text-transform: uppercase; }
 .words-overlay .words br { height: 33px; }
 .words-overlay .words p { color: #231f20; margin-bottom: 0; padding-bottom: 88px; width: 100%; }
 
