@@ -95,7 +95,7 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 .pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }
 .pane.narration .cta { border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; position: absolute; bottom: 88px; left: 44px; text-transform: uppercase; width: 132px; height: 44px; }
 .pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
-.pane.narration h2.byline { color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 22px; top: auto; bottom: 44px; }
+.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
 .pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
 .pane.narration p a { color: inherit; text-decoration: underline; }
 .pane.narration h1.title { font-size: 88px; top: 88px; }
