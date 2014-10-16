@@ -9,14 +9,15 @@ body {
 }
 
 #main-content {
+  opacity: 0;
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-transition: background-color 1s;
-  transition: background-color 1s;
+  -webkit-transition: background-color, opacity 1s;
+  transition: background-color, opacity 1s;
   -webkit-overflow-scrolling: touch;
   &.blur {
     -webkit-backface-visibility: hidden;

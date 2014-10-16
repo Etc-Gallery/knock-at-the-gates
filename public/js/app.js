@@ -178,6 +178,8 @@ DAB.App = function () {
       $('#names-wrapper').css('opacity', 0);
     }
 
+    $main.css('opacity', 1);
+
 
   };
 };
