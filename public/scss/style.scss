@@ -139,6 +139,10 @@ ul#names-wrapper {
       margin-top: 100px;
       margin-left: $headerheight;
       width: 800px;
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
     }
     h1.title {
       font-size: $headerheight * 2;
