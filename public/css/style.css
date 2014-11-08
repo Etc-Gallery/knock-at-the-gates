@@ -28,8 +28,8 @@ header#primary-header nav button .dropdown-marker, header#primary-header nav .bu
 header#primary-header nav button svg, header#primary-header nav .button svg { position: absolute; top: 14px; left: 14px; width: 16px; height: 16px; }
 header#primary-header nav button svg path, header#primary-header nav .button svg path { fill: #8c7c80; }
 header#primary-header ul.persist-dropdown { overflow: hidden; position: absolute; top: 44px; width: 320px; height: 0; z-index: 3; transition: all 200ms; }
-header#primary-header ul.persist-dropdown.gear-persist-dropdown { left: auto; right: 0; }
-header#primary-header ul.persist-dropdown.gear-persist-dropdown.active { height: 181px; }
+header#primary-header ul.persist-dropdown.gear-persist-dropdown, header#primary-header ul.persist-dropdown.hamburger-persist-dropdown { left: auto; right: 0; }
+header#primary-header ul.persist-dropdown.gear-persist-dropdown.active, header#primary-header ul.persist-dropdown.hamburger-persist-dropdown.active { height: 181px; }
 header#primary-header ul.persist-dropdown a { color: inherit; text-decoration: none; }
 header#primary-header ul.persist-dropdown a:last-child li { border-bottom: none; }
 header#primary-header ul.persist-dropdown li { background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px dotted black; color: #231f20; cursor: pointer; font-family: "Source Sans Pro Extra Light"; font-size: 11px; letter-spacing: 2px; line-height: 44px; list-style: none; margin-bottom: 0; padding: 0 22px; text-decoration: none; text-transform: uppercase; width: 276px; height: 44px; }

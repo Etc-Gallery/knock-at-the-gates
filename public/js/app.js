@@ -18,7 +18,10 @@ DAB.App = function () {
   ,   $overlayX = $('#overlays .x')
   ,   $main = $('#main-content')
   ,   $gear = $('.gear')
-  ,   $dropdown = $('.persist-dropdown')
+  ,   $hamburger = $('.hamburger')
+  ,   $dropdowns = $('.persist-dropdown')
+  ,   $gearDropdown = $('.gear-persist-dropdown')
+  ,   $hamburgerDropdown = $('.hamburger-persist-dropdown')
   ,   $mainTitle = $('#main-content h1.project-title')
   ,   $header = $('#primary-header')
   ,   $fbButton = $('.facebook');
@@ -75,10 +78,11 @@ DAB.App = function () {
   };
 
 
-
+  // TODO: This should be dried up.
   var activateGearMenu = function (e) {
+    $body.trigger('click'); // This and the e.stopPropagation are gross.
     $gear.addClass('active');
-    $dropdown.addClass('active');
+    $gearDropdown.addClass('active');
     e.stopPropagation();
     $gear.off('click', activateGearMenu);
     $body.on('click', deactivateGearMenu);
@@ -86,11 +90,30 @@ DAB.App = function () {
 
   var deactivateGearMenu = function (e) {
     $gear.removeClass('active');
-    $dropdown.removeClass('active');
+    $gearDropdown.removeClass('active');
     e.stopPropagation();
     $body.off('click', deactivateGearMenu);
     $gear.on('click', activateGearMenu);
   };
+
+  var activateHamburgerMenu = function (e) {
+    $body.trigger('click'); // This and the e.stopPropagation are gross.
+    $hamburger.addClass('active');
+    $hamburgerDropdown.addClass('active');
+    e.stopPropagation();
+    $hamburger.off('click', activateHamburgerMenu);
+    $body.on('click', deactivateHamburgerMenu);
+  };
+
+  var deactivateHamburgerMenu = function (e) {
+    $hamburger.removeClass('active');
+    $hamburgerDropdown.removeClass('active');
+    e.stopPropagation();
+    $body.off('click', deactivateHamburgerMenu);
+    $hamburger.on('click', activateHamburgerMenu);
+  };
+
+
 
 
 
@@ -154,6 +177,7 @@ DAB.App = function () {
   this.on = function () {
     // Bind events.
     $gear.on('click', activateGearMenu);
+    $hamburger.on('click', activateHamburgerMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
     $window.on('resize', sizeAndPositionElements);
