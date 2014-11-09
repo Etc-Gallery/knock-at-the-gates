@@ -1,6 +1,6 @@
 DAB.interludes.push(new DAB.Interlude({
 
-  el: $('#last-words-interlude'),
+  el: $('#last-words'),
 
 
   url: 'last-words.json',

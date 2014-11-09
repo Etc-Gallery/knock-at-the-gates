@@ -63,16 +63,26 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 .words-overlay .words br { height: 33px; }
 .words-overlay .words p { color: #231f20; margin-bottom: 0; padding-bottom: 88px; width: 100%; }
 
-svg g.bubble-wrapper { cursor: pointer; }
-svg g.bubble-wrapper circle { fill: #463e40; transition: all 500ms; }
-svg g.bubble-wrapper.active circle, svg g.bubble-wrapper:hover circle { fill: #00b3ff; }
-svg g.bubble-wrapper.active.parent circle, svg g.bubble-wrapper:hover.parent circle { fill: none; }
-svg g.bubble-wrapper text { fill: white; font-family: "Source Sans Pro Extra Light"; font-weight: 400; letter-spacing: 1px; text-anchor: middle; text-transform: uppercase; }
-svg g.bubble-wrapper.parent circle { fill: none; }
-svg g.bubble-wrapper.parent circle:hover { fill: none; }
+#last-words svg g.bubble-wrapper { cursor: pointer; }
+#last-words svg g.bubble-wrapper circle { fill: #463e40; transition: all 500ms; }
+#last-words svg g.bubble-wrapper.active circle, #last-words svg g.bubble-wrapper:hover circle { fill: #00b3ff; }
+#last-words svg g.bubble-wrapper.active.parent circle, #last-words svg g.bubble-wrapper:hover.parent circle { fill: none; }
+#last-words svg g.bubble-wrapper text { fill: white; font-family: "Source Sans Pro Extra Light"; font-weight: 400; letter-spacing: 1px; text-anchor: middle; text-transform: uppercase; }
+#last-words svg g.bubble-wrapper.parent circle { fill: none; }
+#last-words svg g.bubble-wrapper.parent circle:hover { fill: none; }
 
 @media all and (max-width: 640px) { .words-overlay .words { margin-left: 11px; }
-  svg text { letter-spacing: 0px; } }
+  #last-words-interlude svg text { letter-spacing: 0px; } }
+#a-narrow-practice svg path.county { stroke: #231f20; stroke-width: 0.25px; }
+#a-narrow-practice svg path.state { fill: transparent; pointer-events: none; stroke: #231f20; stroke-width: 1px; }
+#a-narrow-practice .inspector { position: absolute; width: 200px; height: 44px; }
+#a-narrow-practice .inspector li { color: white; font-size: 13px; line-height: 22px; font-family: "Source Sans Pro Extra Light"; font-weight: 400; list-style: none; text-align: center; text-transform: uppercase; height: 22px; }
+#a-narrow-practice table.legend { position: absolute; top: 44px; left: 22px; width: 222px; z-index: 2; -webkit-filter: blur(15px); -moz-filter: blur(15px); -ms-filter: blur(15px); -o-filter: blur(15px); filter: blur(15px); }
+#a-narrow-practice table.legend tr { height: 22px; }
+#a-narrow-practice table.legend tr td.colorblock { padding-left: 0; width: 22px; height: 22px; }
+#a-narrow-practice table.legend tr td { color: #d2bbc0; font-family: "Source Sans Pro Extra Light"; font-size: 11px; line-height: 22px; padding-left: 22px; text-transform: uppercase; width: 178px; height: 22px; }
+#a-narrow-practice.active table.legend { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
+
 body { background-color: #231f20; }
 
 #main-content { opacity: 0; overflow-y: scroll; overflow-x: hidden; position: absolute; left: 0; width: 100%; height: 100%; -webkit-transition: background-color, opacity 1s; transition: background-color, opacity 1s; -webkit-overflow-scrolling: touch; }
@@ -90,6 +100,14 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 .interlude.active .pane { opacity: 0; z-index: 0; }
 
 #welcome-panes { overflow: hidden; width: 100%; }
+
+#primary-nav ul { margin-left: 44px; }
+#primary-nav ul li { color: inherit; display: block; float: left; list-style: none; margin-right: 44px; position: relative; text-decoration: none; width: 320px; height: 496px; }
+#primary-nav ul li:hover .content { opacity: 1; }
+#primary-nav ul li .interlude-image { background-size: 100% 100%; width: 320px; height: 320px; }
+#primary-nav ul li h1 { line-height: 44px; margin: 11px 22px; text-align: center; height: 88px; }
+#primary-nav ul li p { margin: 11px 11px; text-align: center; }
+#primary-nav ul li .content { background-color: rgba(0, 0, 0, 0.5); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; opacity: 0.5; padding: 22px; text-align: center; -webkit-transition: opacity 200ms; -moz-transition: opacity 200ms; -ms-transition: opacity 200ms; -o-transition: opacity 200ms; transition: opacity 200ms; width: 100%; height: 100%; }
 
 .pane { clear: both; display: block; position: relative; width: 100%; }
 .pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }

@@ -11,6 +11,7 @@ DAB.App = function () {
   ,   $welcome = $('#welcome-panes')
   ,   $panes = $('.pane')
   ,   $interludes = $('.interlude')
+  ,   $interludeXs = $('.interlude .x')
   ,   $interactives = $('.interactive')
   ,   $overlaysWrapper = $('#overlays')
   ,   $overlays = $('.overlay')
@@ -24,7 +25,8 @@ DAB.App = function () {
   ,   $hamburgerDropdown = $('.hamburger-persist-dropdown')
   ,   $mainTitle = $('#main-content h1.project-title')
   ,   $header = $('#primary-header')
-  ,   $fbButton = $('.facebook');
+  ,   $fbButton = $('.facebook')
+  ,   $primaryNav = $('#primary-nav');
 
 
 
@@ -70,6 +72,7 @@ DAB.App = function () {
     $interludes.height(sizes.height);
     $interactives.height(sizes.height);
     $welcome.height($welcome.find('.pane').length * sizes.height);
+    $primaryNav.height(sizes.height);
     if (sizes.width > 640) {
       $main.off('scroll').on('scroll', _.throttle(animateOpeningWords, 60));
     } else {
@@ -138,20 +141,30 @@ DAB.App = function () {
 
 
   var activateInterlude = function (e) {
-    var interlude = DAB.interludes[0];
-    $(this).toggleClass('active');
-    $(this).off('click', activateInterlude);
-    interlude.activate();
-    navigate(interlude.path, interlude.title);
+    var id = $(this).attr('id');
+    var el = $(this);
+    el.toggleClass('active');
+    el.off('click');
+    _.each(DAB.interludes, function (interlude) {
+      var slug = interlude.path.split('/')[1];
+      if (slug !== id) {
+        $('#' + slug).removeClass('active')
+        $('#' + slug).off().on('click', activateInterlude);        
+        interlude.deactivate();
+      } else {
+        interlude.activate();
+        navigate(interlude.path, interlude.title);
+      }
+    });
   };
 
 
 
-  var deactivateInterlude = function (e) {
-    e.stopPropagation();
-    $(this).parent().toggleClass('active');
-    $(this).parent().on('click', activateInterlude);
-    DAB.interludes[0].deactivate();
+  var deactivateInterlude = function (el) {
+    el.toggleClass('active');
+    el.on('click', activateInterlude);
+    var interlude = _.findWhere(DAB.interludes, { path: '/' + el.attr('id') });
+    interlude.deactivate();
     navigate('/', 'Knock at the Gates');
   };
 
@@ -182,7 +195,10 @@ DAB.App = function () {
     $overlayX.on('click', closeOverlay);
     $window.on('resize', sizeAndPositionElements);
     $interludes.on('click', activateInterlude);
-    $interludes.children('.x').on('click', deactivateInterlude);
+    $interludeXs.on('click', function (e) {
+      e.stopPropagation();
+      deactivateInterlude($(this).parent());
+    });
     $fbButton.on('click', openShareDialog)
 
     d3.json('/names.json', function (names) {
@@ -198,7 +214,8 @@ DAB.App = function () {
 
     // Position everything.
     $window.trigger('resize');
-    if (window.location.pathname.indexOf('/last-words') > -1) {
+    var pathname = window.location.pathname;
+    if (pathname.indexOf('/last-words') > -1 || pathname.indexOf('/a-narrow-practice') > -1 ) {
       $('#names-wrapper').css('opacity', 0);
     }
 

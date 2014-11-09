@@ -19,10 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
-app.get( '/', function (req, res) {
+app.get('/', function (req, res) {
   res.render('index.html');
 });
-app.get( '/last-words', function (req, res) {
+app.get('/last-words', function (req, res) {
   res.render('index.html');
 });
 app.get('/last-words.json', function (req, res) {
@@ -30,6 +30,12 @@ app.get('/last-words.json', function (req, res) {
 });
 app.get('/names.json', function (req, res) {
   res.send(require('./data/index/dpic-full.json'));
+})
+app.get('/a-narrow-practice', function (req, res) {
+  res.render('index.html');
+})
+app.get('/a-narrow-practice.json', function (req, res) {
+  res.send(require('./data/interludes/a-narrow-practice/us.topo.json'));
 })
 
 // Start yer engines.
