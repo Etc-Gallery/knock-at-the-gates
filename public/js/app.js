@@ -23,7 +23,8 @@ DAB.App = function () {
   ,   $mainTitle = $('#main-content h1.project-title')
   ,   $header = $('#primary-header')
   ,   $fbButton = $('.facebook')
-  ,   $primaryNav = $('#primary-nav');
+  ,   $primaryNav = $('#primary-nav')
+  ,   $interludeLinks = $('.interlude-link');
 
 
 
@@ -33,6 +34,9 @@ DAB.App = function () {
     width: $window.width()
   }
 
+
+  // Store the currently active interlude.
+  var activeInterlude;
 
 
   // The opening animation.
@@ -145,7 +149,20 @@ DAB.App = function () {
     });
   };
 
+  var navigateToInterlude = function (e) {
+    if (activeInterlude) {
+      activeInterlude.deactivate();
+      activeInterlude.off();
+    } else {
+      $welcome.slideUp();
+    }
 
+    interlude = _.findWhere(DAB.interludes, {path: $(this).attr('href')});
+    interlude.on();
+    activeInterlude = interlude;
+    e.preventDefault(); // Prevent the native anchor event.
+    e.stopPropagation();
+  };
 
   var navigate = function (path, title) {
     window.history.pushState({}, title, path);
@@ -166,6 +183,7 @@ DAB.App = function () {
     });
     $fbButton.on('click', openShareDialog)
     $body.on('click', closeMenus);
+    $interludeLinks.on('click', navigateToInterlude)
 
     d3.json('/names.json', function (names) {
       var ul = d3.select('#names-wrapper')
@@ -193,19 +211,5 @@ $(document).ready(function () {
   DAB.app = new DAB.App();
   DAB.app.on();
 
-  // TODO: make this happen on inview
-  _.each(DAB.interludes, function (interlude) {
-    interlude.on();
-  });
-
-  // Scroll to whatever interlude was requested.
-  if (window.location.pathname != "/") {
-    var interlude = _.findWhere(DAB.interludes, {
-      path: window.location.pathname
-    });
-
-    if (interlude) {
-      $('#main-content').scrollTop(interlude.el.offset().top);
-    }
-  }
+  // TODO: handle navigation to initial app.
 });

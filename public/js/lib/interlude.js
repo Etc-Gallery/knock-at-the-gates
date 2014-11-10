@@ -70,6 +70,10 @@ DAB.Interlude = function (options) {
 
   this.on = function () {
     that.requestData();
+    that.wrapper.show();
   };
 
+  this.off = function () {
+    that.wrapper.hide();
+  }
 };
