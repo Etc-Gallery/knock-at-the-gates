@@ -79,10 +79,10 @@ DAB.App = function () {
 
 
   var toggleMenu = function (e) {
-    var $menu = $(e.target);
+    var $menu = $(this);
     $menu.toggleClass('active');
-    var dropdownClass = $menu.data('data-persist-dropdown');
-    var $dropdown = $(dropdownClass);
+    var dropdownClass = $menu.data('persist-dropdown');
+    var $dropdown = $('.' + dropdownClass);
     $dropdown.toggleClass('active');
     e.stopPropagation();
   };
@@ -155,7 +155,7 @@ DAB.App = function () {
 
   this.on = function () {
     // Bind events.
-    $menus.on('click', activateMenu);
+    $menus.on('click', toggleMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
     $window.on('resize', sizeAndPositionElements);
