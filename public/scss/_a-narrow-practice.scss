@@ -1,12 +1,14 @@
 #a-narrow-practice {
-  svg path.county {
+  .county {
     stroke: #231f20;
-    stroke-width: 0.25px; }
-  svg path.state {
+    stroke-width: 0.25px;
+  }
+  path.state {
     fill: transparent;
     pointer-events: none;
     stroke: #231f20;
-    stroke-width: 1px; }
+    stroke-width: .5px;
+  }
 
   .inspector {
     position: absolute;

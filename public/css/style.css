@@ -73,8 +73,8 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 
 @media all and (max-width: 640px) { .words-overlay .words { margin-left: 11px; }
   #last-words-interlude svg text { letter-spacing: 0px; } }
-#a-narrow-practice svg path.county { stroke: #231f20; stroke-width: 0.25px; }
-#a-narrow-practice svg path.state { fill: transparent; pointer-events: none; stroke: #231f20; stroke-width: 1px; }
+#a-narrow-practice .county { stroke: #231f20; stroke-width: 0.25px; }
+#a-narrow-practice path.state { fill: transparent; pointer-events: none; stroke: #231f20; stroke-width: .5px; }
 #a-narrow-practice .inspector { position: absolute; width: 200px; height: 44px; }
 #a-narrow-practice .inspector li { color: white; font-size: 13px; line-height: 22px; font-family: "Source Sans Pro Extra Light"; font-weight: 400; list-style: none; text-align: center; text-transform: uppercase; height: 22px; }
 #a-narrow-practice table.legend { position: absolute; top: 44px; left: 22px; width: 222px; z-index: 2; -webkit-filter: blur(15px); -moz-filter: blur(15px); -ms-filter: blur(15px); -o-filter: blur(15px); filter: blur(15px); }

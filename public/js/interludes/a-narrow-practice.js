@@ -26,7 +26,11 @@ DAB.interludes.push(new DAB.Interlude({
 
     var c = d3.scale.ordinal()
       .domain([ 0,1,2,3,4 ])
-      .range([ 'rgb(70,62,64)', 'rgb(68,70,79)', 'rgb(58,86,106)', 'rgb(37,117,159)', 'rgb(0,174,255)' ])
+      .range([ 'rgb(70,62,64)', 'rgb(68,70,79)', 'rgb(58,86,106)', 'rgb(37,117,159)', 'rgb(0,174,255)' ]);
+    var cRed = d3.scale.ordinal()
+      .domain([ 0,1,2,3,4 ])
+      .range([ 'rgb(70,62,64)', 'rgb(79,70,68)', 'rgb(106,86,58)', 'rgb(159,117,37)', 'rgb(255,174,0)' ]);
+
     var range = function (input) {
       if (!input || input === "false" || input === 0) {
         return 0;
@@ -97,12 +101,27 @@ DAB.interludes.push(new DAB.Interlude({
       .attr("d", path)
       .attr('class', function (d) {
         if (d.properties.count !== "false" && d.properties.count > 0) {
-          return 'executioner';
+          var classString = 'executioner';
+          console.log(d.properties);
+          if (d.properties.topTen === 'true') {
+            classString += ' top-ten';
+          }
+          if (d.properties.topOnePercent === 'true') {
+            classString += ' top-one-percent';
+          }
+          if (d.properties.topTenPercent === 'true') {
+            classString += ' top-ten-percent';
+          }
+          return classString;
         }
       })
       .classed("county", true)
       .style('fill', function (d) {
-        return c(range(d.properties.count));
+        /*if (d.properties.topTen === 'true') {
+          return cRed(range(d.properties.count));
+        } else {*/
+          return c(range(d.properties.count));      
+        //}
       });
     that.svg.append('g').attr('class', 'states').attr('filter', 'url(#last-words-blur)')
       .selectAll('path.state')
