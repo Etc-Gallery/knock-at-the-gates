@@ -18,15 +18,13 @@ DAB.App = function () {
   ,   $overlayOpeners = $('.overlay-opener')
   ,   $overlayX = $('#overlays .x')
   ,   $main = $('#main-content')
-  ,   $gear = $('.gear')
-  ,   $hamburger = $('.hamburger')
+  ,   $menus = $('.menu')
   ,   $dropdowns = $('.persist-dropdown')
-  ,   $gearDropdown = $('.gear-persist-dropdown')
-  ,   $hamburgerDropdown = $('.hamburger-persist-dropdown')
   ,   $mainTitle = $('#main-content h1.project-title')
   ,   $header = $('#primary-header')
   ,   $fbButton = $('.facebook')
-  ,   $primaryNav = $('#primary-nav');
+  ,   $primaryNav = $('#primary-nav')
+  ,   $interludeLinks = $('.interlude-link');
 
 
 
@@ -36,6 +34,9 @@ DAB.App = function () {
     width: $window.width()
   }
 
+
+  // Store the currently active interlude.
+  var activeInterlude;
 
 
   // The opening animation.
@@ -81,46 +82,19 @@ DAB.App = function () {
   };
 
 
-  // TODO: This should be dried up.
-  var activateGearMenu = function (e) {
-    $body.trigger('click'); // This and the e.stopPropagation are gross.
-    $gear.addClass('active');
-    $gearDropdown.addClass('active');
+  var toggleMenu = function (e) {
+    var $menu = $(this);
+    $menu.toggleClass('active');
+    var dropdownClass = $menu.data('persist-dropdown');
+    var $dropdown = $('.' + dropdownClass);
+    $dropdown.toggleClass('active');
     e.stopPropagation();
-    $gear.off('click', activateGearMenu);
-    $body.on('click', deactivateGearMenu);
   };
 
-  var deactivateGearMenu = function (e) {
-    $gear.removeClass('active');
-    $gearDropdown.removeClass('active');
-    e.stopPropagation();
-    $body.off('click', deactivateGearMenu);
-    $gear.on('click', activateGearMenu);
+  var closeMenus = function (e) {
+    $menus.removeClass('active');
+    $dropdowns.removeClass('active');
   };
-
-  var activateHamburgerMenu = function (e) {
-    $body.trigger('click'); // This and the e.stopPropagation are gross.
-    $hamburger.addClass('active');
-    $hamburgerDropdown.addClass('active');
-    e.stopPropagation();
-    $hamburger.off('click', activateHamburgerMenu);
-    $body.on('click', deactivateHamburgerMenu);
-  };
-
-  var deactivateHamburgerMenu = function (e) {
-    $hamburger.removeClass('active');
-    $hamburgerDropdown.removeClass('active');
-    e.stopPropagation();
-    $body.off('click', deactivateHamburgerMenu);
-    $hamburger.on('click', activateHamburgerMenu);
-  };
-
-
-
-
-
-
 
   var openOverlay = function (e) {
     $('#' + $(this).data('overlay')).addClass('active');
@@ -129,16 +103,12 @@ DAB.App = function () {
     $header.addClass('blur');
   };
 
-
-
   var closeOverlay = function (e) {
     $overlaysWrapper.removeClass('active');
     $overlays.removeClass('active');
     $main.removeClass('blur');
     $header.removeClass('blur');
   };
-
-
 
   var activateInterlude = function (e) {
     var id = $(this).attr('id');
@@ -149,7 +119,7 @@ DAB.App = function () {
       var slug = interlude.path.split('/')[1];
       if (slug !== id) {
         $('#' + slug).removeClass('active')
-        $('#' + slug).off().on('click', activateInterlude);        
+        $('#' + slug).off().on('click', activateInterlude);
         interlude.deactivate();
       } else {
         interlude.activate();
@@ -179,7 +149,20 @@ DAB.App = function () {
     });
   };
 
+  var navigateToInterlude = function (e) {
+    if (activeInterlude) {
+      activeInterlude.deactivate();
+      activeInterlude.off();
+    } else {
+      $welcome.slideUp();
+    }
 
+    interlude = _.findWhere(DAB.interludes, {path: $(this).attr('href')});
+    interlude.on();
+    activeInterlude = interlude;
+    e.preventDefault(); // Prevent the native anchor event.
+    e.stopPropagation();
+  };
 
   var navigate = function (path, title) {
     window.history.pushState({}, title, path);
@@ -189,8 +172,7 @@ DAB.App = function () {
 
   this.on = function () {
     // Bind events.
-    $gear.on('click', activateGearMenu);
-    $hamburger.on('click', activateHamburgerMenu);
+    $menus.on('click', toggleMenu);
     $overlayOpeners.on('click', openOverlay);
     $overlayX.on('click', closeOverlay);
     $window.on('resize', sizeAndPositionElements);
@@ -200,6 +182,8 @@ DAB.App = function () {
       deactivateInterlude($(this).parent());
     });
     $fbButton.on('click', openShareDialog)
+    $body.on('click', closeMenus);
+    $interludeLinks.on('click', navigateToInterlude)
 
     d3.json('/names.json', function (names) {
       var ul = d3.select('#names-wrapper')
@@ -220,8 +204,6 @@ DAB.App = function () {
     }
 
     $main.css('opacity', 1);
-
-
   };
 };
 
@@ -229,19 +211,5 @@ $(document).ready(function () {
   DAB.app = new DAB.App();
   DAB.app.on();
 
-  // TODO: make this happen on inview
-  _.each(DAB.interludes, function (interlude) {
-    interlude.on();
-  });
-
-  // Scroll to whatever interlude was requested.
-  if (window.location.pathname != "/") {
-    var interlude = _.findWhere(DAB.interludes, {
-      path: window.location.pathname
-    });
-
-    if (interlude) {
-      $('#main-content').scrollTop(interlude.el.offset().top);
-    }
-  }
+  // TODO: handle navigation to initial app.
 });
