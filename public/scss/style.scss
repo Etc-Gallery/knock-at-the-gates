@@ -117,6 +117,7 @@ ul#names-wrapper {
     margin-left: $headerheight;
     li {
       color: inherit;
+      cursor: pointer;
       display: block;
       float: left;
       list-style: none;
@@ -125,6 +126,18 @@ ul#names-wrapper {
       text-decoration: none;
       width: 320px;
       height: #{320 + 88 + 88}px;
+      &.a-narrow-practice {
+        .interlude-image {
+          background-image: url('../images/a-narrow-practice.jpg');
+          &:hover { background-image: url('../images/a-narrow-practice.gif'); }
+        }
+      }
+      &.last-words {
+        .interlude-image {
+          background-image: url('../images/last-words.jpg');
+          &:hover { background-image: url('../images/last-words.gif'); }
+        }
+      }
       &:hover {
         .content {
           opacity: 1;  

@@ -112,7 +112,11 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 #welcome-panes.inactive { display: none; }
 
 #primary-nav ul { margin-left: 44px; }
-#primary-nav ul li { color: inherit; display: block; float: left; list-style: none; margin-right: 44px; position: relative; text-decoration: none; width: 320px; height: 496px; }
+#primary-nav ul li { color: inherit; cursor: pointer; display: block; float: left; list-style: none; margin-right: 44px; position: relative; text-decoration: none; width: 320px; height: 496px; }
+#primary-nav ul li.a-narrow-practice .interlude-image { background-image: url("../images/a-narrow-practice.jpg"); }
+#primary-nav ul li.a-narrow-practice .interlude-image:hover { background-image: url("../images/a-narrow-practice.gif"); }
+#primary-nav ul li.last-words .interlude-image { background-image: url("../images/last-words.jpg"); }
+#primary-nav ul li.last-words .interlude-image:hover { background-image: url("../images/last-words.gif"); }
 #primary-nav ul li:hover .content { opacity: 1; }
 #primary-nav ul li .interlude-image { background-size: 100% 100%; width: 320px; height: 320px; }
 #primary-nav ul li h1 { line-height: 44px; margin: 11px 22px; text-align: center; height: 88px; }
