@@ -39,13 +39,8 @@ ul#names-wrapper {
   left: -10%;
   width: 120%;
   height: 110%;
-  -webkit-transition: opacity 200ms;
-  -moz-transition: opacity 200ms;
-  -ms-transition: opacity 200ms;
-  -o-transition: opacity 200ms;
-  transition: opacity 200ms;
   &.inactive {
-    opacity: 0;
+    display: none;
   }
   li.name {
     color: $color2;
