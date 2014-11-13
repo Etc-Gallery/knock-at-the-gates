@@ -19,6 +19,8 @@ DAB.interludes.push(new DAB.Interlude({
 
     var that = this;
 
+    var topTenActive;
+
     that.createSharedElements();
 
     var defs = that.svg.append('defs');
@@ -80,18 +82,50 @@ DAB.interludes.push(new DAB.Interlude({
     };
     createLegend();
 
+    var createOverlayAndToggle = function () {
+      that.el.append(
+        '<div class="a-narrow-practice-buttons">' +
+          '<button class="a-narrow-practice-button top-ten-button">toggle top ten counties</button>' +
+          '<button class="a-narrow-practice-button a-narrow-practice-more-button">learn more about this map</button>' +
+        '</div>'
+      );
+      $('button.top-ten-button').on('click', function (e) {
+        topTenActive = topTenActive ? false : true;
+        that.svg.selectAll('path.top-ten').style('fill', function (d) {
+          return topTenActive ? cRed(range(d.properties.count)) : c(range(d.properties.count));        
+        });
+      });
+      $('.a-narrow-practice-overlay').remove();
+      $('body').append(
+        '<div class="a-narrow-practice-overlay">' +
+          '<h1>A few words about this map</h1>' +
+          '<p>The top ten counties are in three states, with six of the ten in Texas. Though Texas has delivered more death sentences than any other state, Florida and California are not far behind. As of October 1, 2014, California has the largest death row population of any state; however, California has only executed 13 people since the ban was lifted.</p>' +
+          '<p>The top 10 counties and their most populous city are Harris (Houston, TX), Dallas (Dallas, TX), Oklahoma (Oklahoma City, OK), Tarrant (Fort Worth, TX), Bexar (San Antonio, TX), Montgomery (Conroe, TX), Tulsa (Tulsa, OK), Jefferson (Beaumont, TX), Saint Louis (Florissant, MO), Saint Louis City (Saint Louis, MO).</p>' +
+          '<p>This map does not include federal or military executions.</p>' +
+        '</div>'
+      );
+      $('button.a-narrow-practice-more-button').on('click', function (e) {
+
+        $('#main-content, #primary-header').addClass('blur');
+        $('.a-narrow-practice-overlay').addClass('active');
+        $('.a-narrow-practice-overlay').on('click', function (e) {
+          $(this).removeClass('active');
+          $('#main-content, #primary-header').removeClass('blur');
+        });        
+      })
+    };
+    createOverlayAndToggle();
+
     var scale = d3.scale.ordinal()
       .domain([0, 10, 100, 1000])
       .range([ 'rgb(0,0,0)', 'rgb(50,50,50)', 'rgb(100,100,100)', 'rgb(255,255,255)' ]);
     var projection = d3.geo.albersUsa()
-      .scale(that.el.width() + 300)
+      .scale(that.el.width >= 768 ? that.el.width() + 300 : that.el.width() + 100)
       .translate([that.el.width() / 2, that.el.height() / 2]);
     var path = d3.geo.path()
       .projection(projection);
-    /*var svg = d3.select(that.el[0]).append('svg')
-      .attr('width', that.el.width())
-      .attr('height', that.el.height());*/
-    that.svg.append('g').attr('class', 'counties').attr('filter', 'url(#last-words-blur)')
+
+    that.svg.append('g').attr('class', 'counties')
       .selectAll("path.county")
       .data(topojson.feature(topology, topology.objects.counties).features)
       .enter()
@@ -123,7 +157,7 @@ DAB.interludes.push(new DAB.Interlude({
           return c(range(d.properties.count));      
         //}
       });
-    that.svg.append('g').attr('class', 'states').attr('filter', 'url(#last-words-blur)')
+    that.svg.append('g').attr('class', 'states')
       .selectAll('path.state')
       .data(topojson.feature(topology, topology.objects.states).features)
       .enter()
@@ -133,6 +167,8 @@ DAB.interludes.push(new DAB.Interlude({
         return 'fips-' + d.id;
       })
       .classed('state', true);
+    that.svg.select('g.states').attr('filter', 'url(#a-narrow-practice-blur)');
+    that.svg.select('g.counties').attr('filter', 'url(#a-narrow-practice-blur)');
     $('.executioner')
       .css('cursor', 'pointer')
       .on('mouseover', function (e) {
