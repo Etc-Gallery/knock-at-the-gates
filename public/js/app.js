@@ -4,24 +4,27 @@ DAB.interludes = [];
 
 DAB.App = function () {
 
-
   // Only look through the DOM once.
   var $window = $(window)
   ,   $body = $('body')
   ,   $welcome = $('#welcome-panes')
   ,   $panes = $('.pane')
   ,   $interludes = $('.interlude')
+  ,   $interludeXs = $('.interlude .x')
   ,   $interactives = $('.interactive')
   ,   $overlaysWrapper = $('#overlays')
   ,   $overlays = $('.overlay')
   ,   $overlayOpeners = $('.overlay-opener')
   ,   $overlayX = $('#overlays .x')
   ,   $main = $('#main-content')
-  ,   $gear = $('.gear')
-  ,   $dropdown = $('.persist-dropdown')
+  ,   $menus = $('.menu')
+  ,   $dropdowns = $('.persist-dropdown')
   ,   $mainTitle = $('#main-content h1.project-title')
   ,   $header = $('#primary-header')
-  ,   $fbButton = $('.facebook');
+  ,   $fbButton = $('.facebook')
+  ,   $primaryNav = $('#primary-nav')
+  ,   $interludeLinks = $('#primary-nav li')
+  ,   $namesWrapper = $('#names-wrapper');
 
 
 
@@ -31,6 +34,12 @@ DAB.App = function () {
     width: $window.width()
   }
 
+
+  // Store the currently active interlude.
+  var activeInterlude;
+
+  // Store the desire to prevent scroll events.
+  var preventScrollEvents;
 
 
   // The opening animation.
@@ -72,29 +81,25 @@ DAB.App = function () {
     } else {
       $('#names-wrapper').css('opacity', 0);
     }
+    if (preventScrollEvents) {
+      $main.off('scroll');
+    }
   };
 
 
-
-  var activateGearMenu = function (e) {
-    $gear.addClass('active');
-    $dropdown.addClass('active');
+  var toggleMenu = function (e) {
+    var $menu = $(this);
+    $menu.toggleClass('active');
+    var dropdownClass = $menu.data('persist-dropdown');
+    var $dropdown = $('.' + dropdownClass);
+    $dropdown.toggleClass('active');
     e.stopPropagation();
-    $gear.off('click', activateGearMenu);
-    $body.on('click', deactivateGearMenu);
   };
 
-  var deactivateGearMenu = function (e) {
-    $gear.removeClass('active');
-    $dropdown.removeClass('active');
-    e.stopPropagation();
-    $body.off('click', deactivateGearMenu);
-    $gear.on('click', activateGearMenu);
+  var closeMenus = function (e) {
+    $menus.removeClass('active');
+    $dropdowns.removeClass('active');
   };
-
-
-
-
 
   var openOverlay = function (e) {
     $('#' + $(this).data('overlay')).addClass('active');
@@ -103,36 +108,12 @@ DAB.App = function () {
     $header.addClass('blur');
   };
 
-
-
   var closeOverlay = function (e) {
     $overlaysWrapper.removeClass('active');
     $overlays.removeClass('active');
     $main.removeClass('blur');
     $header.removeClass('blur');
   };
-
-
-
-  var activateInterlude = function (e) {
-    var interlude = DAB.interludes[0];
-    $(this).toggleClass('active');
-    $(this).off('click', activateInterlude);
-    interlude.activate();
-    navigate(interlude.path, interlude.title);
-  };
-
-
-
-  var deactivateInterlude = function (e) {
-    e.stopPropagation();
-    $(this).parent().toggleClass('active');
-    $(this).parent().on('click', activateInterlude);
-    DAB.interludes[0].deactivate();
-    navigate('/', 'Knock at the Gates');
-  };
-
-
 
   var openShareDialog = function (e) {
     FB.ui({
@@ -144,23 +125,64 @@ DAB.App = function () {
   };
 
 
+  var activateInterlude = function (e) {
+    activeInterlude.wrapper.addClass('active');
+    activeInterlude.activate();
+  };
 
-  var navigate = function (path, title) {
-    window.history.pushState({}, title, path);
+  var deactivateInterlude = function (e) {
+    activeInterlude.wrapper.removeClass('active');
+    activeInterlude.deactivate();
   };
 
 
+  var createRoutes = function () {
+
+    var routes = {};
+
+    // The home route.
+    routes['/'] = function () {
+      _.each(DAB.interludes, function (interlude) { interlude.off(); });
+      $welcome.removeClass('inactive');
+      $namesWrapper.removeClass('inactive');
+      preventScrollEvents = false;
+      $window.trigger('resize');
+      $main.css('opacity', 1);
+      activeInterlude = undefined;
+    };
+
+    // The interludes routes.
+    _.each(DAB.interludes, function (interlude) {
+      routes[interlude.path] = function () {
+        $main.css('opacity', 0);
+        $main.scrollTop(0);
+        $welcome.addClass('inactive');
+        $namesWrapper.addClass('inactive');
+
+        // Deactivate the active interlude, if it exists.
+        if (activeInterlude) {
+          deactivateInterlude();
+          activeInterlude.off();
+        }
+        
+        // Turn the interlude on and set it as active.
+        interlude.on();
+        activeInterlude = interlude;
+
+        preventScrollEvents = true;
+        $window.trigger('resize');
+        $main.css('opacity', 1);
+      };
+    });
+
+    return routes;
+  };
+  
+
 
   this.on = function () {
-    // Bind events.
-    $gear.on('click', activateGearMenu);
-    $overlayOpeners.on('click', openOverlay);
-    $overlayX.on('click', closeOverlay);
-    $window.on('resize', sizeAndPositionElements);
-    $interludes.on('click', activateInterlude);
-    $interludes.children('.x').on('click', deactivateInterlude);
-    $fbButton.on('click', openShareDialog)
 
+    // Create the names.
     d3.json('/names.json', function (names) {
       var ul = d3.select('#names-wrapper')
       ul.selectAll('li.name')
@@ -172,14 +194,24 @@ DAB.App = function () {
         });
     });
 
-    // Position everything.
-    $window.trigger('resize');
-    if (window.location.pathname.indexOf('/last-words') > -1) {
-      $('#names-wrapper').css('opacity', 0);
-    }
+    // Bind events.
+    $menus.on('click', toggleMenu);
+    $overlayOpeners.on('click', openOverlay);
+    $overlayX.on('click', closeOverlay);
+    $window.on('resize', sizeAndPositionElements);
+    $interludes.on('click', activateInterlude);
+    $interludeXs.on('click', function (e) {
+      e.stopPropagation();
+      deactivateInterlude($(this).parent());
+    });
+    $fbButton.on('click', openShareDialog)
+    $body.on('click', closeMenus);
+    $interludeLinks.on('click', function (e) {
+      DAB.history.navigate($(this).data('href'));
+    });
 
-    $main.css('opacity', 1);
-
+    DAB.router = new DAB.Router({ routes: createRoutes() });
+    DAB.history.start();
 
   };
 };
@@ -188,19 +220,5 @@ $(document).ready(function () {
   DAB.app = new DAB.App();
   DAB.app.on();
 
-  // TODO: make this happen on inview
-  _.each(DAB.interludes, function (interlude) {
-    interlude.on();
-  });
-
-  // Scroll to whatever interlude was requested.
-  if (window.location.pathname != "/") {
-    var interlude = _.findWhere(DAB.interludes, {
-      path: window.location.pathname
-    });
-
-    if (interlude) {
-      $('#main-content').scrollTop(interlude.el.offset().top);
-    }
-  }
+  // TODO: handle navigation to initial app.
 });

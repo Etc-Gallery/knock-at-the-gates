@@ -91,7 +91,7 @@
         <nav>
 
           <!-- Twitter -->
-          <a href="https://twitter.com/intent/tweet?url=http://knockatthegates.etc-gallery.com" class="twitter button">
+          <a href="https://twitter.com/intent/tweet?url=http://knock-at-the-gates.etc-gallery.com" class="twitter button">
             <svg width="100%" height="100%" viewBox="0 0 48 48">
               <g>
                 <path id="twitter_4_" d="M43,0H5C2.25,0,0,2.25,0,5v38c0,2.75,2.25,5,5,5h38c2.75,0,5-2.25,5-5V5C48,2.25,45.75,0,43,0z M38.09,25.457c-0.293,1.559-1.188,3.941-3.799,6.553c-4.549,4.549-11.082,5.541-13.408,5.541s-9.852-0.342-15.049-7.457 c0,0,6.814,6.088,13.654-0.342c-3.23,0.393-3.438-2.506-1.205-2.873c-3.283-0.137-3.83-1.23-4.24-2.189 c-0.41-0.957,1.061-0.992,2.223-1.127c-2.24-0.779-4.078-2.164-3.865-3.602c0.137-0.564,2.053-0.059,1.916-0.471 c-0.137-0.41-3.557-1.914-2.873-4.65c3.078,1.572,8.275,2.461,12.143,6.531c1.195-3.385,3.176-7.781,5.301-8.721 c2.125-0.941,3.898-0.752,4.379,0.205c0.479,0.957-2.941,1.711-2.941,1.711c4.055-0.391,6.891,3.281,7.668,6.725 c1.842,1.088,4.234,0.047,4.234,0.047s-0.514,1.846-3.625,2.121c-0.41,0.137,1.709,0.547,3.898,0.307 C41.361,25.285,39.238,25.477,38.09,25.457z"/>
@@ -109,7 +109,7 @@
           </button>
 
           <!-- Gear (About) -->
-          <button class="gear" data-persist-dropdown="gear-persist-dropdown">
+          <button class="gear menu" data-persist-dropdown="gear-persist-dropdown">
             <svg width="100%" y="100%" viewBox="0 0 200 200">
               <path d="M99.7,200c-6.9,0-13.6-20.9-20-22.5c-7.2-1.9-14-4.7-20.3-8.4c-5.9-3.5-25.4,6.5-30.1,1.7c-4.7-4.7,5.2-24.2,1.8-30
                 c-3.8-6.4-6.7-13.3-8.6-20.7C20.8,113.6,0,106.9,0,100c0-6.9,20.8-13.7,22.5-20.1c1.9-7.2,4.7-14.1,8.4-20.4
@@ -122,6 +122,16 @@
             <div class="dropdown-marker"></div>
           </button>
 
+          <!-- Hamburger (Nav) -->
+          <button class="hamburger menu" data-persist-dropdown="hamburger-persist-dropdown">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+              <path d="M20,0h160c0,0,20,1.3,20,20.5c0,20.7-20,20.5-20,20.5H20c0,0-20,0.2-20-20.5C0,1.3,20,0,20,0z"/>
+              <path d="M20,81h160c0,0,20,1.3,20,20.5c0,20.7-20,20.5-20,20.5H20c0,0-20,0.2-20-20.5C0,82.3,20,81,20,81z"/>
+              <path d="M20,159h160c0,0,20,1.3,20,20.5c0,20.7-20,20.5-20,20.5H20c0,0-20,0.2-20-20.5C0,160.3,20,159,20,159z"/>
+            </svg>
+            <div class="dropdown-marker"></div>
+          </button>
+
         </nav>
 
         <!-- The Gear Dropdown Menu -->
@@ -129,6 +139,12 @@
           <li class="overlay-opener" data-overlay="about-overlay">about this project</li>
           <li class="overlay-opener" data-overlay="biography-overlay">about us</li>
           <a href="http://etc-gallery.com"><li>etc. gallery</li></a>
+        </ul>
+
+        <!-- The Hmaburger Dropdown Menu -->
+        <ul class="persist-dropdown hamburger-persist-dropdown">
+          <a href="/a-narrow-practice"><li>a narrow practice</li></a>
+          <a href="/last-words"><li>last words</li></a>
         </ul>
 
       </header>
@@ -152,8 +168,23 @@
           </div>
         </div>
 
+        <!-- The "Narrow Practice" Interlude -->
+        <div id="a-narrow-practice" class="interlude view-section" style="display:none;">
+          <button class="x"></button>
+          <div class="pane narration">
+            <div class="background"></div>
+            <header>
+              <h3 class="kicker">interactive</h3>
+              <h1 class="title">A Narrow Practice</h1>
+              <h2 class="subtitle">Mapping executions since 1977</h2>
+            </header>
+            <p>The following shows the geographic distribution of executions since 1976. 10 percent of counties account for 89 percent of executions; 1 percent account for 42 percent; and just 10 counties account for 26 percent of all executions. See how we built this interactive on <a href="https://github.com/Etc-Gallery/knock-at-the-gates/tree/master/scripts/interludes/a-narrow-practice">our GitHub</a>.</p>
+            <button class="cta">click to explore</button>
+          </div>
+        </div>
+
         <!-- The "Last Words" Interlude -->
-        <div id="last-words-interlude" class="interlude view-section">
+        <div id="last-words" class="interlude view-section" style="display:none;">
           <button class="x"></button>
           <div class="pane narration">
             <div class="background"></div>
@@ -166,8 +197,23 @@
             <button class="cta">click to explore</button>
           </div>
         </div>
-      </div>
 
+        <nav id="primary-nav" class="view-section">
+          <ul>
+            <li class="a-narrow-practice" data-href="/a-narrow-practice">
+              <h1>A Narrow Practice</h1>
+              <div class="interlude-image"></div>
+              <p>Mapping executions since 1977</p>
+            </li>
+            <li class="last-words" data-href="/last-words">
+              <h1>Last Words</h1>
+              <div class="interlude-image"></div>
+              <p>Final statements from the condemned in Texas</p>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
