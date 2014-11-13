@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   var jsDependencies = [
     'public/js/vendor/*.js',
     'public/js/app.js',
+    'public/js/router.js',
     'public/js/lib/*.js',
     'public/js/interludes/*.js'
   ];

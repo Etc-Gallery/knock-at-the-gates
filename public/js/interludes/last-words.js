@@ -16,12 +16,14 @@ DAB.interludes.push(new DAB.Interlude({
   },
 
   deactivate: function () {
+    d3.selectAll('g.bubble-wrapper').attr('filter', '');
     d3.selectAll('g.bubble-wrapper').attr('filter', 'url(#last-words-blur)');
   },
 
   build: function (data) {
     var that = this;
 
+    $('.words-overlay').remove();
     $('body').append(
       '<div class="words-overlay">' +
         '<div class="words">' +

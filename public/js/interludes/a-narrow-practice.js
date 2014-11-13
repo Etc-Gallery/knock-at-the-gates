@@ -11,6 +11,7 @@ DAB.interludes.push(new DAB.Interlude({
   },
 
   deactivate: function () {
+    this.svg.selectAll('g').attr('filter', '');
     this.svg.selectAll('g').attr('filter', 'url(#a-narrow-practice-blur)');
   },
 
@@ -102,7 +103,6 @@ DAB.interludes.push(new DAB.Interlude({
       .attr('class', function (d) {
         if (d.properties.count !== "false" && d.properties.count > 0) {
           var classString = 'executioner';
-          console.log(d.properties);
           if (d.properties.topTen === 'true') {
             classString += ' top-ten';
           }

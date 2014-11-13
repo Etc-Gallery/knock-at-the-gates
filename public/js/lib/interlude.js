@@ -75,5 +75,6 @@ DAB.Interlude = function (options) {
 
   this.off = function () {
     that.wrapper.hide();
+    that.wrapper.find('.interactive').empty();
   }
 };

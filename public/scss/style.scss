@@ -39,6 +39,14 @@ ul#names-wrapper {
   left: -10%;
   width: 120%;
   height: 110%;
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  -ms-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  transition: opacity 200ms;
+  &.inactive {
+    opacity: 0;
+  }
   li.name {
     color: $color2;
     display: block;
@@ -99,6 +107,9 @@ ul#names-wrapper {
 #welcome-panes {
   overflow: hidden;
   width: 100%;
+  &.inactive {
+    display: none;
+  }
 }
 
 #primary-nav {
