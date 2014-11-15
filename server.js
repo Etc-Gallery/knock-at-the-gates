@@ -37,6 +37,9 @@ app.get('/a-narrow-practice', function (req, res) {
 app.get('/a-narrow-practice.json', function (req, res) {
   res.send(require('./data/interludes/a-narrow-practice/us.topo.json'));
 });
+app.get('/essays/:name', function (req, res) {
+  res.render('index.html');
+});
 
 // Start yer engines.
 app.listen(app.get('port'), function () {

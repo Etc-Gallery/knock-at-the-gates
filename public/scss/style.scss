@@ -4,6 +4,7 @@
 @import "overlay";
 @import "last-words";
 @import "a-narrow-practice";
+@import "essay";
 
 body {
   background-color: $color1;  
@@ -175,7 +176,12 @@ ul#names-wrapper {
   }
 }
 
-.pane {
+
+.view-section { display: none; }
+
+
+.pane,
+.faux-pane {
   clear: both;
   display: block;
   position: relative;

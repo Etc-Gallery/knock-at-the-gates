@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     'public/js/app.js',
     'public/js/router.js',
     'public/js/lib/*.js',
-    'public/js/interludes/*.js'
+    'public/js/interludes/*.js',
+    'public/js/essays/*.js'
   ];
 
   grunt.initConfig({

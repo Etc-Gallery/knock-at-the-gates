@@ -1,5 +1,7 @@
-DAB = {};
-DAB.interludes = [];
+DAB = {
+  interludes: [],
+  essays: []
+};
 
 
 DAB.App = function () {
@@ -36,7 +38,7 @@ DAB.App = function () {
 
 
   // Store the currently active interlude.
-  var activeInterlude;
+  var activeInterlude, activeEssay;
 
   // Store the desire to prevent scroll events.
   var preventScrollEvents;
@@ -164,6 +166,10 @@ DAB.App = function () {
           deactivateInterlude();
           activeInterlude.off();
         }
+
+        if (activeEssay) {
+          activeEssay.off();
+        }
         
         // Turn the interlude on and set it as active.
         interlude.on();
@@ -173,6 +179,34 @@ DAB.App = function () {
         $window.trigger('resize');
         $main.css('opacity', 1);
       };
+    });
+
+    // The essay routes.
+    _.each(DAB.essays, function (essay) {
+      routes[essay.path] = function () {
+        $main.css('opacity', 0);
+        $main.scrollTop(0);
+        $welcome.addClass('inactive');
+        $namesWrapper.addClass('inactive');
+
+        // Deactivate the active interlude, if it exists.
+        if (activeInterlude) {
+          deactivateInterlude();
+          activeInterlude.off();
+        }
+
+        if (activeEssay) {
+          activeEssay.off();
+        }
+
+        essay.on();
+        activeEssay = essay;
+
+        // Turn the essay on.
+        preventScrollEvents = true;
+        $window.trigger('resize');
+        $main.css('opacity', 1);
+      }
     });
 
     return routes;

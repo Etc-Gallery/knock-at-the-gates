@@ -91,6 +91,15 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 #a-narrow-practice.active table.legend { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 #a-narrow-practice.active .a-narrow-practice-button { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 
+.essay { width: 100%; height: auto; }
+.essay.narration header { margin-top: 220px; margin-right: auto; margin-left: auto; max-width: 700px; width: 100%; }
+.essay.narration header h3.kicker, .essay.narration header h1.title, .essay.narration header h2.subtitle { margin-left: 0; }
+.essay.narration header h2.subtitle { color: #d2bbc0; }
+.essay.narration header h3.kicker { margin-bottom: 22px; }
+.essay.narration .essay-content { margin-top: 220px; margin-bottom: 220px; }
+.essay.narration .essay-content p { font-family: "PT Serif"; font-size: 22px; line-height: 44px; margin-left: auto; margin-right: auto; margin-top: 44px; max-width: 700px; width: 100%; }
+.essay.narration .essay-content p:first-child:first-letter { color: #8c7c80; float: left; font-family: "Source Sans Pro Black"; font-size: 88px; font-weight: 400; line-height: 66px; margin-top: 11px; margin-right: 11px; padding-left: 11px; }
+
 body { background-color: #231f20; }
 
 #main-content { opacity: 0; overflow-y: scroll; overflow-x: hidden; position: absolute; left: 0; width: 100%; height: 100%; -webkit-transition: background-color, opacity 1s; transition: background-color, opacity 1s; -webkit-overflow-scrolling: touch; }
@@ -123,20 +132,22 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 #primary-nav ul li p { margin: 11px 11px; text-align: center; }
 #primary-nav ul li .content { background-color: rgba(0, 0, 0, 0.5); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; opacity: 0.5; padding: 22px; text-align: center; -webkit-transition: opacity 200ms; -moz-transition: opacity 200ms; -ms-transition: opacity 200ms; -o-transition: opacity 200ms; transition: opacity 200ms; width: 100%; height: 100%; }
 
-.pane { clear: both; display: block; position: relative; width: 100%; }
-.pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }
-.pane.narration .cta { border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; position: absolute; bottom: 88px; left: 44px; text-transform: uppercase; width: 132px; height: 44px; }
-.pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
-.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
-.pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
-.pane.narration p a { color: inherit; text-decoration: underline; }
-.pane.narration h1.title { font-size: 88px; top: 88px; }
-.pane.narration h1.title.project-title { color: transparent; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
-.pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: 44px; }
-.pane.narration h2.subtitle.project-subtitle { color: #00b3ff; margin-top: 88px; top: 50%; }
-.pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: 44px; }
-.pane.narration header { padding-top: 88px; position: relative; }
-.pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker { position: static; }
+.view-section { display: none; }
+
+.pane, .faux-pane { clear: both; display: block; position: relative; width: 100%; }
+.pane.narration, .faux-pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }
+.pane.narration .cta, .faux-pane.narration .cta { border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; position: absolute; bottom: 88px; left: 44px; text-transform: uppercase; width: 132px; height: 44px; }
+.pane.narration h1, .pane.narration h2, .pane.narration h3, .faux-pane.narration h1, .faux-pane.narration h2, .faux-pane.narration h3 { margin-left: 44px; position: absolute; }
+.pane.narration h2.byline, .faux-pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
+.pane.narration p, .faux-pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
+.pane.narration p a, .faux-pane.narration p a { color: inherit; text-decoration: underline; }
+.pane.narration h1.title, .faux-pane.narration h1.title { font-size: 88px; top: 88px; }
+.pane.narration h1.title.project-title, .faux-pane.narration h1.title.project-title { color: transparent; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
+.pane.narration h2.subtitle, .faux-pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: 44px; }
+.pane.narration h2.subtitle.project-subtitle, .faux-pane.narration h2.subtitle.project-subtitle { color: #00b3ff; margin-top: 88px; top: 50%; }
+.pane.narration h3.kicker, .faux-pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: 44px; }
+.pane.narration header, .faux-pane.narration header { padding-top: 88px; position: relative; }
+.pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker, .faux-pane.narration header h1.title, .faux-pane.narration header h2.subtitle, .faux-pane.narration header h3.kicker { position: static; }
 
 @media all and (max-width: 900px) { .pane.narration p { max-width: 800px; width: 90%; } }
 @media all and (max-width: 640px) { .interlude .x { right: 11px; }
