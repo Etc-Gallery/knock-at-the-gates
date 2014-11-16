@@ -178,6 +178,8 @@ DAB.App = function () {
         preventScrollEvents = true;
         $window.trigger('resize');
         $main.css('opacity', 1);
+        $primaryNav.find('li').removeClass('inactive');
+        $primaryNav.find('.' + interlude.title.toLowerCase().split(' ').join('-')).addClass('inactive');
       };
     });
 
@@ -206,6 +208,8 @@ DAB.App = function () {
         preventScrollEvents = true;
         $window.trigger('resize');
         $main.css('opacity', 1);
+        $primaryNav.find('li').removeClass('inactive');
+        $primaryNav.find('.' + essay.title.toLowerCase().split(' ').join('-')).addClass('inactive');
       }
     });
 

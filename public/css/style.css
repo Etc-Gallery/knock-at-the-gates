@@ -91,15 +91,18 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 #a-narrow-practice.active table.legend { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 #a-narrow-practice.active .a-narrow-practice-button { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 
-.essay { width: 100%; height: auto; }
-.essay.narration header { margin-top: 220px; margin-right: auto; margin-left: auto; max-width: 700px; width: 100%; }
-.essay.narration header h3.kicker, .essay.narration header h1.title, .essay.narration header h2.subtitle { margin-left: 0; }
-.essay.narration header h2.subtitle { color: #d2bbc0; }
-.essay.narration header h3.kicker { margin-bottom: 22px; }
-.essay.narration .essay-content { margin-top: 220px; margin-bottom: 220px; }
-.essay.narration .essay-content p { font-family: "PT Serif"; font-size: 22px; line-height: 44px; margin-left: auto; margin-right: auto; margin-top: 44px; max-width: 700px; width: 100%; }
-.essay.narration .essay-content p:first-child:first-letter { color: #8c7c80; float: left; font-family: "Source Sans Pro Black"; font-size: 88px; font-weight: 400; line-height: 66px; margin-top: 11px; margin-right: 11px; padding-left: 11px; }
+.faux-pane.essay { display: none; width: 100%; height: auto; }
+.faux-pane.essay.narration header { margin-top: 220px; margin-right: auto; margin-left: auto; max-width: 600px; width: 100%; }
+.faux-pane.essay.narration header h3.kicker, .faux-pane.essay.narration header h1.title, .faux-pane.essay.narration header h2.subtitle { margin-left: 0; }
+.faux-pane.essay.narration header h2.subtitle { color: #d2bbc0; }
+.faux-pane.essay.narration header h3.kicker { margin-bottom: 22px; }
+.faux-pane.essay.narration .essay-content { margin-top: 220px; margin-bottom: 220px; }
+.faux-pane.essay.narration .essay-content p { font-family: "Alegreya"; font-size: 22px; line-height: 33px; margin-left: auto; margin-right: auto; margin-top: 44px; max-width: 600px; width: 100%; }
+.faux-pane.essay.narration .essay-content p:first-child:first-letter { color: #8c7c80; float: left; font-family: "Source Sans Pro Black"; font-size: 88px; font-weight: 400; line-height: 66px; margin-top: 11px; margin-right: 11px; padding-left: 11px; }
 
+@media all and (max-width: 640px) { .faux-pane.essay.narration header { max-width: 300px; }
+  .faux-pane.essay.narration header h1.title { font-size: 44px; }
+  .faux-pane.essay.narration .essay-content p { font-size: 16px; line-height: 24px; max-width: 300px; } }
 body { background-color: #231f20; }
 
 #main-content { opacity: 0; overflow-y: scroll; overflow-x: hidden; position: absolute; left: 0; width: 100%; height: 100%; -webkit-transition: background-color, opacity 1s; transition: background-color, opacity 1s; -webkit-overflow-scrolling: touch; }
@@ -126,7 +129,10 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 #primary-nav ul li.a-narrow-practice .interlude-image:hover { background-image: url("../images/a-narrow-practice.gif"); }
 #primary-nav ul li.last-words .interlude-image { background-image: url("../images/last-words.jpg"); }
 #primary-nav ul li.last-words .interlude-image:hover { background-image: url("../images/last-words.gif"); }
+#primary-nav ul li.gary-gilmore .interlude-image { background-image: url("../images/gary-gilmore.jpg"); }
+#primary-nav ul li.gary-gilmore .interlude-image:hover { background-image: url("../images/gary-gilmore.gif"); }
 #primary-nav ul li:hover .content { opacity: 1; }
+#primary-nav ul li.inactive { display: none; }
 #primary-nav ul li .interlude-image { background-size: 100% 100%; width: 320px; height: 320px; }
 #primary-nav ul li h1 { line-height: 44px; margin: 11px 22px; text-align: center; height: 88px; }
 #primary-nav ul li p { margin: 11px 11px; text-align: center; }
@@ -159,4 +165,6 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
   .pane.narration h2.subtitle { font-size: 14.66667px; }
   .pane.narration h2.subtitle.project-subtitle { top: 176px; }
   .pane.narration h2.byline { font-size: 14.66667px; }
-  .pane.narration p { font-size: 14.66667px; line-height: 29.33333px; margin-top: 50px; padding-right: 11px; width: auto; } }
+  .pane.narration p { font-size: 14.66667px; line-height: 29.33333px; margin-top: 50px; padding-right: 11px; width: auto; }
+  #primary-nav ul { margin-left: 0; }
+  #primary-nav ul li { float: none; margin-right: auto; margin-left: auto; } }

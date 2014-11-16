@@ -1,51 +1,75 @@
-.essay {
-  width: 100%;
-  height: auto;
-  &.narration {
-    header {
-      margin-top: $headerheight * 5; 
-      margin-right: auto;
-      margin-left: auto;
-      max-width: 700px;
-      width: 100%;
-      h3.kicker,
-      h1.title,
-      h2.subtitle {
-        margin-left: 0
-      }
-      h2.subtitle {
-        color: $color4;
-      }
-      h3.kicker {
-        margin-bottom: $headerheight / 2;
-      }
-    }
-    .essay-content {
-      margin-top: $headerheight * 5;
-      margin-bottom: $headerheight * 5;
-      p {
-        font-family: "PT Serif";
-        font-size: 22px;
-        line-height: 44px;
-        margin-left: auto;
+.faux-pane {
+  &.essay {
+    display: none;
+    width: 100%;
+    height: auto;
+    &.narration {
+      header {
+        margin-top: $headerheight * 5; 
         margin-right: auto;
-        margin-top: 44px;
-        max-width: 700px;
+        margin-left: auto;
+        max-width: 600px;
         width: 100%;
-        &:first-child {
-          &:first-letter {
-            color: $color3;
-            float: left;
-            font-family: "Source Sans Pro Black";
-            font-size: #{2 * 44}px;
-            font-weight: 400;
-            line-height: #{1.5 * 44}px;
-            margin-top: 11px;
-            margin-right: 11px;
-            padding-left: 11px;
+        h3.kicker,
+        h1.title,
+        h2.subtitle {
+          margin-left: 0
+        }
+        h2.subtitle {
+          color: $color4;
+        }
+        h3.kicker {
+          margin-bottom: $headerheight / 2;
+        }
+      }
+      .essay-content {
+        margin-top: $headerheight * 5;
+        margin-bottom: $headerheight * 5;
+        p {
+          font-family: "Alegreya";
+          font-size: 22px;
+          line-height: 33px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 44px;
+          max-width: 600px;
+          width: 100%;
+          &:first-child {
+            &:first-letter {
+              color: $color3;
+              float: left;
+              font-family: "Source Sans Pro Black";
+              font-size: #{2 * 44}px;
+              font-weight: 400;
+              line-height: #{1.5 * 44}px;
+              margin-top: 11px;
+              margin-right: 11px;
+              padding-left: 11px;
+            }
+          }
+        } 
+      }  
+    }
+  }
+}
+@media all and (max-width: 640px) {
+  .faux-pane {
+    &.essay {
+      &.narration {
+        header {
+          max-width: 300px;
+          h1.title {
+            font-size: $headerheight;
           }
         }
-      } 
-    }  
+        .essay-content {
+          p {
+            font-size: 16px;
+            line-height: 24px;
+            max-width: 300px;
+          }
+        }
+      }
+    }
   }
 }

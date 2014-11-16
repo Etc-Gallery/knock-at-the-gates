@@ -8,6 +8,7 @@ DAB.Essay = function (options) {
 
   this.wrapper = options.el;
   this.path = options.path;
+  this.title = options.title;
 
 
 
