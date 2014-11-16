@@ -100,6 +100,20 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 #the-changing-face table.legend tr td { color: #d2bbc0; font-family: "Source Sans Pro Extra Light"; font-size: 11px; line-height: 22px; padding-left: 22px; text-transform: uppercase; width: 178px; height: 22px; }
 #the-changing-face.active table.legend { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 
+.faux-pane.essay { display: none; width: 100%; height: auto; }
+.faux-pane.essay.narration header { margin-top: 220px; margin-right: auto; margin-left: auto; max-width: 600px; width: 100%; }
+.faux-pane.essay.narration header h3.kicker, .faux-pane.essay.narration header h1.title, .faux-pane.essay.narration header h2.subtitle { margin-left: 0; }
+.faux-pane.essay.narration header h2.subtitle { color: #d2bbc0; }
+.faux-pane.essay.narration header h3.kicker { margin-bottom: 22px; }
+.faux-pane.essay.narration .essay-content { margin-top: 220px; margin-bottom: 220px; }
+.faux-pane.essay.narration .essay-content p { font-family: "Alegreya Regular"; font-size: 22px; line-height: 33px; margin-left: auto; margin-right: auto; margin-top: 44px; max-width: 600px; width: 100%; }
+.faux-pane.essay.narration .essay-content p em { font-family: "Alegreya Italic"; font-style: normal; }
+.faux-pane.essay.narration .essay-content p a:hover { color: #00b3ff; }
+.faux-pane.essay.narration .essay-content p:first-child:first-letter { color: #8c7c80; float: left; font-family: "Source Sans Pro Black"; font-size: 88px; font-weight: 400; line-height: 66px; margin-top: 11px; margin-right: 11px; padding-left: 11px; }
+
+@media all and (max-width: 640px) { .faux-pane.essay.narration header { max-width: 300px; }
+  .faux-pane.essay.narration header h1.title { font-size: 44px; }
+  .faux-pane.essay.narration .essay-content p { font-size: 16px; line-height: 24px; max-width: 300px; } }
 body { background-color: #231f20; }
 
 #main-content { opacity: 0; overflow-y: scroll; overflow-x: hidden; position: absolute; left: 0; width: 100%; height: 100%; -webkit-transition: background-color, opacity 1s; transition: background-color, opacity 1s; -webkit-overflow-scrolling: touch; }
@@ -126,26 +140,31 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
 #primary-nav ul li.a-narrow-practice .interlude-image:hover { background-image: url("../images/a-narrow-practice.gif"); }
 #primary-nav ul li.last-words .interlude-image { background-image: url("../images/last-words.jpg"); }
 #primary-nav ul li.last-words .interlude-image:hover { background-image: url("../images/last-words.gif"); }
+#primary-nav ul li.gary-gilmore .interlude-image { background-image: url("../images/gary-gilmore.jpg"); }
+#primary-nav ul li.gary-gilmore .interlude-image:hover { background-image: url("../images/gary-gilmore.gif"); }
 #primary-nav ul li:hover .content { opacity: 1; }
+#primary-nav ul li.inactive { display: none; }
 #primary-nav ul li .interlude-image { background-size: 100% 100%; width: 320px; height: 320px; }
 #primary-nav ul li h1 { line-height: 44px; margin: 11px 22px; text-align: center; height: 88px; }
 #primary-nav ul li p { margin: 11px 11px; text-align: center; }
 #primary-nav ul li .content { background-color: rgba(0, 0, 0, 0.5); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; opacity: 0.5; padding: 22px; text-align: center; -webkit-transition: opacity 200ms; -moz-transition: opacity 200ms; -ms-transition: opacity 200ms; -o-transition: opacity 200ms; transition: opacity 200ms; width: 100%; height: 100%; }
 
-.pane { clear: both; display: block; position: relative; width: 100%; }
-.pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }
-.pane.narration .cta { border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; position: absolute; bottom: 88px; left: 44px; text-transform: uppercase; width: 132px; height: 44px; }
-.pane.narration h1, .pane.narration h2, .pane.narration h3 { margin-left: 44px; position: absolute; }
-.pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
-.pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
-.pane.narration p a { color: inherit; text-decoration: underline; }
-.pane.narration h1.title { font-size: 88px; top: 88px; }
-.pane.narration h1.title.project-title { color: transparent; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
-.pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: 44px; }
-.pane.narration h2.subtitle.project-subtitle { color: #00b3ff; margin-top: 88px; top: 50%; }
-.pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: 44px; }
-.pane.narration header { padding-top: 88px; position: relative; }
-.pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker { position: static; }
+.view-section { display: none; }
+
+.pane, .faux-pane { clear: both; display: block; position: relative; width: 100%; }
+.pane.narration, .faux-pane.narration { -webkit-transition: all 200ms; transition: all 200ms; z-index: 1; }
+.pane.narration .cta, .faux-pane.narration .cta { border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; position: absolute; bottom: 88px; left: 44px; text-transform: uppercase; width: 132px; height: 44px; }
+.pane.narration h1, .pane.narration h2, .pane.narration h3, .faux-pane.narration h1, .faux-pane.narration h2, .faux-pane.narration h3 { margin-left: 44px; position: absolute; }
+.pane.narration h2.byline, .faux-pane.narration h2.byline { color: #463e40; font-family: "Source Sans Pro Black"; font-size: 14.66667px; top: auto; bottom: 44px; }
+.pane.narration p, .faux-pane.narration p { color: #8c7c80; font-family: "Source Sans Pro Black"; font-size: 33px; line-height: 44px; margin-top: 100px; margin-left: 44px; width: 800px; }
+.pane.narration p a, .faux-pane.narration p a { color: inherit; text-decoration: underline; }
+.pane.narration h1.title, .faux-pane.narration h1.title { font-size: 88px; top: 88px; }
+.pane.narration h1.title.project-title, .faux-pane.narration h1.title.project-title { color: transparent; line-height: 100%; letter-spacing: 0; margin-top: -110px; top: 50%; text-align: left; text-shadow: 0px 0px 0px #8c7c80; width: 100%; }
+.pane.narration h2.subtitle, .faux-pane.narration h2.subtitle { color: #463e40; font-family: "Source Sans Pro Extra Light"; font-size: 22px; position: absolute; top: 44px; }
+.pane.narration h2.subtitle.project-subtitle, .faux-pane.narration h2.subtitle.project-subtitle { color: #00b3ff; margin-top: 88px; top: 50%; }
+.pane.narration h3.kicker, .faux-pane.narration h3.kicker { color: #00b3ff; font-size: 14.66667px; position: absolute; top: 44px; }
+.pane.narration header, .faux-pane.narration header { padding-top: 88px; position: relative; }
+.pane.narration header h1.title, .pane.narration header h2.subtitle, .pane.narration header h3.kicker, .faux-pane.narration header h1.title, .faux-pane.narration header h2.subtitle, .faux-pane.narration header h3.kicker { position: static; }
 
 @media all and (max-width: 900px) { .pane.narration p { max-width: 800px; width: 90%; } }
 @media all and (max-width: 640px) { .interlude .x { right: 11px; }
@@ -157,4 +176,6 @@ ul#names-wrapper li.name { color: #463e40; display: block; float: left; font-fam
   .pane.narration h2.subtitle { font-size: 14.66667px; }
   .pane.narration h2.subtitle.project-subtitle { top: 176px; }
   .pane.narration h2.byline { font-size: 14.66667px; }
-  .pane.narration p { font-size: 14.66667px; line-height: 29.33333px; margin-top: 50px; padding-right: 11px; width: auto; } }
+  .pane.narration p { font-size: 14.66667px; line-height: 29.33333px; margin-top: 50px; padding-right: 11px; width: auto; }
+  #primary-nav ul { margin-left: 0; }
+  #primary-nav ul li { float: none; margin-right: auto; margin-left: auto; } }

@@ -43,6 +43,9 @@ app.get('/the-changing-face', function (req, res) {
 app.get('/the-changing-face.json', function (req, res) {
   res.send(require('./data/interludes/the-changing-face/methods.json'));
 });
+app.get('/essays/:name', function (req, res) {
+  res.render('index.html');
+});
 
 // Start yer engines.
 app.listen(app.get('port'), function () {
