@@ -1,0 +1,58 @@
+#the-changing-face {
+  .y-axis,
+  .x-axis {
+    path {
+      fill: none;
+    }
+    text {
+      fill: rgb(255,255,255);
+      font-size: 11px;
+      font-family: "Source Sans Pro Extra Light";
+      font-weight: 400;
+    }
+    .tick  {
+      line {
+        stroke: $color2;
+      }
+    }
+  }
+  table.legend {
+    position: absolute;
+    top: 44px;
+    left: 44px;
+    width: 222px;
+    z-index: 2;
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -ms-filter: blur(15px);
+    -o-filter: blur(15px);
+    filter: blur(15px);
+    tr {
+      height: 22px;
+      td.colorblock {
+        padding-left: 0;
+        width: 22px;
+        height: 22px;
+      }
+      td {
+        color: #d2bbc0;
+        font-family: "Source Sans Pro Extra Light";
+        font-size: 11px;
+        line-height: 22px;
+        padding-left: 22px;
+        text-transform: uppercase;
+        width: 178px;
+        height: 22px;
+      }
+    }
+  }
+  &.active {
+    table.legend {
+      -webkit-filter: none;
+      -moz-filter: none;
+      -ms-filter: none;
+      -o-filter: none;
+      filter: none;
+    }
+  }
+}
