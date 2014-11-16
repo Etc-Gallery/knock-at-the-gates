@@ -5,8 +5,6 @@ DAB.Router = function (options) {
   var check = function () {
     var currentRoute = window.location.pathname;
     if (currentRoute) {
-      console.log(window.location.pathname);
-      console.log(routes);
       routes[currentRoute]();
     } else {
       throw new Error('No route with that name.');

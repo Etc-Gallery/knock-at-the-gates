@@ -4,6 +4,7 @@
 @import "overlay";
 @import "last-words";
 @import "a-narrow-practice";
+@import "essay";
 
 body {
   background-color: $color1;  
@@ -133,11 +134,20 @@ ul#names-wrapper {
           &:hover { background-image: url('../images/last-words.gif'); }
         }
       }
+      &.gary-gilmore {
+        .interlude-image {
+          background-image: url('../images/gary-gilmore.jpg');
+          &:hover { background-image: url('../images/gary-gilmore.gif'); }
+        }
+      }
       &:hover {
         .content {
           opacity: 1;  
         }
-      }      
+      }
+      &.inactive {
+        display: none;
+      }  
       .interlude-image {
         background-size: 100% 100%;
         width: 320px;
@@ -175,7 +185,12 @@ ul#names-wrapper {
   }
 }
 
-.pane {
+
+.view-section { display: none; }
+
+
+.pane,
+.faux-pane {
   clear: both;
   display: block;
   position: relative;
@@ -321,6 +336,16 @@ ul#names-wrapper {
         margin-top: 50px;
         padding-right: 11px;
         width: auto;
+      }
+    }
+  }
+  #primary-nav {
+    ul {
+      margin-left: 0;
+      li {
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
       }
     }
   }
