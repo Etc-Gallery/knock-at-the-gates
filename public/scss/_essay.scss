@@ -26,7 +26,7 @@
         margin-top: $headerheight * 5;
         margin-bottom: $headerheight * 5;
         p {
-          font-family: "Alegreya";
+          font-family: "Alegreya Regular";
           font-size: 22px;
           line-height: 33px;
           margin-left: auto;
@@ -34,6 +34,10 @@
           margin-top: 44px;
           max-width: 600px;
           width: 100%;
+          em {
+            font-family: "Alegreya Italic";
+            font-style: normal;
+          }
           &:first-child {
             &:first-letter {
               color: $color3;
