@@ -38,6 +38,11 @@
             font-family: "Alegreya Italic";
             font-style: normal;
           }
+          a {
+            &:hover {
+              color: $color6;
+            }
+          }
           &:first-child {
             &:first-letter {
               color: $color3;
