@@ -67,7 +67,7 @@ DAB.interludes.push(new DAB.Interlude({
       height: that.el.height(),
       top: 55,
       right: 44,
-      bottom: 44,
+      bottom: 88,
       left: 44,
     }
     sizes.cwidth = sizes.width - sizes.left - sizes.right,
@@ -137,6 +137,122 @@ DAB.interludes.push(new DAB.Interlude({
       .attr('height', function (d) { return y(d.y0) - y(d.y0 + d.y); })
       .attr('width', function (d) { return x.rangeBand() })
       .style('fill', function (d) { return c(d.method); });
+
+
+
+    var generateFauxGif = function () {
+      that.el.append(
+        '<div class="gifs">' +
+          '<h1></h1>' +
+        '</div>'
+      );
+
+
+      rects
+        .transition()
+        .duration(500)
+        .attr('width', 1);
+      rects
+        .transition()
+        .delay(500)
+        .duration(500)
+        .attr('height', 0)
+        .attr('y', sizes.height);
+
+      var r = 320;
+
+      /*var plans = [
+        { 'start': 0, 'end': 50 },
+        { 'start': 50, 'end': 100 },
+        { 'start': 100, 'end': 150 },
+        { 'start': 150, 'end': 200 },
+        { 'start': 200, 'end': 239 }
+      ];*/
+      var plans = [];
+      for (var i = 1776; i < 2014; i += 1) {
+        if (i >= 1968 && i <= 1976) {
+
+        } else {
+          plans.push({
+            'start': i - 1776,
+            'end': (i + 1) - 1776
+          });        
+        }
+      }
+      var datas = [];
+      _.each(plans, function (plan, i) {
+        var counts = [];
+        _.each(data, function (methodArray, j) {
+          var count = 0;
+          var method = methodArray[0].method;
+          for (var k = plan.start; k < plan.end; k++) {
+            if (methodArray[k]) {
+              count += methodArray[k].y;  
+            }
+          }
+          counts.push({'method': method, 'count': count});
+        });
+        datas.push({
+          'start': plan.start + 1776,
+          'end': plan.end + 1776,
+          'counts': counts
+        });
+      });
+
+
+      _.each(datas, function (datum) {
+
+        var svg = d3.select(that.el.find('.gifs')[0]).append('svg').attr('class', 'pie-svg')
+          .data([datum.counts])
+          .attr('width', r * 2).attr('height', r * 2)
+          .append('g')
+          .attr('transform', 'translate(' + r + ',' + r + ')');
+
+        var arc = d3.svg.arc().outerRadius(r).innerRadius(r * (7 / 8));
+        var pie = d3.layout.pie()
+          .sort(function (a, b) { colorIndex[a.method] > colorIndex[b.method] ? 1 : -1 })
+          .value(function (d) { return d.count });
+
+
+        var arcs = svg.selectAll('g.slice').data(pie).enter().append('g').attr('class', 'slice');
+        var paths = arcs.append('path')
+          .attr('fill', function (d, i) { return c(methods[i]); })
+          .attr('d', arc);
+
+      });
+
+
+      var index = 0;
+      var svgs = d3.select(that.el[0]).select('.gifs').selectAll('svg');
+      var h1   = d3.select(that.el[0]).select('.gifs').select('h1');
+      var run = function () {
+        var gifTimer = setInterval(function () {
+          index++;
+          if (index > svgs[0].length) {
+            index = 0;
+            clearInterval(gifTimer);
+            setTimeout(run, 1000);
+          }
+          svgs.classed('active', false);
+          svgs.each(function (d, i) {
+            if (i === index) {
+              d3.select(this).classed('active', true);
+              h1.text(d3.select(this).datum().start);
+            }
+          });
+        }, 300);     
+      };
+      run();
+
+      that.el.find('.gifs').addClass('active');
+  
+    };
+
+
+    that.el.append('<button class="the-changing-face-button faux-gif-button">Step through time</button>');
+    that.el.find('.faux-gif-button').on('click', generateFauxGif);
+
+
   }
 
 
