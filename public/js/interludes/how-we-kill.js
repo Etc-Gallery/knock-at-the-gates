@@ -92,11 +92,15 @@ DAB.interludes.push(new DAB.Interlude({
     createLegend(that.el);
 
 
+    var isSuperSmall = function () {
+      return $(window).width() <= 640 ? true : false;
+    }
     var years = [];
     var ticks = [];
     for (var i = 1776; i <= 2014; i++) {
       years.push(i + '');
-      if ((i - 1776) % 10 === 0) {
+      var spacer = isSuperSmall ? 25 : 10;
+      if ((i - 1776) % spacer === 0) {
         ticks.push(i + '');
       } else {
         ticks.push('');

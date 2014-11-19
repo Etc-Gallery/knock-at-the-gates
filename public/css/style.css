@@ -129,7 +129,11 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
   .how-we-kill-gifs .svgs-wrapper h1.year { margin-top: -22px; top: 50%; }
   .how-we-kill-gifs nav { margin: 11px auto; position: relative; top: 0; left: 0; width: 320px; }
   .how-we-kill-gifs p.explanation { margin: 11px auto; position: relative; top: 0; left: 0; width: 320px; height: auto; }
-  .how-we-kill-gifs table.legend { margin-left: auto; margin-top: 11px; margin-right: auto; position: relative; top: 0; left: 0; } }
+  .how-we-kill-gifs table.legend { margin-left: auto; margin-top: 11px; margin-right: auto; position: relative; top: 0; left: 0; }
+  .how-we-kill-gifs .x { z-index: 5; } }
+@media all and (max-width: 640px) { .how-we-kill-gifs .svgs-wrapper { top: 0; left: 0; }
+  .how-we-kill-gifs p.explanation { display: none; }
+  #how-we-kill button.how-we-kill-button { top: auto; left: 11px; bottom: 11px; } }
 .faux-pane.essay { display: none; width: 100%; height: auto; }
 .faux-pane.essay.narration header { margin-top: 220px; margin-right: auto; margin-left: auto; max-width: 600px; width: 100%; }
 .faux-pane.essay.narration header h3.kicker, .faux-pane.essay.narration header h1.title, .faux-pane.essay.narration header h2.subtitle { margin-left: 0; }

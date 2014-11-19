@@ -255,5 +255,26 @@
       top: 0;
       left: 0;
     }
+    .x {
+      z-index: 5;
+    }
+  }
+}
+@media all and (max-width: 640px) {
+  .how-we-kill-gifs {
+    .svgs-wrapper {
+      top: 0;
+      left: 0;
+    }
+    p.explanation {
+      display: none;
+    }
+  }
+  #how-we-kill {
+    button.how-we-kill-button {
+      top: auto;
+      left: 11px;
+      bottom: 11px;
+    }
   }
 }
