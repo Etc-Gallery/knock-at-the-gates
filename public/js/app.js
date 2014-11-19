@@ -151,7 +151,7 @@ DAB.App = function () {
       $window.trigger('resize');
       $main.css('opacity', 1);
       activeInterlude = undefined;
-      $priamryNav.find('li').removeClass('inactive');
+      $primaryNav.find('li').removeClass('inactive');
     };
 
     // The interludes routes.

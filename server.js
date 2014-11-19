@@ -37,6 +37,12 @@ app.get('/a-narrow-practice', function (req, res) {
 app.get('/a-narrow-practice.json', function (req, res) {
   res.send(require('./data/interludes/a-narrow-practice/us.topo.json'));
 });
+app.get('/how-we-kill', function (req, res) {
+  res.render('index.html');
+});
+app.get('/how-we-kill.json', function (req, res) {
+  res.send(require('./data/interludes/how-we-kill/methods.json'));
+});
 app.get('/essays/:name', function (req, res) {
   res.render('index.html');
 });

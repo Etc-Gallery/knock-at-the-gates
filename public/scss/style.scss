@@ -4,6 +4,7 @@
 @import "overlay";
 @import "last-words";
 @import "a-narrow-practice";
+@import "how-we-kill";
 @import "essay";
 
 body {
@@ -138,6 +139,18 @@ ul#names-wrapper {
         .interlude-image {
           background-image: url('../images/gary-gilmore.jpg');
           &:hover { background-image: url('../images/gary-gilmore.gif'); }
+        }
+      }
+      &.velma-barfield {
+        .interlude-image {
+          background-image: url('../images/gary-gilmore.jpg');
+          &:hover { background-image: url('../images/gary-gilmore.gif'); }
+        }
+      }
+      &.how-we-kill {
+        .interlude-image {
+          background-image: url('../images/how-we-kill.jpg');
+          &:hover { background-image: url('../images/how-we-kill.gif'); }
         }
       }
       &:hover {
@@ -286,6 +299,19 @@ ul#names-wrapper {
         max-width: 800px;
         width: 90%;
       } 
+    }
+  }
+}
+
+@media all and (max-width: 772px) {
+  #primary-nav {
+    ul {
+      margin-left: 0;
+      li {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 }
