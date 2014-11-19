@@ -1,4 +1,4 @@
-.changing-face-gifs {
+.how-we-kill-gifs {
   background-color: rgba(70,62,64,.75);
   position: absolute;
   top: -100%;
@@ -121,9 +121,9 @@
 }
 
 
-#the-changing-face {
+#how-we-kill {
   &.active {
-   button.the-changing-face-button {
+   button.how-we-kill-button {
       -webkit-filter: blur(0);
       -moz-filter: blur(0);
       -ms-filter: blur(0);
@@ -131,7 +131,7 @@
       filter: blur(0);
    } 
   }
-  button.the-changing-face-button {
+  button.how-we-kill-button {
     color: rgb(255,255,255);
     -webkit-filter: blur(15px);
     -moz-filter: blur(15px);

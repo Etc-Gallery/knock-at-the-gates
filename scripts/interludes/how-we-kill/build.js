@@ -2,7 +2,7 @@
 // here's what you need
 // data/
 //   interludes/
-//     the-changing-face/
+//     how-we-kill/
 //        raw/
 //          dpic/
 //            dpic.csv
@@ -17,6 +17,6 @@
 
 require('shelljs/global');
 
-exec('node scripts/interludes/the-changing-face/sort-and-cull-espy-data.js');
-exec('node scripts/interludes/the-changing-face/dpic-to-json.js');
-exec('node scripts/interludes/the-changing-face/combine-and-stack-by-method.js');
+exec('node scripts/interludes/how-we-kill/sort-and-cull-espy-data.js');
+exec('node scripts/interludes/how-we-kill/dpic-to-json.js');
+exec('node scripts/interludes/how-we-kill/combine-and-stack-by-method.js');

@@ -4,7 +4,7 @@
 @import "overlay";
 @import "last-words";
 @import "a-narrow-practice";
-@import "the-changing-face";
+@import "how-we-kill";
 @import "essay";
 
 body {
@@ -139,6 +139,18 @@ ul#names-wrapper {
         .interlude-image {
           background-image: url('../images/gary-gilmore.jpg');
           &:hover { background-image: url('../images/gary-gilmore.gif'); }
+        }
+      }
+      &.velma-barfield {
+        .interlude-image {
+          background-image: url('../images/gary-gilmore.jpg');
+          &:hover { background-image: url('../images/gary-gilmore.gif'); }
+        }
+      }
+      &.how-we-kill {
+        .interlude-image {
+          background-image: url('../images/how-we-kill.jpg');
+          &:hover { background-image: url('../images/how-we-kill.gif'); }
         }
       }
       &:hover {

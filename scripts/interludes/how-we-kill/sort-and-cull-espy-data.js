@@ -49,7 +49,7 @@ var keys = {
 
 var fs = require( 'fs' );
 
-var lines = fs.readFileSync( 'data/interludes/the-changing-face/raw/espy/DS0001/08451-0001-Data.txt' ).toString().split( "\n" );
+var lines = fs.readFileSync( 'data/interludes/how-we-kill/raw/espy/DS0001/08451-0001-Data.txt' ).toString().split( "\n" );
 
 
 
@@ -85,7 +85,7 @@ for ( var i = 0; i < lines.length - 1; i++ ) {
   data.push( datum );
 }
 
-fs.writeFile( 'data/interludes/the-changing-face/raw/espy/espy.json', JSON.stringify( data, null, "\t" ), function ( error ) {
+fs.writeFile( 'data/interludes/how-we-kill/raw/espy/espy.json', JSON.stringify( data, null, "\t" ), function ( error ) {
   if ( error ) {
     console.log( error );
   } else {

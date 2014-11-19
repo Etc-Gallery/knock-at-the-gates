@@ -1,7 +1,7 @@
 var fs  = require('fs')
 ,   csv = require('csv');
 
-var rawExecutions = fs.readFileSync('data/interludes/the-changing-face/raw/dpic/dpic.csv').toString();
+var rawExecutions = fs.readFileSync('data/interludes/how-we-kill/raw/dpic/dpic.csv').toString();
 var executions = [];
 
 csv()
@@ -24,7 +24,7 @@ csv()
       }
     });
     fs.writeFile(
-      'data/interludes/the-changing-face/raw/dpic/dpic.json',
+      'data/interludes/how-we-kill/raw/dpic/dpic.json',
       JSON.stringify(executions),
       function (error) {
         if (error) {

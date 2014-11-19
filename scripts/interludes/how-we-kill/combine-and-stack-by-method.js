@@ -1,5 +1,5 @@
-var espy = require('./../../../data/interludes/the-changing-face/raw/espy/espy.json')
-,   dpic = require('./../../../data/interludes/the-changing-face/raw/dpic/dpic.json')
+var espy = require('./../../../data/interludes/how-we-kill/raw/espy/espy.json')
+,   dpic = require('./../../../data/interludes/how-we-kill/raw/dpic/dpic.json')
 ,   fs   = require('fs');
 
 var combined = [];
@@ -16,7 +16,7 @@ for (var i = 0; i < dpic.length; i++) {
 }
 
 fs.writeFile(
-  'data/interludes/the-changing-face/raw/combined.json',
+  'data/interludes/how-we-kill/raw/combined.json',
   JSON.stringify(combined),
   function (error) {
     console.log(error ? error : 'file written.');
@@ -136,7 +136,7 @@ for (var i = 0; i < niceMethods.length; i++) {
 }
 
 fs.writeFile(
-  'data/interludes/the-changing-face/methods.json',
+  'data/interludes/how-we-kill/methods.json',
   JSON.stringify(stackedData),
   function (error) { error ? error : "file written." }
 );
