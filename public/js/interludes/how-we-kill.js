@@ -5,8 +5,8 @@ DAB.interludes.push(new DAB.Interlude({
   el: $('#how-we-kill'),
   url: '/how-we-kill.json',
   path: '/how-we-kill',
-  title: 'The Changing Face of Executions',
-  subtitle: 'Executions from 1776 to 2014',
+  title: 'How We Kill',
+  subtitle: 'Methods of Execution from 1776 to 2014',
 
 
 
