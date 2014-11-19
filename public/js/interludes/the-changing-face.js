@@ -15,7 +15,7 @@ DAB.interludes.push(new DAB.Interlude({
   },
   deactivate: function () {
     this.svg.select('g.guts').attr('filter', '');
-    this.svg.select('g.guts').attr('filter', 'url(#the-changing-face-blur)');    
+    this.svg.select('g.guts').attr('filter', 'url(#the-changing-face-blur)');
   },
 
 
@@ -25,8 +25,6 @@ DAB.interludes.push(new DAB.Interlude({
 
 
     var that = this;
-
-
 
     that.createSharedElements();
 
@@ -79,10 +77,10 @@ DAB.interludes.push(new DAB.Interlude({
 
 
 
-    var createLegend = function () {
-      that.el.append('<table class="legend"></table>');
+    var createLegend = function (el) {
+      el.append('<table class="legend"></table>');
       _.each(methods, function (method) {
-        that.el.find('table.legend').append(
+        el.find('table.legend').append(
           '<tr>' +
             '<td style="background-color:' + c(method) + ';" class="colorblock"></td>' +
             '<td>' + method + '</td>' +
@@ -90,7 +88,7 @@ DAB.interludes.push(new DAB.Interlude({
         );
       });
     };
-    createLegend();
+    createLegend(that.el);
 
 
     var years = [];
@@ -141,12 +139,20 @@ DAB.interludes.push(new DAB.Interlude({
 
 
     var generateFauxGif = function () {
-      that.el.append(
-        '<div class="gifs">' +
-          '<h1></h1>' +
+
+      $('body').append(
+        '<div class="changing-face-gifs">' +
+          '<button class="x"></button>' +
+          '<h1 class="year"></h1>' +
+          '<nav>' +
+            '<button class="rewind">step back</button>' +
+            '<button class="pause-play"><span class="pause">pause</span><span class="play">play</span></button>' +
+            '<button class="fast-forward">step forward</button>' +
+          '</nav>' +
+          '<p class="explanation">In this chart, each year displays the ten previous years&rsquo; data, excluding the decade-long moratorium. You can use the controls below to step through time or simply watch it play.' +
         '</div>'
       );
-
+      createLegend($('.changing-face-gifs'));
 
       rects
         .transition()
@@ -174,7 +180,7 @@ DAB.interludes.push(new DAB.Interlude({
 
         } else {
           plans.push({
-            'start': i - 1776,
+            'start': i - 9 - 1776,
             'end': (i + 1) - 1776
           });        
         }
@@ -202,13 +208,13 @@ DAB.interludes.push(new DAB.Interlude({
 
       _.each(datas, function (datum) {
 
-        var svg = d3.select(that.el.find('.gifs')[0]).append('svg').attr('class', 'pie-svg')
+        var svg = d3.select('.changing-face-gifs').append('svg').attr('class', 'pie-svg')
           .data([datum.counts])
           .attr('width', r * 2).attr('height', r * 2)
           .append('g')
           .attr('transform', 'translate(' + r + ',' + r + ')');
 
-        var arc = d3.svg.arc().outerRadius(r).innerRadius(r * (7 / 8));
+        var arc = d3.svg.arc().outerRadius(r).innerRadius(r * (3 / 8));
         var pie = d3.layout.pie()
           .sort(function (a, b) { colorIndex[a.method] > colorIndex[b.method] ? 1 : -1 })
           .value(function (d) { return d.count });
@@ -221,12 +227,12 @@ DAB.interludes.push(new DAB.Interlude({
 
       });
 
-
       var index = 0;
-      var svgs = d3.select(that.el[0]).select('.gifs').selectAll('svg');
-      var h1   = d3.select(that.el[0]).select('.gifs').select('h1');
+      var svgs = d3.select('.changing-face-gifs').selectAll('svg');
+      var h1   = d3.select('.changing-face-gifs').select('h1');
+      var gifTimer;
       var run = function () {
-        var gifTimer = setInterval(function () {
+        gifTimer = setInterval(function () {
           index++;
           if (index > svgs[0].length) {
             index = 0;
@@ -237,15 +243,76 @@ DAB.interludes.push(new DAB.Interlude({
           svgs.each(function (d, i) {
             if (i === index) {
               d3.select(this).classed('active', true);
-              h1.text(d3.select(this).datum().start);
+              h1.text(datas[i].end);
             }
           });
-        }, 300);     
+        }, 120);     
       };
       run();
 
-      that.el.find('.gifs').addClass('active');
-  
+      setTimeout(function () {
+        $('.changing-face-gifs').addClass('active');
+        $('.changing-face-gifs .pause-play').on('click', function () {
+          if ($(this).parent().hasClass('paused')) {
+            run();
+          } else {
+            clearInterval(gifTimer);      
+          }
+          $(this).parent().toggleClass('paused');
+        });
+        $('.changing-face-gifs .rewind').on('click', function () {
+          if (!$(this).parent().hasClass('paused')) {
+            $(this).parent().toggleClass('paused');
+          }
+          clearInterval(gifTimer);
+          index--;
+          if (index < 0) {
+            index = svgs[0].length;
+          }
+          svgs.classed('active', false);
+          svgs.each(function (d, i) {
+            if (i === index) {
+              d3.select(this).classed('active', true);
+              h1.text(datas[i].end);
+            }
+          });
+        });
+        $('.changing-face-gifs .fast-forward').on('click', function () {
+          if (!$(this).parent().hasClass('paused')) {
+            $(this).parent().toggleClass('paused');
+          }
+          clearInterval(gifTimer);
+          index++;
+          if (index > svgs[0].length) {
+            index = 0;
+          }
+          svgs.classed('active', false);
+          svgs.each(function (d, i) {
+            if (i === index) {
+              d3.select(this).classed('active', true);
+              h1.text(datas[i].end);
+            }
+          });          
+        });
+        that.el.find('.legend').addClass('hidden');
+        $('.changing-face-gifs .x').on('click', function () {
+          $('.changing-face-gifs').removeClass('active');
+          rects
+            .transition()
+            .duration(500)
+            .attr('height', function (d) { return y(d.y0) - y(d.y0 + d.y); })
+            .attr('y', function (d) { return y(d.y0 + d.y); })
+          rects
+            .transition()
+            .delay(500)
+            .duration(500)
+            .attr('width', function (d) { return x.rangeBand() });
+          that.el.find('.legend').removeClass('hidden');
+          setTimeout(function () {
+            $('.changing-face-gifs').remove();
+          }, 500);
+        })
+      }, 1000);
     };
 
 
