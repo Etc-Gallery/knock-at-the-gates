@@ -139,12 +139,17 @@ DAB.interludes.push(new DAB.Interlude({
 
 
 
+    var isSmall = function () {
+      return $(window).width() <= 1300 ? true : false;
+    };
     var generateFauxGif = function () {
 
       $('body').append(
         '<div class="how-we-kill-gifs">' +
           '<button class="x"></button>' +
-          '<h1 class="year"></h1>' +
+          '<div class="svgs-wrapper">' +
+            '<h1 class="year"></h1>' +
+          '</div>' +
           '<nav>' +
             '<button class="rewind">step back</button>' +
             '<button class="pause-play"><span class="pause">pause</span><span class="play">play</span></button>' +
@@ -166,7 +171,7 @@ DAB.interludes.push(new DAB.Interlude({
         .attr('height', 0)
         .attr('y', sizes.height);
 
-      var r = 320;
+      var r = isSmall() ? 160 : 320;
 
       /*var plans = [
         { 'start': 0, 'end': 50 },
@@ -209,7 +214,7 @@ DAB.interludes.push(new DAB.Interlude({
 
       _.each(datas, function (datum) {
 
-        var svg = d3.select('.how-we-kill-gifs').append('svg').attr('class', 'pie-svg')
+        var svg = d3.select($('.how-we-kill-gifs .svgs-wrapper')[0]).append('svg').attr('class', 'pie-svg')
           .data([datum.counts])
           .attr('width', r * 2).attr('height', r * 2)
           .append('g')
@@ -230,7 +235,7 @@ DAB.interludes.push(new DAB.Interlude({
 
       var index = 0;
       var svgs = d3.select('.how-we-kill-gifs').selectAll('svg');
-      var h1   = d3.select('.how-we-kill-gifs').select('h1');
+      var h1   = d3.select('.how-we-kill-gifs').select('h1.year');
       var gifTimer;
       var run = function () {
         gifTimer = setInterval(function () {

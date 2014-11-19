@@ -210,3 +210,50 @@
     }
   }
 }
+@media all and (max-width: 1300px) {
+  .how-we-kill-gifs {
+    .svgs-wrapper {
+      margin: 22px auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 320px;
+      height: 320px;
+      svg {
+        margin: 22px auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 320px;
+        height: 320px;
+      }
+      h1.year {
+        margin-top: -22px;
+        top: 50%;
+      }      
+    }
+    nav {
+      margin: 11px auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 320px;
+    }
+    p.explanation {
+      margin: 11px auto;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 320px;
+      height: auto;
+    }
+    table.legend {
+      margin-left: auto;
+      margin-top: 11px;
+      margin-right: auto;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+  }
+}

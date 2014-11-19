@@ -303,6 +303,19 @@ ul#names-wrapper {
   }
 }
 
+@media all and (max-width: 772px) {
+  #primary-nav {
+    ul {
+      margin-left: 0;
+      li {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
 @media all and (max-width: 640px) {
   .interlude {
     .x {
