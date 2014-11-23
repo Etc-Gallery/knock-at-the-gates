@@ -6,8 +6,9 @@
 //       us-10m.json
 //     counties/
 //       fips.csv
-//     dpic
-//       dpic.csv
+// data/common/raw/
+//   dpic
+//     dpic.csv
 //
 // then run `npm install shelljs`
 // then run `node scripts build.js`
