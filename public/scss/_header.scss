@@ -99,11 +99,12 @@ header#primary-header {
     height: 0;
     z-index: 3;
     transition: all 200ms;
-    &.gear-persist-dropdown {
+    &.gear-persist-dropdown,
+    &.hamburger-persist-dropdown {
       left: auto;
       right: 0;
       &.active {
-        height: #{(45 * 4) + 1}px;
+        height: #{(45 * 5) + 1}px;
       }
     }
     a {
