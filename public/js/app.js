@@ -171,7 +171,7 @@ DAB.App = function () {
         if (activeEssay) {
           activeEssay.off();
         }
-        
+
         // Turn the interlude on and set it as active.
         interlude.on();
         activeInterlude = interlude;
@@ -216,7 +216,7 @@ DAB.App = function () {
 
     return routes;
   };
-  
+
 
 
   this.on = function () {

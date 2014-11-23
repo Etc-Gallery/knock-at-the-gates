@@ -30,7 +30,7 @@ app.get('/last-words.json', function (req, res) {
 });
 app.get('/names.json', function (req, res) {
   res.send(require('./data/common/dpic-full.json'));
-})
+});
 app.get('/a-narrow-practice', function (req, res) {
   res.render('index.html');
 });
