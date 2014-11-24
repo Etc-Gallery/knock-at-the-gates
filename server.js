@@ -43,6 +43,12 @@ app.get('/how-we-kill', function (req, res) {
 app.get('/how-we-kill.json', function (req, res) {
   res.send(require('./data/interludes/how-we-kill/methods.json'));
 });
+app.get('/when-they-stopped', function (req, res) {
+  res.render('index.html');
+});
+app.get('/when-they-stopped.json', function (req, res) {
+  res.send(require('./data/interludes/when-they-stopped/data.json'));
+});
 app.get('/essays/:name', function (req, res) {
   res.render('index.html');
 });
