@@ -1,6 +1,6 @@
 DAB.interludes.push(new DAB.Interlude({
 
-  el: $('#a-narrow-practice'),
+  wrapper: $('#a-narrow-practice'),
   url: 'a-narrow-practice.json',
   path: '/a-narrow-practice',
   title: 'A Narrow Practice',
@@ -45,7 +45,7 @@ DAB.interludes.push(new DAB.Interlude({
         return 3;
       } else {
         return 4;
-      }      
+      }
     };
 
 
@@ -92,7 +92,7 @@ DAB.interludes.push(new DAB.Interlude({
       $('button.top-ten-button').on('click', function (e) {
         topTenActive = topTenActive ? false : true;
         that.svg.selectAll('path.top-ten').style('fill', function (d) {
-          return topTenActive ? cRed(range(d.properties.count)) : c(range(d.properties.count));        
+          return topTenActive ? cRed(range(d.properties.count)) : c(range(d.properties.count));
         });
       });
       $('.a-narrow-practice-overlay').remove();
@@ -111,7 +111,7 @@ DAB.interludes.push(new DAB.Interlude({
         $('.a-narrow-practice-overlay').on('click', function (e) {
           $(this).removeClass('active');
           $('#main-content, #primary-header').removeClass('blur');
-        });        
+        });
       })
     };
     createOverlayAndToggle();
@@ -154,7 +154,7 @@ DAB.interludes.push(new DAB.Interlude({
         /*if (d.properties.topTen === 'true') {
           return cRed(range(d.properties.count));
         } else {*/
-          return c(range(d.properties.count));      
+          return c(range(d.properties.count));
         //}
       });
     that.svg.append('g').attr('class', 'states')

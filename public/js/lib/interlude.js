@@ -8,11 +8,11 @@ DAB.Interlude = function (options) {
     throw new Error('You must pass in an options object to DAB.Interlude');
   }
 
-  if (_.isUndefined(options.el)) {
-    throw new Error('You must provide an el to latch on to.');
+  if (_.isUndefined(options.wrapper)) {
+    throw new Error('You must provide a wrapper to latch on to.');
   }
   else {
-    this.wrapper = options.el;
+    this.wrapper = options.wrapper;
     this.wrapper.append('<div class="interactive"></div>');
     this.el = this.wrapper.find('.interactive');
   }

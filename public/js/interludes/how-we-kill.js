@@ -1,8 +1,9 @@
+
 DAB.interludes.push(new DAB.Interlude({
 
 
 
-  el: $('#how-we-kill'),
+  wrapper: $('#how-we-kill'),
   url: '/how-we-kill.json',
   path: '/how-we-kill',
   title: 'How We Kill',
@@ -22,7 +23,7 @@ DAB.interludes.push(new DAB.Interlude({
 
 
   build: function (data) {
-    
+
 
 
     var that = this;
@@ -42,7 +43,7 @@ DAB.interludes.push(new DAB.Interlude({
       'gas chamber': 2,
       'firing squad': 3,
       'hanging': 4,
-      'other': 5      
+      'other': 5
     };
     var methods = d3.keys(colorIndex);
 
@@ -56,7 +57,7 @@ DAB.interludes.push(new DAB.Interlude({
         'rgb(255,207,149)',
         'rgb(255,174,0)',
         'rgb(149,207,255)',
-        'rgb(0,174,255)'       
+        'rgb(0,174,255)'
       ]);
 
 
@@ -192,7 +193,7 @@ DAB.interludes.push(new DAB.Interlude({
           plans.push({
             'start': i - 9 - 1776,
             'end': (i + 1) - 1776
-          });        
+          });
         }
       }
       var datas = [];
@@ -203,7 +204,7 @@ DAB.interludes.push(new DAB.Interlude({
           var method = methodArray[0].method;
           for (var k = plan.start; k < plan.end; k++) {
             if (methodArray[k]) {
-              count += methodArray[k].y;  
+              count += methodArray[k].y;
             }
           }
           counts.push({'method': method, 'count': count});
@@ -256,7 +257,7 @@ DAB.interludes.push(new DAB.Interlude({
               h1.text(datas[i].end);
             }
           });
-        }, 120);     
+        }, 120);
       };
       run();
 
@@ -266,7 +267,7 @@ DAB.interludes.push(new DAB.Interlude({
           if ($(this).parent().hasClass('paused')) {
             run();
           } else {
-            clearInterval(gifTimer);      
+            clearInterval(gifTimer);
           }
           $(this).parent().toggleClass('paused');
         });
@@ -302,7 +303,7 @@ DAB.interludes.push(new DAB.Interlude({
               d3.select(this).classed('active', true);
               h1.text(datas[i].end);
             }
-          });          
+          });
         });
         that.el.find('.legend').addClass('hidden');
         $('.how-we-kill-gifs .x').on('click', that.removeFauxGif);

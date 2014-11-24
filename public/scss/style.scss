@@ -4,11 +4,12 @@
 @import "overlay";
 @import "last-words";
 @import "a-narrow-practice";
+@import "when-they-stopped";
 @import "how-we-kill";
 @import "essay";
 
 body {
-  background-color: $color1;  
+  background-color: $color1;
 }
 
 #main-content {
@@ -92,7 +93,7 @@ ul#names-wrapper {
       display: block;
     }
     .interactive {
-      opacity: 1;     
+      opacity: 1;
     }
     .pane {
       opacity: 0;
@@ -155,12 +156,12 @@ ul#names-wrapper {
       }
       &:hover {
         .content {
-          opacity: 1;  
+          opacity: 1;
         }
       }
       &.inactive {
         display: none;
-      }  
+      }
       .interlude-image {
         background-size: 100% 100%;
         width: 320px;
@@ -298,7 +299,7 @@ ul#names-wrapper {
        p  {
         max-width: 800px;
         width: 90%;
-      } 
+      }
     }
   }
 }

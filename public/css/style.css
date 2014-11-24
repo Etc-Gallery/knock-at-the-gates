@@ -91,6 +91,21 @@ header#primary-header ul.persist-dropdown li:hover { background-color: rgba(255,
 #a-narrow-practice.active table.legend { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 #a-narrow-practice.active .a-narrow-practice-button { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
 
+.when-they-stopped-overlay { background-color: rgba(255, 255, 255, 0.75); cursor: pointer; overflow: hidden; position: fixed; top: -100%; left: 0; width: 100%; height: 100%; z-index: 3; -webkit-transition: all 200ms; transition: all 200ms; }
+.when-they-stopped-overlay.active { top: 0; }
+.when-they-stopped-overlay p { color: #231f20; margin-left: 44px; margin-bottom: 22px; max-width: 600px; width: 90%; }
+.when-they-stopped-overlay h1 { color: #00b3ff; font-size: 44px; margin-left: 44px; margin-bottom: 44px; padding-top: 44px; text-transform: uppercase; }
+
+#when-they-stopped .when-they-stopped-button { color: white; position: absolute; bottom: 44px; right: 44px; -webkit-filter: blur(15px); -moz-filter: blur(15px); -ms-filter: blur(15px); -o-filter: blur(15px); filter: blur(15px); border: 1px solid #00b3ff; color: #00b3ff; font-family: "Source Sans Pro Extra Light"; font-size: 11px; padding-left: 44px; padding-right: 44px; text-transform: uppercase; height: 44px; }
+#when-they-stopped .when-they-stopped-button:nth-child(1) { bottom: 130px; }
+#when-they-stopped path.state { pointer-events: none; stroke: #555; stroke-width: .5px; }
+#when-they-stopped table.legend { position: absolute; top: 44px; left: 22px; width: 222px; z-index: 2; -webkit-filter: blur(15px); -moz-filter: blur(15px); -ms-filter: blur(15px); -o-filter: blur(15px); filter: blur(15px); }
+#when-they-stopped table.legend tr { height: 22px; }
+#when-they-stopped table.legend tr td.colorblock { padding-left: 0; width: 22px; height: 22px; }
+#when-they-stopped table.legend tr td { color: #d2bbc0; font-family: "Source Sans Pro Extra Light"; font-size: 11px; line-height: 22px; padding-left: 22px; text-transform: uppercase; width: 178px; height: 22px; }
+#when-they-stopped.active table.legend { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
+#when-they-stopped.active .when-they-stopped-button { -webkit-filter: none; -moz-filter: none; -ms-filter: none; -o-filter: none; filter: none; }
+
 .how-we-kill-gifs { background-color: rgba(70, 62, 64, 0.75); position: absolute; top: -100%; left: 0; -webkit-transition: all 500ms; -moz-transition: all 500ms; -ms-transition: all 500ms; -o-transition: all 500ms; transition: all 500ms; width: 100%; height: 100%; z-index: 5; }
 .how-we-kill-gifs .x { top: 44px; }
 .how-we-kill-gifs table.legend { margin-left: -542px; margin-top: -73px; position: absolute; top: 50%; left: 50%; width: 222px; z-index: 2; }

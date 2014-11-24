@@ -195,6 +195,11 @@ var processResults = function() {
   exec('mapshaper data/interludes/when-they-stopped/raw/us-10m.topo.json -o '
       + mapLocation +' format=topojson target=states -simplify 10% visvalingam ');
 
+  // Randomize the order of events within each year.
+  _.each(years, function(data, year) {
+    years[year] = _.shuffle(data);
+  });
+
   var mapJson = fs.readFileSync(mapLocation);
   var finalData = {
     map: JSON.parse(mapJson),
